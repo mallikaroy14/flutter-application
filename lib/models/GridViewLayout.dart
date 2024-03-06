@@ -13,7 +13,10 @@ class GridViewLayout extends StatelessWidget {
     Data("Part ", "images/logo.png")
   ];
 
-  GridViewLayout({super.key});
+  // final String text;
+  final Function callback;
+
+  GridViewLayout({super.key, required this.callback});
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +35,23 @@ class GridViewLayout extends StatelessWidget {
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8.0)),
-                child: Row(
-                  children: [
-                    Image(
-                      image: AssetImage(_photos[index].image),
-                      width: 30,
-                      height: 30,
-                    ),
-                    Text(
-                      _photos[index].text,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
+                child: InkWell(
+                  onTap: () {
+                    callback(_photos[index].text);
+                  },
+                  child: Row(
+                    children: [
+                      Image(
+                        image: AssetImage(_photos[index].image),
+                        width: 30,
+                        height: 30,
+                      ),
+                      Text(
+                        _photos[index].text,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
                 ),
               );
             }));

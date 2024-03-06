@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class DisbursedCustomCard extends StatelessWidget {
   final String? description;
   final int? count;
+  final Function callback;
 
-  const DisbursedCustomCard({Key? key, this.description, this.count})
+  const DisbursedCustomCard({Key? key, this.description, this.count, required this.callback})
       : super(key: key);
 
   @override
@@ -15,25 +16,30 @@ class DisbursedCustomCard extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.all(Radius.circular(5.0))),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Icon(Icons.home, color: Colors.blue),
-          Text(
-            '$description',
-            style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 11.0,
-                color: Colors.black),
-          ),
-          Text(
-            '$count',
-            style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14.0,
-                color: Colors.black),
-          ),
-        ],
+      child: InkWell(
+        onTap: (){
+          callback('$description');
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Icon(Icons.home, color: Colors.blue),
+            Text(
+              '$description',
+              style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 11.0,
+                  color: Colors.black),
+            ),
+            Text(
+              '$count',
+              style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14.0,
+                  color: Colors.black),
+            ),
+          ],
+        ),
       ),
     );
   }

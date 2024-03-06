@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TotalOverDueCard extends StatelessWidget {
-  const TotalOverDueCard({super.key});
+
+  final Function callback;
+
+  const TotalOverDueCard({super.key, required this.callback});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,9 @@ class TotalOverDueCard extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          callback();
+                        },
                         style: OutlinedButton.styleFrom(
                             side: const BorderSide(color: Colors.white),
                             shape: RoundedRectangleBorder(

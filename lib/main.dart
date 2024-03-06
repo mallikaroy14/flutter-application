@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ]),
                   )
                 ]),
-            const TotalOverDueCard(),
+            TotalOverDueCard(callback: callBackFromPayNow),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(10.0),
@@ -111,16 +111,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const DisbursedCustomCard(
-                        description: "Disbursment", count: 2),
+                    DisbursedCustomCard(
+                        description: "Disbursment",
+                        count: 2,
+                        callback: callBackFromDisbursement),
                     const SizedBox(height: 10),
-                    const DisbursedCustomCard(
-                        description: "In-progress", count: 10),
+                    DisbursedCustomCard(
+                        description: "In-progress",
+                        count: 10,
+                        callback: callBackFromDisbursement),
                     const SizedBox(height: 10),
                     const Text("Title comes here",
                         style: TextStyle(color: Colors.black)),
                     const SizedBox(height: 10),
-                    GridViewLayout(),
+                    GridViewLayout(callback: onCalledFromOutside),
                     const SizedBox(height: 10),
                   ],
                 ),
@@ -128,5 +132,17 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           ],
         ));
+  }
+
+  void onCalledFromOutside(String text) {
+    print("Call from grid card $text");
+  }
+
+  void callBackFromPayNow() {
+    print("Call from Pay now");
+  }
+
+  void callBackFromDisbursement(String text) {
+    print("Call from card $text");
   }
 }

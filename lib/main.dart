@@ -1,9 +1,13 @@
+import 'package:feburary_flutter/screens/LoginScreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+
 import 'DisbursedCustomCard.dart';
 import 'models/BottomNavigation.dart';
 import 'models/GridViewLayout.dart';
 import 'models/TotalOverDueCard.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +22,6 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Color.fromRGBO(42, 69, 130, 50),
-
       ),
     );
     return MaterialApp(
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromRGBO(42, 69, 130, 50)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home:  LoginScreen(),
     );
   }
 }
@@ -41,16 +44,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-      return SafeArea(
-      child: Scaffold(
-          // appBar: AppBar(backgroundColor: Color.fromRGBO(42, 69, 130, 50)),
-          backgroundColor: Color.fromRGBO(42, 69, 130, 50),
-          body: Column(
+    return Scaffold(
+      // appBar: AppBar(backgroundColor: Color.fromRGBO(42, 69, 130, 50)),
+      backgroundColor: Color.fromRGBO(42, 69, 130, 50),
+      body: SingleChildScrollView(physics: ScrollPhysics(),
+        child: SizedBox(height: MediaQuery.of(context).size.height,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -136,15 +139,27 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(height: 10),
                       GridViewLayout(callback: onCalledFromOutside),
                       const SizedBox(height: 10),
+                      DisbursedCustomCard(
+                          description: "Disbursment",
+                          count: 2,
+                          callback: callBackFromDisbursement),
+                      const SizedBox(height: 10),
+                      DisbursedCustomCard(
+                          description: "Disbursment",
+                          count: 2,
+                          callback: callBackFromDisbursement),
+                      const SizedBox(height: 10),
+
                     ],
                   ),
                 ),
               ),
             ],
           ),
-        extendBody: true,
-        bottomNavigationBar:  const BottomNavigation(),
+        ),
       ),
+      // extendBody: true,
+      bottomNavigationBar: const BottomNavigation(),
     );
   }
 

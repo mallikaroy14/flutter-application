@@ -10,6 +10,14 @@ class GridViewLayout extends StatelessWidget {
     Data("Part", "images/logo.png"),
     Data("disbursement", "images/logo.png"),
     Data("Part ", "images/logo.png"),
+    Data("Part ", "images/logo.png"),
+    Data("Part", "images/logo.png"),
+    Data("disbursement", "images/logo.png"),
+    Data("Part ", "images/logo.png"),
+    Data("Part ", "images/logo.png"),
+    Data("Part", "images/logo.png"),
+    Data("disbursement", "images/logo.png"),
+    Data("Part ", "images/logo.png"),
     Data("Part ", "images/logo.png")
   ];
 
@@ -22,8 +30,11 @@ class GridViewLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, childAspectRatio: 2.5
+                crossAxisCount: 2, childAspectRatio: 2.5,
+              mainAxisSpacing: 2.5,
                 // spacing between columns
                 ),
             itemCount: _photos.length,
@@ -54,6 +65,8 @@ class GridViewLayout extends StatelessWidget {
                   ),
                 ),
               );
-            }));
+            }
+            )
+    );
   }
 }

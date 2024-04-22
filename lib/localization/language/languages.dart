@@ -9,5 +9,6 @@ abstract class Languages {
 
   String get stringWelcomeBack;
   String get stringPleaseLogin;
+  String get stringMobileNumber;
 
 }

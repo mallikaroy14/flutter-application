@@ -13,4 +13,7 @@ class LanguageHi  extends Languages{
 
   String get stringWelcomeBack => "जारी रखने के लिए कृपया लॉगिन करें";
 
+  @override
+  String get stringMobileNumber => "मोबाइल नंबर";
+
 }

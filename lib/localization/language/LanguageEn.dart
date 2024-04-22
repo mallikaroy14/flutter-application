@@ -11,5 +11,8 @@ class LanguageEn  extends Languages{
   @override
   String get stringWelcomeBack => "Please login to continue";
 
+  @override
+  String get stringMobileNumber => "Mobile Number";
+
 
 }

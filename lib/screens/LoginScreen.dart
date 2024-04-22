@@ -1,12 +1,12 @@
-import 'package:feburary_flutter/models/language_data.dart';
+import 'package:feburary_flutter/models/languageData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import '../localization/language/languages.dart';
 import '../localization/locale_constant.dart';
-// import 'package:android/com.weipl.checkout.WLCheckoutActivity';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => _LoginScreenState();
 }
@@ -14,7 +14,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   String _data = "";
 
-  // same channel and methodname.
   static const MethodChannel methodChannel =
       MethodChannel('samples.flutter.dev/mychannel');
   static const String methodName = "apicall";
@@ -36,19 +35,21 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Color.fromRGBO(254, 251, 241, 100)),
-      backgroundColor: Color.fromRGBO(254, 253, 240, 20),
+      appBar: AppBar(backgroundColor: const Color.fromRGBO(254, 251, 241, 100)),
+      backgroundColor: const Color.fromRGBO(254, 253, 240, 20),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
           height: 50,
           margin: const EdgeInsets.all(10),
           child: ElevatedButton(
-              onPressed: () => {makeApiCall()},
+              onPressed: () => {
+                // makeApiCall()
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.indigoAccent,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7)),
-                  minimumSize: Size(double.infinity, 50)),
+                  minimumSize: const Size(double.infinity, 50)),
               child: const Text("Send OTP",
                   style: TextStyle(
                       color: Colors.white,
@@ -80,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(15.0),
                             topRight: Radius.circular(15.0))),
-                    padding: EdgeInsets.only(top: 20, left: 15, right: 15),
+                    padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
                     child: const Column(
                       children: [
                         TextField(
@@ -108,9 +109,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return DropdownButton<LanguageData>(
       iconSize: 30,
       hint: Text(Languages.of(context)!.labelSelectLanguage),
-      // onChanged: (LanguageData language) {
-      //   changeLanguage(context, language.languageCode);
-      // },
       items: LanguageData.languageList()
           .map<DropdownMenuItem<LanguageData>>(
             (e) => DropdownMenuItem<LanguageData>(
@@ -128,57 +126,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-// class HomeState extends State<Home> {
-//   @override
-//   Widget build(BuildContext context) =>
-//       Scaffold(
-//         appBar: AppBar(
-//           leading: Icon(
-//             Icons.language,
-//             color: Colors.white,
-//           ),
-//           title: Text(Languages
-//               .of(context)
-//               .appName),
-//         ),
-//         body: Container(
-//           margin: EdgeInsets.all(30),
-//           child: Center(
-//             child: Column(
-//               children: <Widget>[
-//                 SizedBox(
-//                   height: 80,
-//                 ),
-//                 Text(
-//                   Languages
-//                       .of(context)
-//                       .labelWelcome,
-//                   style: TextStyle(
-//                       fontSize: 30,
-//                       fontWeight: FontWeight.bold,
-//                       color: Colors.black),
-//                 ),
-//                 SizedBox(
-//                   height: 30,
-//                 ),
-//                 Text(
-//                   Languages
-//                       .of(context)
-//                       .labelInfo,
-//                   style: TextStyle(fontSize: 20, color: Colors.grey),
-//                   textAlign: TextAlign.center,
-//
-//                 ),
-//                 SizedBox(
-//                   height: 70,
-//                 ),
-//                 _createLanguageDropDown()
-//               ],
-//             ),
-//           ),
-//         ),
-//       );
-//
-//
-// }

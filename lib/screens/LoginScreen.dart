@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+// import 'package:android/com.weipl.checkout.WLCheckoutActivity';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -6,6 +8,29 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  String _data = "";
+
+  // same channel and methodname.
+  static const MethodChannel methodChannel =
+  MethodChannel('samples.flutter.dev/mychannel');
+  static const String methodName = "apicall";
+
+  Future<void> makeApiCall() async {
+    try {
+      String s = await methodChannel.invokeMethod(methodName);
+      if (s.isNotEmpty) {
+        _data = s;
+      } else {
+        _data = "not data found";
+      }
+      setState(() {
+      });
+    } on PlatformException catch (e) {
+      debugPrint("Failed to Invoke: '${e.message}'.");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 50,
           margin: const EdgeInsets.all(10),
           child: ElevatedButton(
-              onPressed: () => {},
+              onPressed: () => {
+
+              makeApiCall()
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.indigoAccent,
                   shape: RoundedRectangleBorder(

@@ -1,5 +1,9 @@
+import 'package:feburary_flutter/models/language_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../localization/language/languages.dart';
+import '../localization/locale_constant.dart';
 // import 'package:android/com.weipl.checkout.WLCheckoutActivity';
 
 class LoginScreen extends StatefulWidget {
@@ -8,12 +12,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   String _data = "";
 
   // same channel and methodname.
   static const MethodChannel methodChannel =
-  MethodChannel('samples.flutter.dev/mychannel');
+      MethodChannel('samples.flutter.dev/mychannel');
   static const String methodName = "apicall";
 
   Future<void> makeApiCall() async {
@@ -24,8 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       } else {
         _data = "not data found";
       }
-      setState(() {
-      });
+      setState(() {});
     } on PlatformException catch (e) {
       debugPrint("Failed to Invoke: '${e.message}'.");
     }
@@ -41,16 +43,13 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 50,
           margin: const EdgeInsets.all(10),
           child: ElevatedButton(
-              onPressed: () => {
-
-              makeApiCall()
-              },
+              onPressed: () => {makeApiCall()},
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.indigoAccent,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7)),
                   minimumSize: Size(double.infinity, 50)),
-              child: Text("Send OTP",
+              child: const Text("Send OTP",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -58,14 +57,20 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: Column(
           children: [
-            Text("Welcome Back!",  style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold)),
-            Text("Please login to continue",  style: TextStyle(
-                color: Colors.grey,
-                fontSize: 18,
-                fontWeight: FontWeight.w700)),
+             Text(Languages.of(context)!.stringWelcomeBack,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
+             Text(Languages.of(context)!.stringPleaseLogin,
+                style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700)),
+            const SizedBox(
+              height: 70,
+            ),
+            _createLanguageDropDown(),
             Expanded(
                 child: Container(
                     width: double.infinity,
@@ -80,15 +85,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         TextField(
                           decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.grey)),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.grey)),
-                              labelText: "Mobile Number",
-                              hintStyle : TextStyle(fontSize: 18, color: Colors.black),
-                            labelStyle: TextStyle(fontSize: 18, color: Colors.black),
-
-
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
+                            labelText: "Mobile Number",
+                            hintStyle:
+                                TextStyle(fontSize: 18, color: Colors.black),
+                            labelStyle:
+                                TextStyle(fontSize: 18, color: Colors.black),
                           ),
                         )
                       ],
@@ -98,4 +103,82 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+  _createLanguageDropDown() {
+    return DropdownButton<LanguageData>(
+      iconSize: 30,
+      hint: Text(Languages.of(context)!.labelSelectLanguage),
+      // onChanged: (LanguageData language) {
+      //   changeLanguage(context, language.languageCode);
+      // },
+      items: LanguageData.languageList()
+          .map<DropdownMenuItem<LanguageData>>(
+            (e) => DropdownMenuItem<LanguageData>(
+              value: e,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[Text(e.name)],
+              ),
+            ),
+          )
+          .toList(),
+      onChanged: (LanguageData? language) {
+        changeLanguage(context, language!.languageCode);
+      },
+    );
+  }
 }
+
+// class HomeState extends State<Home> {
+//   @override
+//   Widget build(BuildContext context) =>
+//       Scaffold(
+//         appBar: AppBar(
+//           leading: Icon(
+//             Icons.language,
+//             color: Colors.white,
+//           ),
+//           title: Text(Languages
+//               .of(context)
+//               .appName),
+//         ),
+//         body: Container(
+//           margin: EdgeInsets.all(30),
+//           child: Center(
+//             child: Column(
+//               children: <Widget>[
+//                 SizedBox(
+//                   height: 80,
+//                 ),
+//                 Text(
+//                   Languages
+//                       .of(context)
+//                       .labelWelcome,
+//                   style: TextStyle(
+//                       fontSize: 30,
+//                       fontWeight: FontWeight.bold,
+//                       color: Colors.black),
+//                 ),
+//                 SizedBox(
+//                   height: 30,
+//                 ),
+//                 Text(
+//                   Languages
+//                       .of(context)
+//                       .labelInfo,
+//                   style: TextStyle(fontSize: 20, color: Colors.grey),
+//                   textAlign: TextAlign.center,
+//
+//                 ),
+//                 SizedBox(
+//                   height: 70,
+//                 ),
+//                 _createLanguageDropDown()
+//               ],
+//             ),
+//           ),
+//         ),
+//       );
+//
+//
+// }

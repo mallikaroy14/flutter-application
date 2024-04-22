@@ -3,14 +3,86 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'DisbursedCustomCard.dart';
+import 'localization/locale_constant.dart';
+import 'localization/localizations_delegte.dart';
 import 'models/BottomNavigation.dart';
 import 'models/GridViewLayout.dart';
 import 'models/TotalOverDueCard.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp1());
+}
+
+
+class MyApp1 extends StatefulWidget {
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    var state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
+  }
+
+  @override
+  State<StatefulWidget> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp1> {
+
+
+   late Locale _locale;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  void didChangeDependencies() async {
+    getLocale().then((locale) {
+      setState(() {
+        _locale = locale;
+      });
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      // builder: (context, child) {
+        // return MediaQuery(
+        //   child: child,
+        //   data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        // );
+      // },
+      title: 'Multi Language',
+      debugShowCheckedModeBanner: false,
+      locale: _locale,
+      home: LoginScreen(),
+      supportedLocales: const [
+        Locale('en', ''),
+        Locale('hi', '')
+      ],
+      localizationsDelegates: const [
+        AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale?.languageCode &&
+              supportedLocale.countryCode == locale?.countryCode) {
+            return supportedLocale;
+          }
+        }
+        return supportedLocales.first;
+      },
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {

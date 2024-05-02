@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: const Color.fromRGBO(254, 251, 241, 100)),
-      backgroundColor: const Color.fromRGBO(254, 253, 240, 20),
+      backgroundColor: const Color.fromRGBO(254, 251, 241, 100),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
           height: 50,
@@ -58,12 +58,12 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: Column(
           children: [
-             Text(Languages.of(context)!.stringWelcomeBack,
+             Text(Languages.of(context)?.stringWelcomeBack?? "",
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold)),
-             Text(Languages.of(context)!.stringPleaseLogin,
+             Text(Languages.of(context)?.stringPleaseLogin ?? "",
                 style: const TextStyle(
                     color: Colors.grey,
                     fontSize: 18,
@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 70,
             ),
-            _createLanguageDropDown(),
+            // _createLanguageDropDown(),
             Expanded(
                 child: Container(
                     width: double.infinity,
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
   _createLanguageDropDown() {
     return DropdownButton<LanguageData>(
       iconSize: 30,
-      hint: Text(Languages.of(context)!.labelSelectLanguage),
+      hint: Text(Languages.of(context)?.labelSelectLanguage?? ""),
       items: LanguageData.languageList()
           .map<DropdownMenuItem<LanguageData>>(
             (e) => DropdownMenuItem<LanguageData>(
@@ -121,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
           )
           .toList(),
       onChanged: (LanguageData? language) {
-        changeLanguage(context, language!.languageCode);
+        changeLanguage(context, language?.languageCode ?? "");
       },
     );
   }

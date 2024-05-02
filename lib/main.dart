@@ -1,8 +1,9 @@
+import 'package:feburary_flutter/screens/CameraPermissionHandle.dart';
+import 'package:feburary_flutter/screens/CreditProfileScreen.dart';
 import 'package:feburary_flutter/screens/LoginScreen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:feburary_flutter/screens/PermisionHandlreScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'DisbursedCustomCard.dart';
@@ -52,16 +53,13 @@ class _MyAppState extends State<MyApp1> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // builder: (context, child) {
-        // return MediaQuery(
-        //   child: child,
-        //   data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-        // );
-      // },
       title: 'Multi Language',
       debugShowCheckedModeBanner: false,
       locale: _locale,
-      home: LoginScreen(),
+      home:
+      // CameraPermissionHandle(),
+      // PermissionHandlerScreen(),
+        CreditProfile(),
       supportedLocales: const [
         Locale('en', ''),
         Locale('hi', '')

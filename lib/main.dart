@@ -1,6 +1,7 @@
 import 'package:feburary_flutter/screens/CameraPermissionHandle.dart';
 import 'package:feburary_flutter/screens/CreditProfileScreen.dart';
 import 'package:feburary_flutter/screens/LoginScreen.dart';
+import 'package:feburary_flutter/screens/OTPScreen.dart';
 import 'package:feburary_flutter/screens/PermisionHandlreScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -59,7 +60,8 @@ class _MyAppState extends State<MyApp1> {
       home:
       // CameraPermissionHandle(),
       // PermissionHandlerScreen(),
-        CreditProfile(),
+      //   CreditProfile(),
+      OTPScreen(),
       supportedLocales: const [
         Locale('en', ''),
         Locale('hi', '')

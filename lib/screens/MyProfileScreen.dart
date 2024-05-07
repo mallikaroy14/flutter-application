@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../localization/language/languages.dart';
+import '../localization/locale_constant.dart';
+import '../models/data.dart';
+import '../models/languageData.dart';
 
 class MyProfileScreen extends StatefulWidget {
   @override
@@ -26,50 +29,383 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15.0),
                         topRight: Radius.circular(15.0))),
-                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                child: Column(children: [
-                  Card.outlined(
-                    color: Colors.white,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(243, 247, 254, 100),
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(15.0),
-                                    topRight: Radius.circular(15.0))),
-                            padding: EdgeInsets.all(8.0),
-                            child: SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      top: 10, left: 10, right: 10, bottom: 15),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CardView(
+                          cardTile: "Personal Details",
+                          widget: Padding(
+                            padding: EdgeInsets.only(
+                                left: 20, right: 20, top: 10, bottom: 10),
+                            child: Column(children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Name",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 14),
+                                  ),
+                                  Text(
+                                    "Mallika Roy",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Gender",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 14),
+                                  ),
+                                  Text(
+                                    "Female",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Date Of Birth",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 14),
+                                  ),
+                                  Text(
+                                    "13-08-1996",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Mobile Number",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 14),
+                                  ),
+                                  Text(
+                                    "82345-12345",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Email ID",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 15),
+                                  ),
+                                  Text(
+                                    "mallika.roy@bajajfinserv.in",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 15),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
+                        ),
+                        const CardView(
+                            cardTile: "Address Details",
+                            widget: Text("Personal Detailssss")),
+                        CardView(
+                            cardTile: "Other Details",
+                            widget:
+                                // Text("Personal Detailssss")),
+                                OtherDetailsWidget()),
+                        CardView(
+                            cardTile: "Language & Preferences",
+                            widget: Padding(
+                              padding: EdgeInsets.only(left: 20, right: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Personal Details", style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),),
-                                  Icon(Icons.edit),
+                                  Text(
+                                    "Choosen Language English",
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  IconButton(
+                                    color: Colors.red,
+                                    icon: Icon(Icons.keyboard_arrow_right),
+                                    onPressed: () {
+                                      ModelBottomSheet._modelBottomSheet(
+                                          context,
+                                          widget: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    "Choose Language",
+                                                    style: TextStyle(
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                      icon: Icon(Icons.close))
+                                                ],
+                                              ),
+                                              // ListView.builder(itemBuilder: (item, context)),
+
+                                              Column(
+                                                children: [
+                                                  _createLanguageDropDown(),
+                                                  // _createLanguageList()
+
+                                                  // for(var e in LanguageData.languageList()){
+                                                  //
+                                                  //
+                                                  // }
+                                                  // LanguageData.languageList().map((
+                                                  // e) => Text(e.name));
+                                                ],
+                                              ),
+
+                                              Container(
+                                                margin: EdgeInsets.all(5),
+                                                width: double.infinity,
+                                                child: ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                      backgroundColor:
+                                                          Color.fromRGBO(042,
+                                                              068, 130, 50),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10))),
+                                                  onPressed: () {},
+                                                  child: const Text(
+                                                      "Verify & Proceed",
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 17,
+                                                          fontWeight:
+                                                              FontWeight.w500)),
+                                                ),
+                                              ),
+                                            ],
+                                          ));
+                                    },
+                                  )
+                                ],
+                              ),
+                            )),
+                        Card.outlined(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(243, 247, 254, 100),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5))),
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 20, top: 10, bottom: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Logout",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  IconButton(
+                                    color: Colors.red,
+                                    icon: Icon(Icons.logout),
+                                    onPressed: () {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: Text("Logout")));
+                                    },
+                                  )
                                 ],
                               ),
                             ),
                           ),
-                          Text(Languages.of(context)?.stringWelcomeBack ?? "",
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold)),
-                          Text(Languages.of(context)?.stringPleaseLogin ?? "",
-                              style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700)),
-                        ],
-                      ),
-                    ),
-                  ),
-                ]),
+                        )
+                      ]),
+                ),
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  _createLanguageDropDown() {
+    return DropdownButton<LanguageData>(
+      iconSize: 30,
+      hint: Text(Languages.of(context)?.labelSelectLanguage ?? ""),
+      items: LanguageData.languageList()
+          .map<DropdownMenuItem<LanguageData>>(
+            (e) => DropdownMenuItem<LanguageData>(
+              value: e,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[Text(e.name)],
+              ),
+            ),
+          )
+          .toList(),
+      onChanged: (LanguageData? language) {
+        changeLanguage(context, language?.languageCode ?? "");
+      },
+    );
+  }
+
+ 
+
+  _createLanguageList(){
+    return ListView.builder(itemBuilder: (context, index){
+      return ListTile(
+        title: Text(LanguageData.languageList().first.name),
+      );
+
+    });
+  }
+}
+
+class ModelBottomSheet {
+  static Future _modelBottomSheet(context, {required Widget widget}) {
+    return showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.white,
+        builder: (BuildContext context) {
+          return SizedBox(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 10, bottom: 20, left: 10, right: 10),
+              child: Column(
+                children: [
+                  Container(
+                    height: 5,
+                    width: 80,
+                    decoration: const BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
+                  ),
+                  widget
+                ],
+              ),
+            ),
+          );
+        });
+  }
+}
+
+class OtherDetailsWidget extends StatelessWidget {
+  final List otherDetails = [
+    Data("Employee Type", "Salaried"),
+    Data("Monthly Household Income", "Rs50,000"),
+    Data("House Type ", "Rented"),
+    Data("Does customer planning to buy/build a house", "After 12 months"),
+    Data("Branch", "Not Applicable"),
+    Data("Product ", "Home Loan"),
+  ];
+
+  OtherDetailsWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (var item in otherDetails) Text(item.toString()),
+        // Text(
+        //   "otherDetai",
+        //   style: TextStyle(color: Colors.grey, fontSize: 14),
+        // ),
+        // Text(
+        //   "Salaried",
+        //   style: TextStyle(color: Colors.black, fontSize: 14),
+        // ),
+      ],
+    ));
+  }
+}
+
+class CardView extends StatelessWidget {
+  final String cardTile;
+  final Widget widget;
+
+  const CardView({super.key, required this.cardTile, required this.widget});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Card.outlined(
+        color: Colors.white,
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(243, 247, 254, 100),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.0),
+                        topRight: Radius.circular(15.0))),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 20, bottom: 10, right: 20, top: 10),
+                  child: SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          cardTile,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Icon(Icons.edit),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              widget,
+            ],
+          ),
         ),
       ),
     );

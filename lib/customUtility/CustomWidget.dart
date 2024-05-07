@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../models/data.dart';
 
-class ModelBottomSheet {
+class CustomModelBottomSheet {
   static Future _modelBottomSheet(context, {required Widget widget}) {
     return showModalBottomSheet(
         context: context,
@@ -119,3 +119,33 @@ class CardView extends StatelessWidget {
   }
 }
 
+class CustomElevatedButton extends StatelessWidget {
+  final String buttonCta;
+
+  const CustomElevatedButton({
+    super.key,
+    required this.buttonCta,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(5),
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromRGBO(042, 068, 130, 50),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))),
+        onPressed: () {
+
+        },
+        child: Text(buttonCta,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w500)),
+      ),
+    );
+  }
+}

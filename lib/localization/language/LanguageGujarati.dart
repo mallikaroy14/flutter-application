@@ -1,6 +1,6 @@
 import 'package:feburary_flutter/localization/language/languages.dart';
 
-class LanguageEn  extends Languages{
+class LanguageGujarati  extends Languages{
   @override
 
   String get labelSelectLanguage => "Select Language";
@@ -15,8 +15,7 @@ class LanguageEn  extends Languages{
   String get stringMobileNumber => "Mobile Number";
 
   @override
-
-  String get stringUserName => "Mallika Roy";
+  String get stringUserName => "મલ્લિકા રોય";
 
 
 }

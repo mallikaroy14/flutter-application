@@ -3,6 +3,7 @@
 import 'package:flutter/widgets.dart';
 
 import 'language/LanguageEn.dart';
+import 'language/LanguageGujarati.dart';
 import 'language/LanguageHi.dart';
 import 'language/languages.dart';
 
@@ -12,7 +13,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
 
   @override
   bool isSupported(Locale locale) =>
-      ['en', 'hi'].contains(locale.languageCode);
+      ['en', 'hi', 'gu'].contains(locale.languageCode);
 
   @override
   Future<Languages> load(Locale locale) => _load(locale);
@@ -23,6 +24,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         return LanguageEn();
       case 'hi':
         return LanguageHi();
+      case 'gu':
+        return LanguageGujarati();
       default:
         return LanguageEn();
     }

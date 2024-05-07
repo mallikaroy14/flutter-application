@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
+
+import 'package:feburary_flutter/localization/language/languages.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../customUtility/CustomWidget.dart';
-import '../localization/language/languages.dart';
 import '../localization/locale_constant.dart';
-import '../models/data.dart';
-import '../models/languageData.dart';
+import '../localization/languageData.dart';
 
 class MyProfileScreen extends StatefulWidget {
   @override
@@ -37,7 +36,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CardView(
+                        CardView(
                           cardTile: "Personal Details",
                           widget: Padding(
                             padding: EdgeInsets.only(
@@ -53,7 +52,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                         color: Colors.grey, fontSize: 14),
                                   ),
                                   Text(
-                                    "Mallika Roy",
+                                    Languages.of(context)!.stringUserName,
                                     style: TextStyle(
                                         color: Colors.grey, fontSize: 14),
                                   ),
@@ -144,13 +143,13 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                 children: [
                                   Text(
                                     "Choosen Language English",
-                                    style: TextStyle(color: Colors.grey),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                   IconButton(
                                     color: Colors.red,
                                     icon: Icon(Icons.keyboard_arrow_right),
                                     onPressed: () {
-                                      ModelBottomSheet._modelBottomSheet(
+                                      CustomModelBottomSheet._modelBottomSheet(
                                           context,
                                           widget: Column(
                                             children: [
@@ -236,63 +235,73 @@ class _MyProfileScreen extends State<MyProfileScreen> {
   }
 
   _createLanguageList() {
+    int? _selectedIndex;
     return Container(
-      height: 200,
+      height: 180,
       width: double.infinity,
       child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           itemCount: LanguageData.languageList().length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(LanguageData.languageList()[index].name),
+              onTap: () {
+                changeLanguage(
+                    context, LanguageData.languageList()[index].languageCode);
+
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              trailing: _selectedIndex == index
+                  ? Icon(
+                      Icons.check_circle_outline,
+                      color: Colors.deepOrangeAccent,
+                    )
+                  : Icon(Icons.check_circle_outline),
+              title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(LanguageData.languageList()[index].name),
+                    // IconButton(
+                    //     onPressed: () {
+                    //       changeLanguage(context,
+                    //           LanguageData.languageList()[index].languageCode);
+                    //       setState(() {
+                    //         _selectedIndex = index;
+                    //       });
+                    //     },
+                    //     icon: _selectedIndex == index ? Icon(
+                    //       Icons.check_circle_outline,
+                    //       color: Colors.deepOrangeAccent,
+                    //     ): Icon(
+                    //       Icons.check_circle_outline,
+                    //       color: Colors.grey,
+                    //     )
+                    // )
+                  ]),
+              // onTap:
+              //     (LanguageData? language) {
+              //   changeLanguage(context, language?.languageCode ?? "");
+              // },
             );
           }),
     );
   }
 }
 
-class CustomElevatedButton extends StatelessWidget {
-  final String buttonCta;
-
-  const CustomElevatedButton({
-    super.key,
-    required this.buttonCta,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(5),
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromRGBO(042, 068, 130, 50),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10))),
-        onPressed: () {
-
-        },
-        child: Text(buttonCta,
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 17,
-                fontWeight: FontWeight.w500)),
-      ),
-    );
-  }
-}
-
-class ModelBottomSheet {
+class CustomModelBottomSheet {
   static Future _modelBottomSheet(context, {required Widget widget}) {
     return showModalBottomSheet(
         context: context,
         backgroundColor: Colors.white,
         builder: (BuildContext context) {
           return SizedBox(
+
             child: Padding(
               padding: const EdgeInsets.only(
                   top: 10, bottom: 20, left: 10, right: 10),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     height: 5,

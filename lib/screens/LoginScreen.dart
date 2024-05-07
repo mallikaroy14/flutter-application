@@ -1,4 +1,4 @@
-import 'package:feburary_flutter/models/languageData.dart';
+import 'package:feburary_flutter/localization/languageData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../localization/language/languages.dart';

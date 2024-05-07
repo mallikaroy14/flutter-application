@@ -16,4 +16,7 @@ class LanguageHi  extends Languages{
   @override
   String get stringMobileNumber => "मोबाइल नंबर";
 
+  @override
+  String get stringUserName => "मल्लिका रॉय";
+
 }

@@ -8,6 +8,8 @@ class LanguageData {
     return <LanguageData>[
       LanguageData("English", "en"),
       LanguageData("Hindi", "hi"),
+      LanguageData("ગુજરાતી", "gu"),
+      LanguageData("தமிழ்", "ta")
     ];
   }
 }

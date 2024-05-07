@@ -66,7 +66,9 @@ class _MyAppState extends State<MyApp1> {
       MyProfileScreen(),
       supportedLocales: const [
         Locale('en', ''),
-        Locale('hi', '')
+        Locale('hi', ''),
+        Locale('gu', ''),
+        Locale('ta', '')
       ],
       localizationsDelegates: const [
         AppLocalizationsDelegate(),

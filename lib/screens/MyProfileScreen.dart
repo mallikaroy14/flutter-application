@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../customUtility/CustomWidget.dart';
 import '../localization/language/languages.dart';
 import '../localization/locale_constant.dart';
 import '../models/data.dart';
@@ -173,46 +174,16 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                                       icon: Icon(Icons.close))
                                                 ],
                                               ),
-                                              // ListView.builder(itemBuilder: (item, context)),
-
                                               Column(
                                                 children: [
-                                                  _createLanguageDropDown(),
-                                                  // _createLanguageList()
-
-                                                  // for(var e in LanguageData.languageList()){
-                                                  //
-                                                  //
-                                                  // }
-                                                  // LanguageData.languageList().map((
-                                                  // e) => Text(e.name));
+                                                  _createLanguageList()
                                                 ],
                                               ),
-
-                                              Container(
-                                                margin: EdgeInsets.all(5),
-                                                width: double.infinity,
-                                                child: ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
-                                                      backgroundColor:
-                                                          Color.fromRGBO(042,
-                                                              068, 130, 50),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10))),
-                                                  onPressed: () {},
-                                                  child: const Text(
-                                                      "Verify & Proceed",
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 17,
-                                                          fontWeight:
-                                                              FontWeight.w500)),
-                                                ),
+                                              SizedBox(
+                                                height: 10,
                                               ),
+                                              CustomElevatedButton(
+                                                  buttonCta: "Add"),
                                             ],
                                           ));
                                     },
@@ -264,36 +235,50 @@ class _MyProfileScreen extends State<MyProfileScreen> {
     );
   }
 
-  _createLanguageDropDown() {
-    return DropdownButton<LanguageData>(
-      iconSize: 30,
-      hint: Text(Languages.of(context)?.labelSelectLanguage ?? ""),
-      items: LanguageData.languageList()
-          .map<DropdownMenuItem<LanguageData>>(
-            (e) => DropdownMenuItem<LanguageData>(
-              value: e,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[Text(e.name)],
-              ),
-            ),
-          )
-          .toList(),
-      onChanged: (LanguageData? language) {
-        changeLanguage(context, language?.languageCode ?? "");
-      },
+  _createLanguageList() {
+    return Container(
+      height: 200,
+      width: double.infinity,
+      child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: LanguageData.languageList().length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(LanguageData.languageList()[index].name),
+            );
+          }),
     );
   }
+}
 
- 
+class CustomElevatedButton extends StatelessWidget {
+  final String buttonCta;
 
-  _createLanguageList(){
-    return ListView.builder(itemBuilder: (context, index){
-      return ListTile(
-        title: Text(LanguageData.languageList().first.name),
-      );
+  const CustomElevatedButton({
+    super.key,
+    required this.buttonCta,
+  });
 
-    });
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(5),
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromRGBO(042, 068, 130, 50),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))),
+        onPressed: () {
+
+        },
+        child: Text(buttonCta,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w500)),
+      ),
+    );
   }
 }
 
@@ -322,92 +307,5 @@ class ModelBottomSheet {
             ),
           );
         });
-  }
-}
-
-class OtherDetailsWidget extends StatelessWidget {
-  final List otherDetails = [
-    Data("Employee Type", "Salaried"),
-    Data("Monthly Household Income", "Rs50,000"),
-    Data("House Type ", "Rented"),
-    Data("Does customer planning to buy/build a house", "After 12 months"),
-    Data("Branch", "Not Applicable"),
-    Data("Product ", "Home Loan"),
-  ];
-
-  OtherDetailsWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        for (var item in otherDetails) Text(item.toString()),
-        // Text(
-        //   "otherDetai",
-        //   style: TextStyle(color: Colors.grey, fontSize: 14),
-        // ),
-        // Text(
-        //   "Salaried",
-        //   style: TextStyle(color: Colors.black, fontSize: 14),
-        // ),
-      ],
-    ));
-  }
-}
-
-class CardView extends StatelessWidget {
-  final String cardTile;
-  final Widget widget;
-
-  const CardView({super.key, required this.cardTile, required this.widget});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 6),
-      child: Card.outlined(
-        color: Colors.white,
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                    color: Color.fromRGBO(243, 247, 254, 100),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15.0),
-                        topRight: Radius.circular(15.0))),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20, bottom: 10, right: 20, top: 10),
-                  child: SizedBox(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          cardTile,
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Icon(Icons.edit),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              widget,
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

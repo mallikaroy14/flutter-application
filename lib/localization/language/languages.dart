@@ -11,5 +11,6 @@ abstract class Languages {
   String get stringPleaseLogin;
   String get stringMobileNumber;
   String get stringUserName;
+  String get stringLanguage;
 
 }

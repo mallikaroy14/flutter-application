@@ -70,8 +70,9 @@ class OtherDetailsWidget extends StatelessWidget {
 class CardView extends StatelessWidget {
   final String cardTile;
   final Widget widget;
+  final bool showIcon;
 
-  const CardView({super.key, required this.cardTile, required this.widget});
+  const CardView({super.key, required this.cardTile, required this.widget, required this.showIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +105,7 @@ class CardView extends StatelessWidget {
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
-                        Icon(Icons.edit),
+                        if(showIcon)Icon(Icons.edit),
                       ],
                     ),
                   ),

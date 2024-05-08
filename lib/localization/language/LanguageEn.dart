@@ -15,8 +15,8 @@ class LanguageEn  extends Languages{
   String get stringMobileNumber => "Mobile Number";
 
   @override
-
   String get stringUserName => "Mallika Roy";
 
-
+  @override
+  String get stringLanguage => "English";
 }

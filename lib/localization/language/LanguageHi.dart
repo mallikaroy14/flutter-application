@@ -19,4 +19,7 @@ class LanguageHi  extends Languages{
   @override
   String get stringUserName => "मल्लिका रॉय";
 
+  @override
+  String get stringLanguage => "Hindi";
+
 }

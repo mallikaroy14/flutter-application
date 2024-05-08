@@ -18,6 +18,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
       backgroundColor: AppColors.appBarColor,
       appBar: AppBar(
         backgroundColor: AppColors.appBarColor,
+        titleSpacing: 0,
         title: Text(
           "My Profile",
           style: TextStyle(fontSize: 18),
@@ -145,16 +146,16 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                   ],
                                 ),
                               ]),
-                            ),
+                            ), showIcon: true,
                           ),
                           const CardView(
                               cardTile: "Address Details",
-                              widget: Text("Personal Detailssss")),
+                              widget: Text("Personal Detailssss"), showIcon: true,),
                           CardView(
                               cardTile: "Other Details",
                               widget:
                                   // Text("Personal Detailssss")),
-                                  OtherDetailsWidget()),
+                                  OtherDetailsWidget(), showIcon: true,),
                           CardView(
                               cardTile: "Language & Preferences",
                               widget: Padding(
@@ -164,7 +165,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Choosen Language English",
+                                      "Choosen Language ${Languages.of(context)!.stringLanguage}",
                                       style: TextStyle(color: Colors.black),
                                     ),
                                     IconButton(
@@ -214,7 +215,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                     )
                                   ],
                                 ),
-                              )),
+                              ), showIcon: false,),
                           Card.outlined(
                             child: SizedBox(
                               width: double.infinity,
@@ -222,7 +223,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                 decoration: const BoxDecoration(
                                     color: AppColors.cardHeader,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                        BorderRadius.all(Radius.circular(15))),
                                 padding:
                                     const EdgeInsets.only(left: 20, right: 20),
                                 child: Row(

@@ -17,5 +17,8 @@ class LanguageGujarati  extends Languages{
   @override
   String get stringUserName => "મલ્લિકા રોય";
 
+  @override
+  String get stringLanguage => "Gujarati";
+
 
 }

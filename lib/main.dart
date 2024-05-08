@@ -6,9 +6,11 @@ import 'package:feburary_flutter/screens/OTPScreen.dart';
 import 'package:feburary_flutter/screens/PermisionHandlreScreen.dart';
 import 'package:feburary_flutter/theme/AppThemes.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
+import 'package:feburary_flutter/utility/router/Routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 
 import 'DisbursedCustomCard.dart';
 import 'localization/locale_constant.dart';
@@ -57,39 +59,40 @@ class _MyAppState extends State<MyApp1> {
     //     systemNavigationBarIconBrightness : Brightness.dark
     //
     // ));
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Multi Language',
       // darkTheme: AppThemes.dark,
       // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       locale: _locale,
-      home:
+      getPages: Routes.pages,
+      // home:
           // CameraPermissionHandle(),
           // PermissionHandlerScreen(),
           //   CreditProfile(),
           // OTPScreen(),
-          MyProfileScreen(),
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('hi', ''),
-        Locale('gu', ''),
-        Locale('ta', '')
-      ],
-      localizationsDelegates: const [
-        AppLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale?.languageCode &&
-              supportedLocale.countryCode == locale?.countryCode) {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
-      },
+          // MyProfileScreen(),
+      // supportedLocales: const [
+      //   Locale('en', ''),
+      //   Locale('hi', ''),
+      //   Locale('gu', ''),
+      //   Locale('ta', '')
+      // ],
+      // localizationsDelegates: const [
+      //   AppLocalizationsDelegate(),
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      // ],
+      // localeResolutionCallback: (locale, supportedLocales) {
+      //   for (var supportedLocale in supportedLocales) {
+      //     if (supportedLocale.languageCode == locale?.languageCode &&
+      //         supportedLocale.countryCode == locale?.countryCode) {
+      //       return supportedLocale;
+      //     }
+      //   }
+      //   return supportedLocales.first;
+      // },
     );
   }
 }

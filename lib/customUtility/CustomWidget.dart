@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../models/data.dart';
+import '../theme/app_colors.dart';
 
 class CustomModelBottomSheet {
   static Future _modelBottomSheet(context, {required Widget widget}) {
@@ -31,7 +32,6 @@ class CustomModelBottomSheet {
   }
 }
 
-
 class OtherDetailsWidget extends StatelessWidget {
   final List otherDetails = [
     Data("Employee Type", "Salaried"),
@@ -50,20 +50,20 @@ class OtherDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            for (var item in otherDetails) Text(item.toString()),
-            // Text(
-            //   "otherDetai",
-            //   style: TextStyle(color: Colors.grey, fontSize: 14),
-            // ),
-            // Text(
-            //   "Salaried",
-            //   style: TextStyle(color: Colors.black, fontSize: 14),
-            // ),
-          ],
-        ));
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (var item in otherDetails) Text(item.toString()),
+        // Text(
+        //   "otherDetai",
+        //   style: TextStyle(color: Colors.grey, fontSize: 14),
+        // ),
+        // Text(
+        //   "Salaried",
+        //   style: TextStyle(color: Colors.black, fontSize: 14),
+        // ),
+      ],
+    ));
   }
 }
 
@@ -85,7 +85,7 @@ class CardView extends StatelessWidget {
             children: [
               Container(
                 decoration: const BoxDecoration(
-                    color: Color.fromRGBO(243, 247, 254, 100),
+                    color: AppColors.cardHeader,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15.0),
                         topRight: Radius.circular(15.0))),
@@ -137,9 +137,7 @@ class CustomElevatedButton extends StatelessWidget {
             backgroundColor: Color.fromRGBO(042, 068, 130, 50),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10))),
-        onPressed: () {
-
-        },
+        onPressed: () {},
         child: Text(buttonCta,
             style: TextStyle(
                 color: Colors.white,

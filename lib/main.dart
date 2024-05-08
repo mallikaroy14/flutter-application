@@ -4,6 +4,8 @@ import 'package:feburary_flutter/screens/LoginScreen.dart';
 import 'package:feburary_flutter/screens/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/OTPScreen.dart';
 import 'package:feburary_flutter/screens/PermisionHandlreScreen.dart';
+import 'package:feburary_flutter/theme/AppThemes.dart';
+import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,12 +18,10 @@ import 'models/GridViewLayout.dart';
 import 'models/TotalOverDueCard.dart';
 
 void main() {
-  runApp( MyApp1());
+  runApp(MyApp1());
 }
 
-
 class MyApp1 extends StatefulWidget {
-
   static void setLocale(BuildContext context, Locale newLocale) {
     var state = context.findAncestorStateOfType<_MyAppState>();
     state?.setLocale(newLocale);
@@ -32,9 +32,7 @@ class MyApp1 extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp1> {
-
-
-   late Locale _locale;
+  late Locale _locale;
 
   void setLocale(Locale locale) {
     setState(() {
@@ -54,16 +52,23 @@ class _MyAppState extends State<MyApp1> {
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    //     statusBarColor: AppColors.appBarColor,
+    //     systemNavigationBarIconBrightness : Brightness.dark
+    //
+    // ));
     return MaterialApp(
       title: 'Multi Language',
+      // darkTheme: AppThemes.dark,
+      // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       locale: _locale,
       home:
-      // CameraPermissionHandle(),
-      // PermissionHandlerScreen(),
-      //   CreditProfile(),
-      // OTPScreen(),
-      MyProfileScreen(),
+          // CameraPermissionHandle(),
+          // PermissionHandlerScreen(),
+          //   CreditProfile(),
+          // OTPScreen(),
+          MyProfileScreen(),
       supportedLocales: const [
         Locale('en', ''),
         Locale('hi', ''),
@@ -107,7 +112,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromRGBO(42, 69, 130, 50)),
         useMaterial3: true,
       ),
-      home:  LoginScreen(),
+      home: LoginScreen(),
     );
   }
 }
@@ -125,8 +130,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       // appBar: AppBar(backgroundColor: Color.fromRGBO(42, 69, 130, 50)),
       backgroundColor: Color.fromRGBO(42, 69, 130, 50),
-      body: SingleChildScrollView(physics: ScrollPhysics(),
-        child: SizedBox(height: MediaQuery.of(context).size.height,
+      body: SingleChildScrollView(
+        physics: ScrollPhysics(),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
@@ -163,8 +170,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             InkWell(
-                              child:
-                                  Icon(Icons.notifications, color: Colors.white),
+                              child: Icon(Icons.notifications,
+                                  color: Colors.white),
                               onTap: () {
                                 //action code when clicked
                                 print("The icon is clicked");
@@ -225,7 +232,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           count: 2,
                           callback: callBackFromDisbursement),
                       const SizedBox(height: 10),
-
                     ],
                   ),
                 ),

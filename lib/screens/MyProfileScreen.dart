@@ -145,7 +145,6 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                       ),
                       showIcon: true,
                     ),
-                    SizedBox(height: 60,),
                     CardView(
                       cardTile: "Address Details",
                       widget: Text("Personal Detailssss"),

@@ -1,8 +1,12 @@
 import 'package:feburary_flutter/localization/languageData.dart';
+import 'package:feburary_flutter/screens/OTPScreen.dart';
+import 'package:feburary_flutter/utility/router/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import '../localization/language/languages.dart';
 import '../localization/locale_constant.dart';
+import '../theme/app_colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -35,49 +39,78 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: const Color.fromRGBO(254, 251, 241, 100)),
-      backgroundColor: const Color.fromRGBO(254, 251, 241, 100),
+      backgroundColor: AppColors.appBarColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
-          height: 50,
+          height: 60,
           margin: const EdgeInsets.all(10),
-          child: ElevatedButton(
-              onPressed: () => {
-                // makeApiCall()
-              },
+          child:
+          Container(
+            margin: EdgeInsets.all(5),
+            width: double.infinity,
+            child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.indigoAccent,
+                  backgroundColor: AppColors.primaryColor,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7)),
-                  minimumSize: const Size(double.infinity, 50)),
+                      borderRadius: BorderRadius.circular(10))),
+              onPressed: () {
+                Get.to(OTPScreen());
+              },
               child: const Text("Send OTP",
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700)))),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500)),
+            ),
+          )
+      ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             Text(Languages.of(context)?.stringWelcomeBack?? "",
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold)),
-             Text(Languages.of(context)?.stringPleaseLogin ?? "",
-                style: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700)),
+            Padding(
+              padding: const EdgeInsets.only(top: 27, left: 15, right: 15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  Image(image: AssetImage("images/ic_vridhi.png"),width: 100, height: 100)
+                  ,
+                  Text(Languages.of(context)?.stringPleaseLogin ?? "",
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)),
+                  Text(Languages.of(context)?.stringWelcomeBack ?? "",
+                      style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal)),
+                ],
+
+              ),
+            ),
+
             const SizedBox(
-              height: 70,
+              height: 15,
             ),
             // _createLanguageDropDown(),
             Expanded(
                 child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    decoration: const BoxDecoration(
+
+                    decoration:  BoxDecoration(
                         color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 1.5,
+                              blurRadius: 1,
+                              offset: Offset(0, 1))
+                        ],
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(15.0),
                             topRight: Radius.circular(15.0))),

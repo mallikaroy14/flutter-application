@@ -14,4 +14,6 @@ class AppColors {
   static const redColor = Color(0xffff0000);
   static const cardHeader = Color(0xFFF3F7FE);
   static const appBarColor = Color(0xFFFEFBF1);
+  static const primaryColor = Color(0xFF2A4582);
+  static const homeBackgroundColor = Color(0xFFF3F7FE);
 }

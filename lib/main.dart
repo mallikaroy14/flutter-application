@@ -1,3 +1,4 @@
+import 'package:feburary_flutter/localization/language/languages.dart';
 import 'package:feburary_flutter/screens/CameraPermissionHandle.dart';
 import 'package:feburary_flutter/screens/CreditProfileScreen.dart';
 import 'package:feburary_flutter/screens/LoginScreen.dart';
@@ -67,32 +68,32 @@ class _MyAppState extends State<MyApp1> {
       locale: _locale,
       getPages: Routes.pages,
       // home:
-          // CameraPermissionHandle(),
-          // PermissionHandlerScreen(),
-          //   CreditProfile(),
-          // OTPScreen(),
-          // MyProfileScreen(),
-      // supportedLocales: const [
-      //   Locale('en', ''),
-      //   Locale('hi', ''),
-      //   Locale('gu', ''),
-      //   Locale('ta', '')
-      // ],
-      // localizationsDelegates: const [
-      //   AppLocalizationsDelegate(),
-      //   GlobalMaterialLocalizations.delegate,
-      //   GlobalWidgetsLocalizations.delegate,
-      //   GlobalCupertinoLocalizations.delegate,
-      // ],
-      // localeResolutionCallback: (locale, supportedLocales) {
-      //   for (var supportedLocale in supportedLocales) {
-      //     if (supportedLocale.languageCode == locale?.languageCode &&
-      //         supportedLocale.countryCode == locale?.countryCode) {
-      //       return supportedLocale;
-      //     }
-      //   }
-      //   return supportedLocales.first;
-      // },
+      // CameraPermissionHandle(),
+      // PermissionHandlerScreen(),
+      //   CreditProfile(),
+      // OTPScreen(),
+      // MyProfileScreen(),
+      supportedLocales: const [
+        Locale('en', ''),
+        Locale('hi', ''),
+        Locale('gu', ''),
+        Locale('ta', '')
+      ],
+      localizationsDelegates: const [
+        AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale?.languageCode &&
+              supportedLocale.countryCode == locale?.countryCode) {
+            return supportedLocale;
+          }
+        }
+        return supportedLocales.first;
+      },
     );
   }
 }
@@ -131,7 +132,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(backgroundColor: Color.fromRGBO(42, 69, 130, 50)),
       backgroundColor: Color.fromRGBO(42, 69, 130, 50),
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
@@ -220,20 +220,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           count: 10,
                           callback: callBackFromDisbursement),
                       const SizedBox(height: 10),
-                      const Text("Title comes here",
+                      const Text("Quick Actions",
                           style: TextStyle(color: Colors.black)),
                       const SizedBox(height: 10),
-                      GridViewLayout(callback: onCalledFromOutside),
-                      const SizedBox(height: 10),
-                      DisbursedCustomCard(
-                          description: "Disbursment",
-                          count: 2,
-                          callback: callBackFromDisbursement),
-                      const SizedBox(height: 10),
-                      DisbursedCustomCard(
-                          description: "Disbursment",
-                          count: 2,
-                          callback: callBackFromDisbursement),
+                      Container(
+                          padding: EdgeInsets.only(top: 20),
+                          child: Text("")
+                          // GridViewLayout(callback: onCalledFromOutside)
+                      ),
                       const SizedBox(height: 10),
                     ],
                   ),

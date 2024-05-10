@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TotalOverDueCard extends StatelessWidget {
-
   final Function callback;
 
   const TotalOverDueCard({super.key, required this.callback});
@@ -28,13 +27,17 @@ class TotalOverDueCard extends StatelessWidget {
                       topLeft: Radius.circular(12.0),
                       topRight: Radius.circular(12.0)),
                 ),
-                padding: EdgeInsets.all(8.0),
+                padding:
+                    EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
                       "Total overdue",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600),
                     ),
                     OutlinedButton(
                         onPressed: () {
@@ -46,7 +49,10 @@ class TotalOverDueCard extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(6.0))),
                         child: const Text(
                           "Pay Now",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500),
                         ))
                   ],
                 ),
@@ -57,25 +63,31 @@ class TotalOverDueCard extends StatelessWidget {
                 width: double.infinity,
                 child: const Column(
                   children: [
-                    Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Loan number"),
-                          Text("684285642",
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w300, fontSize: 13)),
-                        ]),
-                    Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Loan amount"),
-                          Text("Rs3,00,000",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w300, fontSize: 13)),
-                        ]),
+                    Padding(
+                      padding: EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Loan number", style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),),
+                            Text("684285642",
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15)),
+                          ]),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Loan amount", style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),),
+                            Text("Rs3,00,000",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15)),
+                          ]),
+                    ),
                   ],
                 ),
               ),

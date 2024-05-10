@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../models/CustomTextField.dart';
 import '../theme/app_colors.dart';
@@ -28,6 +26,7 @@ enum ColorLabel {
 
 class _creditProfile extends State<ReferAFriend> {
   // int selectedValue = 1;
+  TextEditingController dateCtl = TextEditingController();
 
   String? _radioSelected = "Male";
   final TextEditingController iconController = TextEditingController();
@@ -35,7 +34,6 @@ class _creditProfile extends State<ReferAFriend> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: AppColors.appBarColor,
       appBar: AppBar(
         backgroundColor: AppColors.appBarColor,
@@ -97,13 +95,14 @@ class _creditProfile extends State<ReferAFriend> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const CustomTextField(
-                        fieldName: 'Date Of Birth',
-                        keyboardType: TextInputType.datetime),
+                    dateOfBirthTextField(context),
                     const SizedBox(
                       height: 20,
                     ),
-                    const CustomTextFieldWithAsterisk(fieldName: 'Mobile Number', keyboardType:  TextInputType.phone,),
+                    const CustomTextFieldWithAsterisk(
+                      fieldName: 'Mobile Number',
+                      keyboardType: TextInputType.phone,
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -134,12 +133,11 @@ class _creditProfile extends State<ReferAFriend> {
                     //   ),
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 150),
+                      padding: const EdgeInsets.only(top: 170),
                       child: Container(
                         width: double.infinity,
                         height: 50,
                         child: ElevatedButton(
-
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.primaryColor,
                               shape: RoundedRectangleBorder(
@@ -153,34 +151,67 @@ class _creditProfile extends State<ReferAFriend> {
                         ),
                       ),
                     )
-
-                    // Expanded(
-                    //     child: Align(
-                    //   alignment: Alignment.bottomCenter,
-                    //   child: Container(
-                    //     margin: EdgeInsets.all(5),
-                    //     width: double.infinity,
-                    //     child: ElevatedButton(
-                    //       style: ElevatedButton.styleFrom(
-                    //           backgroundColor:
-                    //               Color.fromRGBO(042, 068, 130, 50),
-                    //           shape: RoundedRectangleBorder(
-                    //               borderRadius: BorderRadius.circular(10))),
-                    //       onPressed: () {},
-                    //       child: const Text("Save & Next",
-                    //           style: TextStyle(
-                    //               color: Colors.white,
-                    //               fontSize: 17,
-                    //               fontWeight: FontWeight.w500)),
-                    //     ),
-                    //   ),
-                    // ))
                   ],
                 )),
           ),
         ],
       )),
     );
+  }
+
+  SizedBox dateOfBirthTextField(BuildContext context) {
+    return SizedBox(
+        height: 55,
+        child: TextFormField(
+
+          controller: dateCtl,
+          onTap: () async {
+            DateTime? date = DateTime(1900);
+            FocusScope.of(context).requestFocus(FocusNode());
+            date = await showDatePicker(
+                context: context,
+                firstDate: DateTime(1900),
+                lastDate: DateTime(2100));
+            if (date != null) {
+              print(date);
+              String formattedDate = DateFormat("dd/MM/yyyy").format(date);
+              getFormatedDate(_date) {
+                var inputFormat = DateFormat('dd/MM/yyyy');
+                var inputDate = inputFormat.parse(_date);
+                var outputFormat = DateFormat('dd/MM/yyyy');
+                return outputFormat.format(inputDate);
+              }
+
+              print(getFormatedDate(formattedDate));
+              dateCtl.text = getFormatedDate(formattedDate);
+            }
+          },
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "Please enter DOP";
+            }
+            return null;
+          },
+          decoration: InputDecoration(
+            suffixIcon: Icon(Icons.calendar_today),
+            hintText: "DD/MM/YYY",
+            label: RichText(
+              text: const TextSpan(
+                  text: 'DD/MM/YYYY',
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.normal)),
+            ),
+            focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey)),
+            enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey)),
+            hintStyle: const TextStyle(fontSize: 18, color: Colors.black),
+            labelStyle: const TextStyle(fontSize: 18, color: Colors.black),
+          ),
+          keyboardType: TextInputType.datetime,
+        ));
   }
 
   Row addRadioButton(String data, String data2) {

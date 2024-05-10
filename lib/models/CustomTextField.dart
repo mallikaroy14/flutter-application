@@ -5,7 +5,7 @@ class CustomTextField extends StatelessWidget {
   final String fieldName;
   final TextInputType keyboardType;
 
-  const CustomTextField(
+   CustomTextField(
       {Key? key, required this.fieldName, required this.keyboardType})
       : super(key: key);
 

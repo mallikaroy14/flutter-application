@@ -24,17 +24,17 @@ class _BottomSheetNavigation extends State {
       backgroundColor: Colors.white,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-            icon: Icon(Icons.cable),
-            label: "Cable",
+            icon: Icon(Icons.home),
+            label: "Home",
             backgroundColor: Colors.white),
         BottomNavigationBarItem(
-          icon: Icon(Icons.abc_sharp),
+          icon: Icon(Icons.request_page_rounded),
           backgroundColor: Colors.white,
-          label: "Abc",
+          label: "Requests",
         ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.ac_unit_outlined),
-            label: "Outlined",
+            icon: Icon(Icons.design_services),
+            label: "Self Service",
             backgroundColor: Colors.white),
       ],
       type: BottomNavigationBarType.shifting,

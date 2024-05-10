@@ -1,3 +1,4 @@
+import 'package:feburary_flutter/screens/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/home/controller/HomeController.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +13,6 @@ import '../../../models/BottomNavigation.dart';
 import '../../../models/GridViewLayout.dart';
 import '../../../models/TotalOverDueCard.dart';
 import '../../../models/data.dart';
-
 
 class HomeScreen extends GetView<HomeController> {
   @override
@@ -114,28 +114,11 @@ class HomeScreen extends GetView<HomeController> {
                             GridViewLayout(context, (callBackText) {
                               print(callBackText);
                             }),
-                            const SizedBox(height: 10),
-                            // GridView.builder(
-                            //   physics: NeverScrollableScrollPhysics(),
-                            //     shrinkWrap: true,
-                            //     gridDelegate:
-                            //         const SliverGridDelegateWithFixedCrossAxisCount(
-                            //       crossAxisCount: 3,
-                            //       childAspectRatio: 2.5,
-                            //       mainAxisSpacing: 2.5,
-                            //     ),
-                            //     itemCount: _photos.length,
-                            //     itemBuilder: (context, index) {
-                            //       return Container(
-                            //         child: Text(_photos[index].text),
-                            //       );
-                            //     }),
-
-
                           ],
                         ),
                       ),
                       Container(
+                        padding: EdgeInsets.only(top: 10, left: 10, right: 10),
                         width: double.infinity,
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -146,66 +129,78 @@ class HomeScreen extends GetView<HomeController> {
                                   blurRadius: 1,
                                   offset: Offset(0, 1))
                             ],
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(15.0),
                                 topRight: Radius.circular(15.0))),
                         child: Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColors.whiteColor,
-                                      border: Border.all(
-                                          color: Colors.orange, width: 1),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                  padding: const EdgeInsets.only(
-                                      left: 15, right: 20),
-                                  child: const Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Refer your friend",
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: AppColors.hintColor),
-                                            ),
-                                            Text(
-                                              "Refer a friend friend for Loan with Vridhi.",
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  color: AppColors.hintColor),
-                                            ),
-                                            Text("Click Here >",
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    color:
-                                                        AppColors.orangeColor)),
-                                          ]),
-                                      Image(
-                                          image: AssetImage(
-                                              "images/ic_vridhi.png"),
-                                          width: 80,
-                                          height: 80)
-                                    ],
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: AppColors.whiteColor,
+                                          border: Border.all(
+                                              color: Colors.orange, width: 1),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
+                                      padding: const EdgeInsets.only(
+                                          left: 15, right: 20),
+                                      child: const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Refer your friend",
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: AppColors.hintColor),
+                                                ),
+                                                Text(
+                                                  "Refer a friend friend for Loan with Vridhi.",
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      color: AppColors.hintColor),
+                                                ),
+                                                Text("Click Here >",
+                                                    style: TextStyle(
+                                                        fontSize: 12,
+                                                        color:
+                                                            AppColors.orangeColor)),
+                                              ]),
+                                          Image(
+                                              image: AssetImage(
+                                                  "images/ic_vridhi.png"),
+                                              width: 80,
+                                              height: 80)
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                                SizedBox(height: 10,),
+                                GridViewWithDivider((gridText){
+                                  if(gridText == "My Profile")
+                                  Get.to(MyProfileScreen());
+
+                                }),
+                              ],
                             ),
                           ),
                         ),
-                      )
+                      ),
+
+
                     ],
                   )),
             ],
@@ -214,6 +209,49 @@ class HomeScreen extends GetView<HomeController> {
         // extendBody: true,
         bottomNavigationBar: const BottomNavigation(),
       ),
+    );
+  }
+
+  Container GridViewWithDivider(void Function(String) callBack) {
+    return Container(
+      color: Colors.grey,
+      child: GridView.builder(
+          padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 1,
+            crossAxisSpacing: 1,
+          ),
+          itemCount: _photos.length,
+          itemBuilder: (context, index) {
+            return Container(
+              color: Colors.white,
+              child: InkWell(
+                onTap: (){
+                  callBack(_photos[index].text);
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.home,
+                      size: 20,
+                      color: Colors.yellow[900],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      _photos[index].text,
+                      style: TextStyle(fontSize: 15),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }),
     );
   }
 
@@ -230,10 +268,14 @@ class HomeScreen extends GetView<HomeController> {
   }
 }
 
-
 final List _photos = [
-  Data("hello", "images/logo.png"),
+  Data("My Profile", "images/logo.png"),
   Data("Hello", "images/logo.png"),
+  Data("Part ", "images/logo.png"),
+  Data("Part", "images/logo.png"),
+  Data("disbursement", "images/logo.png"),
+  Data("Last2 ", "images/logo.png"),
+  Data("Last ", "images/logo.png"),
   Data("Part ", "images/logo.png"),
   Data("Part", "images/logo.png"),
   Data("disbursement", "images/logo.png"),

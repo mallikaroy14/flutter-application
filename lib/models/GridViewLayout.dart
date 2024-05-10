@@ -14,6 +14,7 @@ final List _photos = [
 
 Widget GridViewLayout(context, void Function(String) gridCallBack) {
   return GridView.builder(
+      padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

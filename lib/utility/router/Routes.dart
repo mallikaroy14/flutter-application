@@ -1,4 +1,4 @@
-import 'package:feburary_flutter/screens/CreditProfileScreen.dart';
+import 'package:feburary_flutter/screens/ReferAFriendScreen.dart';
 import 'package:feburary_flutter/screens/LoginScreen.dart';
 import 'package:feburary_flutter/screens/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/OTPScreen.dart';
@@ -18,6 +18,6 @@ class Routes {
     GetPage(name: RouteName.otpScreen, page: () => OTPScreen()),
     GetPage(name: RouteName.homeScreen, page: () => HomeScreen()),
     GetPage(name: RouteName.myProfileScreen, page: () => MyProfileScreen()),
-    GetPage(name: RouteName.creditProfileScreen, page: () => CreditProfile()),
+    GetPage(name: RouteName.creditProfileScreen, page: () => ReferAFriend()),
   ];
 }

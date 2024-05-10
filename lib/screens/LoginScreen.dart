@@ -89,7 +89,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontSize: 18,
                           fontWeight: FontWeight.normal)),
                 ],
-
               ),
             ),
 
@@ -101,7 +100,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                     width: double.infinity,
                     height: double.infinity,
-
                     decoration:  BoxDecoration(
                         color: Colors.white,
                         boxShadow: [

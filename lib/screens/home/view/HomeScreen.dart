@@ -1,3 +1,4 @@
+import 'package:feburary_flutter/screens/ReferAFriendScreen.dart';
 import 'package:feburary_flutter/screens/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/home/controller/HomeController.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
@@ -35,21 +36,26 @@ class HomeScreen extends GetView<HomeController> {
                     Container(
                       padding: const EdgeInsets.only(
                           top: 10.0, left: 10.0, bottom: 10.0, right: 10.0),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Text("Hi Payal",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 20)),
-                          Text("Last login at 23-01-2024, 12.00.00",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 12))
-                        ],
+                      child: InkWell(
+                        onTap: (){
+                          Get.to(ReferAFriend());
+                        },
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text("Hi Payal",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 20)),
+                            Text("Last login at 23-01-2024, 12.00.00",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12))
+                          ],
+                        ),
                       ),
                     ),
                     Container(
@@ -190,17 +196,17 @@ class HomeScreen extends GetView<HomeController> {
                                 ),
                                 SizedBox(height: 10,),
                                 GridViewWithDivider((gridText){
-                                  if(gridText == "My Profile")
-                                  Get.to(MyProfileScreen());
-
+                                  if(gridText == "My Profile"){
+                                  Get.to(MyProfileScreen());}
+                                  else if(gridText =="refer a friend"){
+                                    Get.to(ReferAFriend());
+                                  }
                                 }),
                               ],
                             ),
                           ),
                         ),
                       ),
-
-
                     ],
                   )),
             ],
@@ -270,7 +276,7 @@ class HomeScreen extends GetView<HomeController> {
 
 final List _photos = [
   Data("My Profile", "images/logo.png"),
-  Data("Hello", "images/logo.png"),
+  Data("refer a friend", "images/logo.png"),
   Data("Part ", "images/logo.png"),
   Data("Part", "images/logo.png"),
   Data("disbursement", "images/logo.png"),

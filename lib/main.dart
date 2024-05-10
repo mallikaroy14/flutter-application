@@ -1,6 +1,6 @@
 import 'package:feburary_flutter/localization/language/languages.dart';
 import 'package:feburary_flutter/screens/CameraPermissionHandle.dart';
-import 'package:feburary_flutter/screens/CreditProfileScreen.dart';
+import 'package:feburary_flutter/screens/ReferAFriendScreen.dart';
 import 'package:feburary_flutter/screens/LoginScreen.dart';
 import 'package:feburary_flutter/screens/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/OTPScreen.dart';

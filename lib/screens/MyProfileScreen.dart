@@ -34,7 +34,8 @@ class _MyProfileScreen extends State<MyProfileScreen> {
             icon: Icon(Icons.chevron_left)),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.phone))],
       ),
-      body: SingleChildScrollView(
+      body:
+      SingleChildScrollView(
           child: Column(
         children: [
           Container(

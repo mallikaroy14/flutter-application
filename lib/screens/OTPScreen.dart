@@ -1,5 +1,5 @@
 import 'package:feburary_flutter/screens/MyProfileScreen.dart';
-import 'package:feburary_flutter/screens/home/view/HomeScreen.dart';
+import 'package:feburary_flutter/screens/home/view/home_screen.dart';
 import 'package:feburary_flutter/utility/router/route_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

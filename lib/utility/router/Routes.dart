@@ -2,7 +2,7 @@ import 'package:feburary_flutter/screens/ReferAFriendScreen.dart';
 import 'package:feburary_flutter/screens/LoginScreen.dart';
 import 'package:feburary_flutter/screens/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/OTPScreen.dart';
-import 'package:feburary_flutter/screens/home/view/HomeScreen.dart';
+import 'package:feburary_flutter/screens/home/view/home_screen.dart';
 import 'package:feburary_flutter/screens/splash/binding/SplashBiding.dart';
 import 'package:feburary_flutter/screens/splash/view/SplashScreen.dart';
 import 'package:get/get.dart';

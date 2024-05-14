@@ -1,5 +1,5 @@
-import 'package:feburary_flutter/screens/MyProfileScreen.dart';
-import 'package:feburary_flutter/screens/ReferAFriendScreen.dart';
+import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
+import 'package:feburary_flutter/screens/refer_a_friend/view/refer_a_friend_screen.dart';
 import 'package:feburary_flutter/screens/home/controller/HomeController.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:flutter/foundation.dart';
@@ -35,26 +35,21 @@ class HomeScreen extends GetView<HomeController> {
                     Container(
                       padding: const EdgeInsets.only(
                           top: 10.0, left: 10.0, bottom: 10.0, right: 10.0),
-                      child: InkWell(
-                        onTap: (){
-                          Get.to(const ReferAFriend());
-                        },
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Hi Payal",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w800,
-                                    fontSize: 20)),
-                            Text("Last login at 23-01-2024, 12.00.00",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12))
-                          ],
-                        ),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text("Hi Payal",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 20)),
+                          Text("Last login at 23-01-2024, 12.00.00",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12))
+                        ],
                       ),
                     ),
                     Container(
@@ -204,7 +199,7 @@ class HomeScreen extends GetView<HomeController> {
                                   if(gridText == "My Profile"){
                                   Get.to(MyProfileScreen());}
                                   else if(gridText =="refer a friend"){
-                                    Get.to(const ReferAFriend());
+                                    Get.to( ReferAFriend());
                                   }
                                 }),
                               ],

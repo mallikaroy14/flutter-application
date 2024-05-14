@@ -1,26 +1,26 @@
-import 'package:feburary_flutter/screens/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/home/view/home_screen.dart';
-import 'package:feburary_flutter/utility/router/route_name.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:feburary_flutter/screens/otp/controller/otp_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../theme/app_colors.dart';
 
-class OTPScreen extends StatelessWidget {
+import '../../../../theme/app_colors.dart';
+
+class OTPScreen extends GetView<OTPController> {
   @override
   Widget build(BuildContext context) {
     String mobileNumber = "XXXXXXX7810";
 
     return Scaffold(
-      // appBar: AppBar(),
       body: Container(
         padding: const EdgeInsets.only(top: 27, left: 15, right: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image(image: AssetImage("images/ic_vridhi.png"),width: 100, height: 100),
+            const Image(
+                image: AssetImage("images/ic_vridhi.png"),
+                width: 100,
+                height: 100),
             const Text("Enter OTP",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
             const SizedBox(
@@ -28,7 +28,7 @@ class OTPScreen extends StatelessWidget {
             ),
             Text(
                 "We have sent an OTP to your registered mobile number $mobileNumber",
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.normal,
                     color: Colors.grey)),

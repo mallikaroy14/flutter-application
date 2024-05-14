@@ -1,19 +1,16 @@
 import 'package:feburary_flutter/localization/language/languages.dart';
+import 'package:feburary_flutter/screens/my_profile/controller/my_profile_controller.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
-import '../customUtility/CustomWidget.dart';
-import '../localization/locale_constant.dart';
-import '../localization/languageData.dart';
+import '../../../customUtility/CustomWidget.dart';
+import '../../../localization/locale_constant.dart';
+import '../../../localization/languageData.dart';
 
-class MyProfileScreen extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _MyProfileScreen();
-}
-
-class _MyProfileScreen extends State<MyProfileScreen> {
+class MyProfileScreen extends GetView<MyProfileController> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -23,7 +20,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.appBarColor,
         titleSpacing: 0,
-        title: Text(
+        title: const Text(
           "My Profile",
           style: TextStyle(fontSize: 18),
         ),
@@ -31,11 +28,10 @@ class _MyProfileScreen extends State<MyProfileScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.chevron_left)),
+            icon: const Icon(Icons.chevron_left)),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.phone))],
       ),
-      body:
-      SingleChildScrollView(
+      body: SingleChildScrollView(
           child: Column(
         children: [
           Container(
@@ -50,13 +46,13 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                       blurRadius: 1,
                       offset: Offset(0, 1))
                 ],
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15.0),
                     topRight: Radius.circular(15.0))),
             // child: Text("Hello")
             child: Padding(
-              padding:
-                  EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 15),
+              padding: const EdgeInsets.only(
+                  top: 10, left: 10, right: 10, bottom: 15),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,13 +60,13 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                     CardView(
                       cardTile: "Personal Details",
                       widget: Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             left: 20, right: 20, top: 10, bottom: 10),
                         child: Column(children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 "Name",
                                 style:
                                     TextStyle(color: Colors.grey, fontSize: 14),
@@ -82,7 +78,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                               ),
                             ],
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -97,7 +93,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                               ),
                             ],
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -112,7 +108,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                               ),
                             ],
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -127,7 +123,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                               ),
                             ],
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -146,7 +142,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                       ),
                       showIcon: true,
                     ),
-                    CardView(
+                    const CardView(
                       cardTile: "Address Details",
                       widget: Text("Personal Detailssss"),
                       showIcon: true,
@@ -181,7 +177,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
+                                            const Text(
                                               "Choose Language",
                                               style: TextStyle(
                                                   fontSize: 18,
@@ -197,7 +193,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                                         Column(
                                           children: [_createLanguageList()],
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         CustomElevatedButton(buttonCta: "Add"),
@@ -222,7 +218,7 @@ class _MyProfileScreen extends State<MyProfileScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 "Logout",
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.bold),
@@ -261,10 +257,10 @@ class _MyProfileScreen extends State<MyProfileScreen> {
               onTap: () {
                 changeLanguage(
                     context, LanguageData.languageList()[index].languageCode);
-
-                setState(() {
-                  _selectedIndex = index;
-                });
+                // setState(() {
+                //   _selectedIndex = index;
+                // }
+                // );
               },
               trailing: _selectedIndex == index
                   ? Icon(

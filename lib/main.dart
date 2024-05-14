@@ -1,9 +1,9 @@
 import 'package:feburary_flutter/localization/language/languages.dart';
 import 'package:feburary_flutter/screens/CameraPermissionHandle.dart';
-import 'package:feburary_flutter/screens/ReferAFriendScreen.dart';
-import 'package:feburary_flutter/screens/LoginScreen.dart';
-import 'package:feburary_flutter/screens/MyProfileScreen.dart';
-import 'package:feburary_flutter/screens/OTPScreen.dart';
+import 'package:feburary_flutter/screens/refer_a_friend/view/refer_a_friend_screen.dart';
+import 'package:feburary_flutter/screens/login/view/LoginScreen.dart';
+import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
+import 'package:feburary_flutter/screens/otp/view/otp_view/OTPScreen.dart';
 import 'package:feburary_flutter/screens/PermisionHandlreScreen.dart';
 import 'package:feburary_flutter/theme/AppThemes.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';

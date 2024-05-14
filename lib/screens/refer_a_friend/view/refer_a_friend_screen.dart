@@ -1,35 +1,14 @@
+import 'package:feburary_flutter/screens/refer_a_friend/controller/refer_a_friend_controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../models/CustomTextField.dart';
-import '../theme/app_colors.dart';
+import '../../../models/CustomTextField.dart';
+import '../../../theme/app_colors.dart';
 
-class ReferAFriend extends StatefulWidget {
-  const ReferAFriend({super.key});
-
-  @override
-  State<StatefulWidget> createState() => _creditProfile();
-}
-
-enum ColorLabel {
-  blue('Blue', Colors.blue),
-  pink('Pink', Colors.pink),
-  green('Green', Colors.green),
-  yellow('Orange', Colors.orange),
-  grey('Grey', Colors.grey);
-
-  const ColorLabel(this.label, this.color);
-
-  final String label;
-  final Color color;
-}
-
-class _creditProfile extends State<ReferAFriend> {
-  // int selectedValue = 1;
-  TextEditingController dateCtl = TextEditingController();
-
-  String? _radioSelected = "Male";
-  final TextEditingController iconController = TextEditingController();
+class ReferAFriend extends GetView<ReferAFriendController> {
+   ReferAFriend({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +17,7 @@ class _creditProfile extends State<ReferAFriend> {
       appBar: AppBar(
         backgroundColor: AppColors.appBarColor,
         titleSpacing: 0,
-        title: Text(
+        title: const Text(
           "Refer a Friend",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         ),
@@ -46,8 +25,8 @@ class _creditProfile extends State<ReferAFriend> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.chevron_left)),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.phone))],
+            icon: const Icon(Icons.chevron_left)),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.phone))],
       ),
       body: SingleChildScrollView(
           child: Column(
@@ -62,14 +41,14 @@ class _creditProfile extends State<ReferAFriend> {
                       color: Colors.grey.withOpacity(0.2),
                       spreadRadius: 1.5,
                       blurRadius: 1,
-                      offset: Offset(0, 1))
+                      offset: const Offset(0, 1))
                 ],
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15.0),
                     topRight: Radius.circular(15.0))),
             child: Padding(
                 padding:
-                    EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+                    const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +66,7 @@ class _creditProfile extends State<ReferAFriend> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Text(
+                    const Text(
                       "Gender",
                       style: TextStyle(color: Colors.grey, fontSize: 13),
                     ),
@@ -113,28 +92,9 @@ class _creditProfile extends State<ReferAFriend> {
                       height: 20,
                     ),
 
-                    // DropdownMenu(
-                    //   width: double.infinity,
-                    //     controller: iconController, dropdownMenuEntries: []
-                    // ColorLabel.values
-                    //     .map<DropdownMenuEntry<ColorLabel>>(
-                    //         (ColorLabel color) {
-                    //       return DropdownMenuEntry<ColorLabel>(
-                    //         value: color,
-                    //         label: color.label,
-                    //         enabled: color.label != 'Grey',
-                    //         style: MenuItemButton.styleFrom(
-                    //           foregroundColor: color.color,
-                    //         ),
-                    //       );
-                    //     }).toList(),
-                    // dropdownMenuEntries: ColorLabel.values
-                    //     .map<DropdownMenuEntry<ColorLabel>>()
-                    //   ),
-
                     Padding(
                       padding: const EdgeInsets.only(top: 170),
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         height: 50,
                         child: ElevatedButton(
@@ -159,11 +119,15 @@ class _creditProfile extends State<ReferAFriend> {
     );
   }
 
+  TextEditingController dateCtl = TextEditingController();
+
+  final String _radioSelected = "Male";
+  final TextEditingController iconController = TextEditingController();
+
   SizedBox dateOfBirthTextField(BuildContext context) {
     return SizedBox(
         height: 55,
         child: TextFormField(
-
           controller: dateCtl,
           onTap: () async {
             DateTime? date = DateTime(1900);
@@ -173,16 +137,20 @@ class _creditProfile extends State<ReferAFriend> {
                 firstDate: DateTime(1900),
                 lastDate: DateTime(2100));
             if (date != null) {
-              print(date);
+              if (kDebugMode) {
+                print(date);
+              }
               String formattedDate = DateFormat("dd/MM/yyyy").format(date);
-              getFormatedDate(_date) {
+              getFormatedDate(date) {
                 var inputFormat = DateFormat('dd/MM/yyyy');
-                var inputDate = inputFormat.parse(_date);
+                var inputDate = inputFormat.parse(date);
                 var outputFormat = DateFormat('dd/MM/yyyy');
                 return outputFormat.format(inputDate);
               }
 
-              print(getFormatedDate(formattedDate));
+              if (kDebugMode) {
+                print(getFormatedDate(formattedDate));
+              }
               dateCtl.text = getFormatedDate(formattedDate);
             }
           },
@@ -193,7 +161,7 @@ class _creditProfile extends State<ReferAFriend> {
             return null;
           },
           decoration: InputDecoration(
-            suffixIcon: Icon(Icons.calendar_today),
+            suffixIcon: const Icon(Icons.calendar_today),
             hintText: "DD/MM/YYY",
             label: RichText(
               text: const TextSpan(
@@ -223,13 +191,13 @@ class _creditProfile extends State<ReferAFriend> {
           groupValue: _radioSelected,
           activeColor: Colors.blue,
           onChanged: (value) {
-            setState(() {
-              _radioSelected = value;
-            });
+            // setState(() {
+            //   _radioSelected = value;
+            // });
           },
         ),
         Text(data2),
-        SizedBox(
+        const SizedBox(
           width: 50,
         ),
         Radio(
@@ -237,13 +205,26 @@ class _creditProfile extends State<ReferAFriend> {
           groupValue: _radioSelected,
           activeColor: Colors.blue,
           onChanged: (value) {
-            setState(() {
-              _radioSelected = value;
-            });
+            // setState(() {
+            //   _radioSelected = value;
+            // });
           },
         ),
         Text(data),
       ],
     );
   }
+}
+
+enum ColorLabel {
+  blue('Blue', Colors.blue),
+  pink('Pink', Colors.pink),
+  green('Green', Colors.green),
+  yellow('Orange', Colors.orange),
+  grey('Grey', Colors.grey);
+
+  const ColorLabel(this.label, this.color);
+
+  final String label;
+  final Color color;
 }

@@ -1,25 +1,46 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginController extends SuperController{
+class LoginController extends SuperController {
+  final mobileController = TextEditingController();
+  final mobileError = "".obs;
+
   @override
-  void onDetached() {
+  void onInit() {
+    super.onInit();
+    isMobileValid();
+  }
+
+  void isMobileValid() {
+    bool isMobileValid = false;
+    mobileController.addListener(() {
+      if (mobileController.text.isNotEmpty) {
+        if (mobileController.text.isPhoneNumber) {
+          mobileError.value = "";
+          isMobileValid = true;
+        } else {
+          mobileError.value = "Please enter valid mobile number";
+          isMobileValid = false;
+        }
+      } else {
+        mobileError.value = "Please enter mobile number";
+        isMobileValid = false;
+      }
+    });
   }
 
   @override
-  void onHidden() {
-  }
+  void onDetached() {}
 
   @override
-  void onInactive() {
-  }
+  void onHidden() {}
 
   @override
-  void onPaused() {
-  }
+  void onInactive() {}
 
   @override
-  void onResumed() {
-  }
+  void onPaused() {}
 
-
+  @override
+  void onResumed() {}
 }

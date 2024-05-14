@@ -1,3 +1,8 @@
+import 'package:feburary_flutter/screens/home/binding/HomeBinding.dart';
+import 'package:feburary_flutter/screens/login/binding/login_binding.dart';
+import 'package:feburary_flutter/screens/my_profile/binding/my_profile_binding.dart';
+import 'package:feburary_flutter/screens/otp/binding/otp_binding.dart';
+import 'package:feburary_flutter/screens/refer_a_friend/binding/refer_a_friend_binding.dart';
 import 'package:feburary_flutter/screens/refer_a_friend/view/refer_a_friend_screen.dart';
 import 'package:feburary_flutter/screens/login/view/LoginScreen.dart';
 import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
@@ -14,10 +19,10 @@ class Routes {
         name: RouteName.splashScreen,
         page: () => SplashScreen(),
         binding: SplashBinding()),
-    GetPage(name: RouteName.loginScreen, page: () => LoginScreen()),
-    GetPage(name: RouteName.otpScreen, page: () => OTPScreen()),
-    GetPage(name: RouteName.homeScreen, page: () => HomeScreen()),
-    GetPage(name: RouteName.myProfileScreen, page: () => MyProfileScreen()),
-    GetPage(name: RouteName.creditProfileScreen, page: () => ReferAFriend()),
+    GetPage(name: RouteName.loginScreen, page: () => LoginScreen(), binding: LoginBinding()),
+    GetPage(name: RouteName.otpScreen, page: () => OTPScreen(), binding: OTPBinding()),
+    GetPage(name: RouteName.homeScreen, page: () => HomeScreen(), binding: HomeBinding()),
+    GetPage(name: RouteName.myProfileScreen, page: () => MyProfileScreen(), binding: MyPrpfileBinding()),
+    GetPage(name: RouteName.creditProfileScreen, page: () => ReferAFriend(), binding: ReferAFriendBinding()),
   ];
 }

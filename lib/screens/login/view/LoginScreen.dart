@@ -65,30 +65,40 @@ class LoginScreen extends GetView<LoginController> {
                   ),
                   // _createLanguageDropDown(),
 
-                  SizedBox(
-                      height: 55,
-                      child: TextFormField(
-                        validator: (value) {},
-                        decoration: InputDecoration(
-                          label: RichText(
-                            text: const TextSpan(
-                                text: "Mobile Number",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.normal)),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          hintStyle: const TextStyle(
-                              fontSize: 18, color: Colors.black),
-                          labelStyle: const TextStyle(
-                              fontSize: 18, color: Colors.black),
-                        ),
-                        keyboardType: TextInputType.phone,
-                      ))
+                  Obx(() => TextFormField(
+                    controller: controller.mobileController,
+                    validator: (value) {},
+                    decoration: InputDecoration(
+                      label: RichText(
+                        text: const TextSpan(
+                            text: "Mobile Number",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.normal)),
+                      ),
+                      errorStyle: TextStyle(color: AppColors.redColor),
+                      focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: AppColors.redColor)),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      labelStyle: controller.mobileError.value.isEmpty
+                          ? TextStyle(fontSize: 18,color: AppColors.redColor)
+                          : TextStyle(fontSize: 18,color: AppColors.grayColor),
+                      errorText: controller.mobileError.value.isEmpty
+                          ? null
+                          : controller.mobileError.value,
+                      focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey)),
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey)),
+                      hintStyle: const TextStyle(
+                          fontSize: 18, color: Colors.black),
+                    ),
+                    keyboardType: TextInputType.phone,
+                  ))
                 ],
               ),
             ),

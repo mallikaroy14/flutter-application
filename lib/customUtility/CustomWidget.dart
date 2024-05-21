@@ -58,18 +58,15 @@ class OtherDetailsWidget extends StatelessWidget {
         itemCount: otherDetails.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: const EdgeInsets.only( top: 10, left : 15),
+            padding: const EdgeInsets.only( top: 10, left : 15, bottom: 10, right: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 5, top: 5),
-                  child: Text(otherDetails[index].text,
-                      style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.grayColor)),
-                ),
+                Text(otherDetails[index].text,
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.grayColor)),
                 Text(otherDetails[index].image,
                     style: TextStyle(
                         fontSize: 13,

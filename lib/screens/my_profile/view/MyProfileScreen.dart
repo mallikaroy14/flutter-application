@@ -1,4 +1,5 @@
 import 'package:feburary_flutter/localization/language/languages.dart';
+import 'package:feburary_flutter/models/data.dart';
 import 'package:feburary_flutter/screens/my_profile/controller/my_profile_controller.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +15,13 @@ class MyProfileScreen extends GetView<MyProfileController> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+
+    final List listOfAddress = [
+      ProfileAddress("Communication Address",
+          "S-101, Marigold society near smart works, Kalyani Nagar, Pune(M.H), 411014"),
+      ProfileAddress("Permanent Address",
+          "S-101, Marigold society near smart works, Kalyani Nagar, Pune(M.H), 411014")
+    ];
 
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
@@ -142,18 +150,46 @@ class MyProfileScreen extends GetView<MyProfileController> {
                       ),
                       showIcon: true,
                     ),
-                    const CardView(
-                      cardTile: "Address Details",
-                      widget: Text("Personal Detailssss"),
-                      showIcon: true,
-                    ),
                     CardView(
-                      cardTile: "Other Details",
-                      widget:
-                          // Text("Personal Detailssss")),
-                          OtherDetailsWidget(),
+                      cardTile: "Address Details",
+                      widget: Padding(
+                        padding: EdgeInsets.only(
+                            top: 7, left: 15, right: 15, bottom: 10),
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: listOfAddress.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 5, top: 5),
+                                  child: Text(listOfAddress[index].addressType,
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500,
+                                          color: AppColors.grayColor)),
+                                ),
+                                Text(
+                                   listOfAddress[index].addressValue,
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.blackColor))
+                              ],
+                            );
+                          },
+                        ),
+                      ),
                       showIcon: true,
                     ),
+                    // CardView(
+                    //   cardTile: "Other Details",
+                    //   widget:
+                    //       OtherDetailsWidget(),
+                    //   showIcon: true,
+                    // ),
                     CardView(
                       cardTile: "Language & Preferences",
                       widget: Padding(
@@ -260,10 +296,6 @@ class MyProfileScreen extends GetView<MyProfileController> {
                     // _selectedIndex = controller.listIndex.value;
                     controller.onLanguageChange(index);
                     print("ListTile: $index");
-                    // setState(() {
-                    //   _selectedIndex = index;
-                    // }
-                    // );
                   },
                   trailing: controller.listIndex.value == index
                       ? Icon(
@@ -292,10 +324,6 @@ class MyProfileScreen extends GetView<MyProfileController> {
                         //     )
                         // )
                       ]),
-                  // onTap:
-                  //     (LanguageData? language) {
-                  //   changeLanguage(context, language?.languageCode ?? "");
-                  // },
                 ));
           }),
     );

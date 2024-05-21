@@ -5,3 +5,10 @@ class Data{
 
   Data(this.text, this.image);
 }
+
+class ProfileAddress{
+  String addressType;
+  String addressValue;
+
+  ProfileAddress(this.addressType, this.addressValue);
+}

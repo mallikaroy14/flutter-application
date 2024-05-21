@@ -48,22 +48,39 @@ class OtherDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        for (var item in otherDetails) Text(item.toString()),
-        // Text(
-        //   "otherDetai",
-        //   style: TextStyle(color: Colors.grey, fontSize: 14),
-        // ),
-        // Text(
-        //   "Salaried",
-        //   style: TextStyle(color: Colors.black, fontSize: 14),
-        // ),
-      ],
-    ));
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+      ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: otherDetails.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.only( top: 10, left : 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 5, top: 5),
+                  child: Text(otherDetails[index].text,
+                      style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.grayColor)),
+                ),
+                Text(otherDetails[index].image,
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.blackColor))
+              ],
+            ),
+          );
+        },
+      ),
+    ]);
   }
 }
 
@@ -72,7 +89,11 @@ class CardView extends StatelessWidget {
   final Widget widget;
   final bool showIcon;
 
-  const CardView({super.key, required this.cardTile, required this.widget, required this.showIcon});
+  const CardView(
+      {super.key,
+      required this.cardTile,
+      required this.widget,
+      required this.showIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +126,7 @@ class CardView extends StatelessWidget {
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
-                        if(showIcon)Icon(Icons.edit),
+                        if (showIcon) Icon(Icons.edit),
                       ],
                     ),
                   ),

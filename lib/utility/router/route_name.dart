@@ -5,4 +5,6 @@ class RouteName {
   static const String homeScreen = "/homeScreen";
   static const String myProfileScreen = "/myProfileScreen";
   static const String creditProfileScreen = "/creditProfileScreen";
+  static const String payEmiScreen = "/payEmiScreen";
+  static const String referAFriend = "/referAFriend";
 }

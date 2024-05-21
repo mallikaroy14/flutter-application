@@ -6,6 +6,8 @@ class MyProfileController extends SuperController{
   final mobileController = TextEditingController();
   final mobileError = "".obs;
 
+  final listIndex = 0.obs;
+
   @override
   void onDetached() {
   }
@@ -24,6 +26,12 @@ class MyProfileController extends SuperController{
 
   @override
   void onResumed() {
+  }
+
+
+  void onLanguageChange(int index){
+    print("onLanguageChange: $index");
+    listIndex.value = index;
   }
 
 }

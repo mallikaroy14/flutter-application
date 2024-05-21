@@ -1,7 +1,9 @@
 import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
+import 'package:feburary_flutter/screens/pay_EMI/view/Pay_EMIScreen.dart';
 import 'package:feburary_flutter/screens/refer_a_friend/view/refer_a_friend_screen.dart';
 import 'package:feburary_flutter/screens/home/controller/HomeController.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
+import 'package:feburary_flutter/utility/router/route_name.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -70,7 +72,8 @@ class HomeScreen extends GetView<HomeController> {
                               },
                             ),
                             InkWell(
-                              child: const Icon(Icons.phone, color: Colors.white),
+                              child:
+                                  const Icon(Icons.phone, color: Colors.white),
                               onTap: () {
                                 //action code when clicked
                                 if (kDebugMode) {
@@ -79,7 +82,8 @@ class HomeScreen extends GetView<HomeController> {
                               },
                             ),
                             InkWell(
-                              child: const Icon(Icons.face, color: Colors.white),
+                              child:
+                                  const Icon(Icons.face, color: Colors.white),
                               onTap: () {
                                 //action code when clicked
                                 if (kDebugMode) {
@@ -126,7 +130,8 @@ class HomeScreen extends GetView<HomeController> {
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                        padding:
+                            const EdgeInsets.only(top: 10, left: 10, right: 10),
                         width: double.infinity,
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -182,8 +187,8 @@ class HomeScreen extends GetView<HomeController> {
                                               Text("Click Here >",
                                                   style: TextStyle(
                                                       fontSize: 12,
-                                                      color:
-                                                          AppColors.orangeColor)),
+                                                      color: AppColors
+                                                          .orangeColor)),
                                             ]),
                                         Image(
                                             image: AssetImage(
@@ -194,12 +199,14 @@ class HomeScreen extends GetView<HomeController> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 10,),
-                                gridViewWithDivider((gridText){
-                                  if(gridText == "My Profile"){
-                                  Get.to(MyProfileScreen());}
-                                  else if(gridText =="refer a friend"){
-                                    Get.to( ReferAFriend());
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                gridViewWithDivider((gridText) {
+                                  if (gridText == "My Profile") {
+                                    Get.toNamed(RouteName.myProfileScreen);
+                                  } else if (gridText == "refer a friend") {
+                                    Get.toNamed(RouteName.referAFriend);
                                   }
                                 }),
                               ],
@@ -235,7 +242,7 @@ class HomeScreen extends GetView<HomeController> {
             return Container(
               color: Colors.white,
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   callBack(_photos[index].text);
                 },
                 child: Column(
@@ -269,7 +276,7 @@ class HomeScreen extends GetView<HomeController> {
 
   void callBackFromPayNow() {
     if (kDebugMode) {
-      print("Call from Pay now");
+      Get.to(PayEmiScreen());
     }
   }
 

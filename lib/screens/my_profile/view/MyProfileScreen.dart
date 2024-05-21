@@ -253,47 +253,50 @@ class MyProfileScreen extends GetView<MyProfileController> {
           physics: NeverScrollableScrollPhysics(),
           itemCount: LanguageData.languageList().length,
           itemBuilder: (context, index) {
-            return ListTile(
-              onTap: () {
-                changeLanguage(
-                    context, LanguageData.languageList()[index].languageCode);
-                // setState(() {
-                //   _selectedIndex = index;
-                // }
-                // );
-              },
-              trailing: _selectedIndex == index
-                  ? Icon(
-                      Icons.check_circle_outline,
-                      color: Colors.deepOrangeAccent,
-                    )
-                  : Icon(Icons.check_circle_outline),
-              title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(LanguageData.languageList()[index].name),
-                    // IconButton(
-                    //     onPressed: () {
-                    //       changeLanguage(context,
-                    //           LanguageData.languageList()[index].languageCode);
-                    //       setState(() {
-                    //         _selectedIndex = index;
-                    //       });
-                    //     },
-                    //     icon: _selectedIndex == index ? Icon(
-                    //       Icons.check_circle_outline,
-                    //       color: Colors.deepOrangeAccent,
-                    //     ): Icon(
-                    //       Icons.check_circle_outline,
-                    //       color: Colors.grey,
-                    //     )
-                    // )
-                  ]),
-              // onTap:
-              //     (LanguageData? language) {
-              //   changeLanguage(context, language?.languageCode ?? "");
-              // },
-            );
+            return Obx(() => ListTile(
+                  onTap: () {
+                    changeLanguage(context,
+                        LanguageData.languageList()[index].languageCode);
+                    // _selectedIndex = controller.listIndex.value;
+                    controller.onLanguageChange(index);
+                    print("ListTile: $index");
+                    // setState(() {
+                    //   _selectedIndex = index;
+                    // }
+                    // );
+                  },
+                  trailing: controller.listIndex.value == index
+                      ? Icon(
+                          Icons.check_circle_outline,
+                          color: Colors.deepOrangeAccent,
+                        )
+                      : Icon(Icons.check_circle_outline),
+                  title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(LanguageData.languageList()[index].name),
+                        // IconButton(
+                        //     onPressed: () {
+                        //       changeLanguage(context,
+                        //           LanguageData.languageList()[index].languageCode);
+                        //       setState(() {
+                        //         _selectedIndex = index;
+                        //       });
+                        //     },
+                        //     icon: _selectedIndex == index ? Icon(
+                        //       Icons.check_circle_outline,
+                        //       color: Colors.deepOrangeAccent,
+                        //     ): Icon(
+                        //       Icons.check_circle_outline,
+                        //       color: Colors.grey,
+                        //     )
+                        // )
+                      ]),
+                  // onTap:
+                  //     (LanguageData? language) {
+                  //   changeLanguage(context, language?.languageCode ?? "");
+                  // },
+                ));
           }),
     );
   }

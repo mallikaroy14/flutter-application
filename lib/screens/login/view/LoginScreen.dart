@@ -1,6 +1,7 @@
 import 'package:feburary_flutter/screens/login/controller/login_controller.dart';
 import 'package:feburary_flutter/screens/otp/view/otp_view/OTPScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../localization/language/languages.dart';
@@ -66,9 +67,19 @@ class LoginScreen extends GetView<LoginController> {
                   // _createLanguageDropDown(),
 
                   Obx(() => TextFormField(
+                    scribbleEnabled: true,
+                    maxLength: 11,
+                    inputFormatters: <TextInputFormatter> [
+                      FilteringTextInputFormatter(RegExp(r'[0-9]'), allow: true),
+                      // mobileNumber
+                      PhoneNumberTextInputFormatter()
+
+                    ],
                     controller: controller.mobileController,
                     validator: (value) {},
                     decoration: InputDecoration(
+                      counterText: "",
+                      contentPadding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 10.0),
                       label: RichText(
                         text: const TextSpan(
                             text: "Mobile Number",

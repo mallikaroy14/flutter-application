@@ -7,4 +7,5 @@ class RouteName {
   static const String creditProfileScreen = "/creditProfileScreen";
   static const String payEmiScreen = "/payEmiScreen";
   static const String referAFriend = "/referAFriend";
+  static const String loanSummaryScreen = "/loanSummaryScreen";
 }

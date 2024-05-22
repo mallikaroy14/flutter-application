@@ -1,5 +1,6 @@
 import 'package:feburary_flutter/localization/language/languages.dart';
 import 'package:feburary_flutter/screens/CameraPermissionHandle.dart';
+import 'package:feburary_flutter/screens/loan_summary/view/loan_summary_screen.dart';
 import 'package:feburary_flutter/screens/refer_a_friend/view/refer_a_friend_screen.dart';
 import 'package:feburary_flutter/screens/login/view/LoginScreen.dart';
 import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
@@ -116,7 +117,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromRGBO(42, 69, 130, 50)),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      home: LoanSummaryScreen(),
     );
   }
 }

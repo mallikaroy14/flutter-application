@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -6,27 +8,40 @@ class LoginController extends SuperController {
   final mobileController = TextEditingController();
   final mobileTextEditing = TextEditingValue();
   final mobileError = "".obs;
+  final isMobileValid = false.obs;
+  final statesController = MaterialStatesController();
 
   @override
   void onInit() {
     super.onInit();
-    isMobileValid();
+    mobileValid();
   }
 
-  void isMobileValid() {
-    bool isMobileValid = false;
+  void mobileValid() {
     mobileController.addListener(() {
       if (mobileController.text.isNotEmpty) {
         if ( mobileController.text.length < 11) {
           mobileError.value = "Please enter valid mobile number";
-          isMobileValid = false;
+          isMobileValid.value = false;
+          statesController.update(
+            MaterialState.disabled,
+            true, // or false depending on your logic
+          );
         } else {
           mobileError.value = "";
-          isMobileValid = true;
+          isMobileValid.value = true;
+          statesController.update(
+            MaterialState.disabled,
+            false, // or false depending on your logic
+          );
         }
       } else {
         mobileError.value = "Please enter mobile number";
-        isMobileValid = false;
+        isMobileValid.value = false;
+        statesController.update(
+          MaterialState.disabled,
+          true, // or false depending on your logic
+        );
       }
     });
   }

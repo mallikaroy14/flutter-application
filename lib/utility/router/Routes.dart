@@ -1,4 +1,6 @@
 import 'package:feburary_flutter/screens/home/binding/HomeBinding.dart';
+import 'package:feburary_flutter/screens/loan_summary/binding/loan_summary_binding.dart';
+import 'package:feburary_flutter/screens/loan_summary/view/loan_summary_screen.dart';
 import 'package:feburary_flutter/screens/login/binding/login_binding.dart';
 import 'package:feburary_flutter/screens/my_profile/binding/my_profile_binding.dart';
 import 'package:feburary_flutter/screens/otp/binding/otp_binding.dart';
@@ -49,6 +51,10 @@ class Routes {
     GetPage(
         name: RouteName.referAFriend,
         page: () => ReferAFriend(),
-        binding: ReferAFriendBinding())
+        binding: ReferAFriendBinding()),
+    GetPage(
+        name: RouteName.loanSummaryScreen,
+        page: () => LoanSummaryScreen(),
+        binding: LoanSummaryBinding())
   ];
 }

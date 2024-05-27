@@ -1,9 +1,9 @@
 import 'package:feburary_flutter/screens/login/controller/login_controller.dart';
 import 'package:feburary_flutter/screens/otp/view/otp_view/OTPScreen.dart';
+import 'package:feburary_flutter/utility/router/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
 
 import '../../../localization/language/languages.dart';
 import '../../../theme/app_colors.dart';
@@ -33,7 +33,7 @@ class LoginScreen extends GetView<LoginController> {
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () {
                 if(controller.isMobileValid.isTrue)
-                Get.to(OTPScreen());
+                Get.toNamed(RouteName.otpScreen);
               },
               child: const Text("Send OTP",
                   style: TextStyle(
@@ -94,67 +94,65 @@ class LoginScreen extends GetView<LoginController> {
                 child: Padding(
                   padding: const EdgeInsets.only(
                       top: 20, left: 10, right: 10, bottom: 15),
-                  child: Expanded(
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Obx(() => TextFormField(
-                                scribbleEnabled: true,
-                                maxLength: 11,
-                                inputFormatters: <TextInputFormatter>[
-                                  FilteringTextInputFormatter(RegExp(r'[0-9]'),
-                                      allow: true),
-                                  // mobileNumber
-                                  PhoneNumberTextInputFormatter()
-                                ],
-                                controller: controller.mobileController,
-                                validator: (value) {},
-                                decoration: InputDecoration(
-                                  counterText: "",
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 7.0, horizontal: 10.0),
-                                  label: RichText(
-                                    text: const TextSpan(
-                                        text: "Mobile Number",
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.grey,
-                                            fontWeight: FontWeight.normal)),
-                                  ),
-                                  errorStyle:
-                                      TextStyle(color: AppColors.redColor),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: AppColors.redColor)),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
-                                  ),
-                                  labelStyle:
-                                      controller.mobileError.value.isEmpty
-                                          ? TextStyle(
-                                              fontSize: 18,
-                                              color: AppColors.redColor)
-                                          : TextStyle(
-                                              fontSize: 18,
-                                              color: AppColors.grayColor),
-                                  errorText:
-                                      controller.mobileError.value.isEmpty
-                                          ? null
-                                          : controller.mobileError.value,
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.grey)),
-                                  enabledBorder: const OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.grey)),
-                                  hintStyle: const TextStyle(
-                                      fontSize: 18, color: Colors.black),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Obx(() => TextFormField(
+                              scribbleEnabled: true,
+                              maxLength: 11,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter(RegExp(r'[0-9]'),
+                                    allow: true),
+                                // mobileNumber
+                                PhoneNumberTextInputFormatter()
+                              ],
+                              controller: controller.mobileController,
+                              validator: (value) {},
+                              decoration: InputDecoration(
+                                counterText: "",
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 7.0, horizontal: 10.0),
+                                label: RichText(
+                                  text: const TextSpan(
+                                      text: "Mobile Number",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.normal)),
                                 ),
-                                keyboardType: TextInputType.phone,
-                              )),
-                        ]),
-                  ),
+                                errorStyle:
+                                    TextStyle(color: AppColors.redColor),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: AppColors.redColor)),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.grey),
+                                ),
+                                labelStyle:
+                                    controller.mobileError.value.isEmpty
+                                        ? TextStyle(
+                                            fontSize: 18,
+                                            color: AppColors.redColor)
+                                        : TextStyle(
+                                            fontSize: 18,
+                                            color: AppColors.grayColor),
+                                errorText:
+                                    controller.mobileError.value.isEmpty
+                                        ? null
+                                        : controller.mobileError.value,
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.grey)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.grey)),
+                                hintStyle: const TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                              ),
+                              keyboardType: TextInputType.phone,
+                            )),
+                      ]),
                 ),
               ),
             ],

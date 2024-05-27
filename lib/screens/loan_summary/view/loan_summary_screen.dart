@@ -1,4 +1,6 @@
+import 'package:feburary_flutter/customUtility/CustomWidget.dart';
 import 'package:feburary_flutter/screens/loan_summary/controller/loan_summary_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,66 +16,31 @@ class LoanSummaryScreen extends GetView<LoanSummaryController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
-      // appBar: AppBar(
-      // backgroundColor: AppColors.appBarColor),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
-          height: 60,
-          margin: const EdgeInsets.all(10),
-          child: Container(
-            margin: EdgeInsets.all(5),
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10))),
-              onPressed: () {
-                Get.to(OTPScreen());
-              },
-              child: const Text("Send OTP",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500)),
-            ),
-          )),
+      appBar: AppBar(
+        backgroundColor: AppColors.appBarColor,
+        titleSpacing: 0,
+        title: const Text(
+          "Loan Summary",
+          style: TextStyle(fontSize: 18),
+        ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.chevron_left)),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.phone))],
+      ),
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: ScrollPhysics(),
+          physics: NeverScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: const Image(
-                    image: AssetImage("images/ic_vridhi.png"),
-                    width: 100,
-                    height: 100),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Text(Languages.of(context)?.stringPleaseLogin ?? "",
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold)),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
-                child: Text(Languages.of(context)?.stringWelcomeBack ?? "",
-                    style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal)),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
               Container(
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height,
+
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -89,8 +56,462 @@ class LoanSummaryScreen extends GetView<LoanSummaryController> {
                 // child: Text("Hello")
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      top: 20, left: 10, right: 10, bottom: 15),
-                  child: Text("Loan Summary Screen")
+                      top: 10, left: 10, right: 10, bottom: 15),
+                  child: Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: double.infinity,
+                            child: Card.outlined(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 15, right: 15, top: 5, bottom: 5),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Home Loan: 123456",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: AppColors.blackColor,
+                                                fontSize: 13),
+                                          ),
+                                          Text(
+                                            "Sactioned ammount : yr7823t",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal,
+                                                color: AppColors.grayColor,
+                                                fontSize: 12),
+                                          )
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.expand_more)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.menu))
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Card.outlined(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 15, right: 15, top: 5, bottom: 5),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Home Loan: 123456",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: AppColors.blackColor,
+                                                    fontSize: 13),
+                                              ),
+                                              Text(
+                                                "Sactioned ammount : yr7823t",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: AppColors.grayColor,
+                                                    fontSize: 12),
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {},
+                                                  icon:
+                                                      Icon(Icons.expand_more)),
+                                              IconButton(
+                                                  onPressed: () {},
+                                                  icon: Icon(Icons.menu))
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    "LAN/application ID",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        color:
+                                                            AppColors.grayColor,
+                                                        fontSize: 13),
+                                                  ),
+                                                  Text(
+                                                    "Sactioned ammount",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        color: AppColors
+                                                            .blackColor,
+                                                        fontSize: 12),
+                                                  )
+                                                ],
+                                              ),
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    "Borrowers Name",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        color:
+                                                            AppColors.grayColor,
+                                                        fontSize: 13),
+                                                  ),
+                                                  Text(
+                                                    "Mallika Roy",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        color: AppColors
+                                                            .blackColor,
+                                                        fontSize: 12),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      "Loan Type",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color:
+                                                              AppColors.grayColor,
+                                                          fontSize: 13),
+                                                    ),
+                                                    Text(
+                                                      "Sactioned ammount ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color: AppColors
+                                                              .blackColor,
+                                                          fontSize: 12),
+                                                    )
+                                                  ],
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      "Current ROI",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color:
+                                                              AppColors.grayColor,
+                                                          fontSize: 13),
+                                                    ),
+                                                    Text(
+                                                      "Sactioned ammount",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color: AppColors
+                                                              .blackColor,
+                                                          fontSize: 12),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      "Disbursed ammount",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              AppColors.grayColor,
+                                                          fontSize: 13),
+                                                    ),
+                                                    Text(
+                                                      "Sactioned ammount ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color: AppColors
+                                                              .blackColor,
+                                                          fontSize: 12),
+                                                    )
+                                                  ],
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      "Loan ammount sanctioned",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              AppColors.grayColor,
+                                                          fontSize: 13),
+                                                    ),
+                                                    Text(
+                                                      "Sactioned ammount",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color: AppColors
+                                                              .blackColor,
+                                                          fontSize: 12),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      "Home Loan: ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              AppColors.grayColor,
+                                                          fontSize: 13),
+                                                    ),
+                                                    Text(
+                                                      "Sactioned ammount ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color: AppColors
+                                                              .blackColor,
+                                                          fontSize: 12),
+                                                    )
+                                                  ],
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      "Home Loan: ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              AppColors.grayColor,
+                                                          fontSize: 13),
+                                                    ),
+                                                    Text(
+                                                      "Sactioned ammount",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color: AppColors
+                                                              .blackColor,
+                                                          fontSize: 12),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      "Home Loan: ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              AppColors.grayColor,
+                                                          fontSize: 13),
+                                                    ),
+                                                    Text(
+                                                      "Sactioned ammount ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color: AppColors
+                                                              .blackColor,
+                                                          fontSize: 12),
+                                                    )
+                                                  ],
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      "Home Loan: ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              AppColors.grayColor,
+                                                          fontSize: 13),
+                                                    ),
+                                                    Text(
+                                                      "Sactioned ammount",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          color: AppColors
+                                                              .blackColor,
+                                                          fontSize: 12),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Card.outlined(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 15, right: 15, top: 5, bottom: 5),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Home Loan: 123456",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: AppColors.blackColor,
+                                                fontSize: 13),
+                                          ),
+                                          Text(
+                                            "Sactioned ammount : yr7823t",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.normal,
+                                                color: AppColors.grayColor,
+                                                fontSize: 12),
+                                          )
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.expand_more)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.menu))
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ]),
+                  ),
                 ),
               ),
             ],

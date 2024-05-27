@@ -82,13 +82,13 @@ class OtherDetailsWidget extends StatelessWidget {
 }
 
 class CardView extends StatelessWidget {
-  final String cardTile;
+  final String cardTitle;
   final Widget widget;
   final bool showIcon;
 
   const CardView(
       {super.key,
-      required this.cardTile,
+      required this.cardTitle,
       required this.widget,
       required this.showIcon});
 
@@ -117,7 +117,7 @@ class CardView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          cardTile,
+                          cardTitle,
                           style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,

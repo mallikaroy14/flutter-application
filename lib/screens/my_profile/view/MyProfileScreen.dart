@@ -80,7 +80,7 @@ class MyProfileScreen extends GetView<MyProfileController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CardView(
-                            cardTile: "Personal Details",
+                            cardTitle: "Personal Details",
                             widget: Padding(
                               padding: const EdgeInsets.only(
                                   left: 20, right: 20, top: 5, bottom: 10),
@@ -95,7 +95,7 @@ class MyProfileScreen extends GetView<MyProfileController> {
                             showIcon: true,
                           ),
                           CardView(
-                            cardTile: "Address Details",
+                            cardTitle: "Address Details",
                             widget: Padding(
                               padding: EdgeInsets.only(
                                   top: 7, left: 15, right: 15, bottom: 10),
@@ -131,12 +131,12 @@ class MyProfileScreen extends GetView<MyProfileController> {
                             showIcon: true,
                           ),
                           CardView(
-                            cardTile: "Other Details",
+                            cardTitle: "Other Details",
                             widget: OtherDetailsWidget(),
                             showIcon: true,
                           ),
                           CardView(
-                            cardTile: "Language & Preferences",
+                            cardTitle: "Language & Preferences",
                             widget: Padding(
                               padding: EdgeInsets.only(left: 20, right: 10),
                               child: Row(

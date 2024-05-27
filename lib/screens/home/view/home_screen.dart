@@ -207,6 +207,8 @@ class HomeScreen extends GetView<HomeController> {
                                     Get.toNamed(RouteName.myProfileScreen);
                                   } else if (gridText == "refer a friend") {
                                     Get.toNamed(RouteName.referAFriend);
+                                  } else if (gridText == "Loan Summary") {
+                                    Get.toNamed(RouteName.loanSummaryScreen);
                                   }
                                 }),
                               ],
@@ -290,7 +292,7 @@ class HomeScreen extends GetView<HomeController> {
 final List _photos = [
   Data("My Profile", "images/logo.png"),
   Data("refer a friend", "images/logo.png"),
-  Data("Part ", "images/logo.png"),
+  Data("Loan Summary", "images/logo.png"),
   Data("Part", "images/logo.png"),
   Data("disbursement", "images/logo.png"),
   Data("Last2 ", "images/logo.png"),

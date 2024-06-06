@@ -1,13 +1,4 @@
-import 'package:feburary_flutter/localization/language/languages.dart';
-import 'package:feburary_flutter/screens/CameraPermissionHandle.dart';
 import 'package:feburary_flutter/screens/loan_summary/view/loan_summary_screen.dart';
-import 'package:feburary_flutter/screens/refer_a_friend/view/refer_a_friend_screen.dart';
-import 'package:feburary_flutter/screens/login/view/LoginScreen.dart';
-import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
-import 'package:feburary_flutter/screens/otp/view/otp_view/OTPScreen.dart';
-import 'package:feburary_flutter/screens/PermisionHandlreScreen.dart';
-import 'package:feburary_flutter/theme/AppThemes.dart';
-import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:feburary_flutter/utility/router/Routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,7 +9,6 @@ import 'DisbursedCustomCard.dart';
 import 'localization/locale_constant.dart';
 import 'localization/localizations_delegte.dart';
 import 'models/BottomNavigation.dart';
-import 'models/GridViewLayout.dart';
 import 'models/TotalOverDueCard.dart';
 
 void main() {
@@ -36,11 +26,11 @@ class MyApp1 extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp1> {
-  late Locale _locale = Locale("");
+  // late Locale _locale = Locale("");
 
   void setLocale(Locale locale) {
     setState(() {
-      _locale = locale;
+      // _locale = locale;
     });
   }
 
@@ -48,7 +38,7 @@ class _MyAppState extends State<MyApp1> {
   void didChangeDependencies() async {
     getLocale().then((locale) {
       setState(() {
-        _locale = locale;
+        // _locale = locale;
       });
     });
     super.didChangeDependencies();
@@ -66,7 +56,7 @@ class _MyAppState extends State<MyApp1> {
       // darkTheme: AppThemes.dark,
       // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      locale: _locale,
+      // locale: _locale,
       getPages: Routes.pages,
       // home:
       // CameraPermissionHandle(),

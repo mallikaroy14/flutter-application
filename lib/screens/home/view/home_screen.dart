@@ -1,12 +1,11 @@
-import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
-import 'package:feburary_flutter/screens/pay_EMI/view/Pay_EMIScreen.dart';
-import 'package:feburary_flutter/screens/refer_a_friend/view/refer_a_friend_screen.dart';
 import 'package:feburary_flutter/screens/home/controller/HomeController.dart';
+import 'package:feburary_flutter/screens/pay_EMI/view/Pay_EMIScreen.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:feburary_flutter/utility/router/route_name.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../DisbursedCustomCard.dart';
 import '../../../models/BottomNavigation.dart';
@@ -30,70 +29,7 @@ class HomeScreen extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 10.0, bottom: 10.0, right: 10.0),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Text("Hi Payal",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 20)),
-                          Text("Last login at 23-01-2024, 12.00.00",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 12))
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                          top: 15.0, left: 10.0, bottom: 10.0, right: 10.0),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            InkWell(
-                              child: const Icon(Icons.notifications,
-                                  color: Colors.white),
-                              onTap: () {
-                                //action code when clicked
-                                if (kDebugMode) {
-                                  print("The icon is clicked");
-                                }
-                              },
-                            ),
-                            InkWell(
-                              child:
-                                  const Icon(Icons.phone, color: Colors.white),
-                              onTap: () {
-                                //action code when clicked
-                                if (kDebugMode) {
-                                  print("The icon is clicked");
-                                }
-                              },
-                            ),
-                            InkWell(
-                              child:
-                                  const Icon(Icons.face, color: Colors.white),
-                              onTap: () {
-                                //action code when clicked
-                                if (kDebugMode) {
-                                  print("The icon is clicked");
-                                }
-                              },
-                            ),
-                          ]),
-                    )
-                  ]),
+              appBarWidget(context),
               TotalOverDueCard(callback: callBackFromPayNow),
               Container(
                   decoration: const BoxDecoration(
@@ -121,7 +57,7 @@ class HomeScreen extends GetView<HomeController> {
                             const SizedBox(height: 10),
                             const Text("Quick Actions",
                                 style: TextStyle(color: Colors.black)),
-                            GridViewLayout(context, (callBackText) {
+                            gridViewLayout(context, (callBackText) {
                               if (kDebugMode) {
                                 print(callBackText);
                               }
@@ -225,6 +161,174 @@ class HomeScreen extends GetView<HomeController> {
         bottomNavigationBar: const BottomNavigation(),
       ),
     );
+  }
+
+  Row appBarWidget(BuildContext context) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.only(
+                top: 10.0, left: 10.0, bottom: 10.0, right: 10.0),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Text("Hi Payal",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 20)),
+                Text("Last login at 23-01-2024, 12.00.00",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12))
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(
+                top: 15.0, left: 10.0, bottom: 10.0, right: 10.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  InkWell(
+                    child: const Icon(Icons.notifications, color: Colors.white),
+                    onTap: () {
+                      //action code when clicked
+                      if (kDebugMode) {
+                        print("The icon is clicked");
+                      }
+                    },
+                  ),
+                  InkWell(
+                    child: const Icon(Icons.phone, color: Colors.white),
+                    onTap: () {
+                      buildShowModalBottomSheet(context);
+                    },
+                  ),
+                  InkWell(
+                    child: const Icon(Icons.face, color: Colors.white),
+                    onTap: () {
+                      //action code when clicked
+                      if (kDebugMode) {
+                        print("The icon is clicked");
+                      }
+                    },
+                  ),
+                ]),
+          )
+        ]);
+  }
+
+  Future<dynamic> buildShowModalBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: 5,
+                width: 80,
+                decoration: const BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.all(Radius.circular(8))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Container(
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15.0),
+                          topRight: Radius.circular(15.0))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 10, bottom: 20, left: 10, right: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              "Get In Touch",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                icon: Icon(Icons.close))
+                          ],
+                        ),
+                        const Text(
+                          "If you have Any Enquires Get In Touch With Us. We will be happy to Help you.",
+                          style: TextStyle(
+                              color: AppColors.grayColor, fontSize: 13),
+                        ),
+                        SizedBox(height: 10),
+                        Divider(thickness: 1, color: AppColors.grayColor),
+                        SizedBox(height: 10),
+                        Text(
+                          "Via Call",
+                          style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.blackColor),
+                        ),
+                        SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: OutlinedButton(
+                                onPressed: () async {
+                                  await callOnMobileNumber();
+                                  // launchUrlString("+918210415010");
+                                },
+                                style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                        color: AppColors.primaryColor),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(6.0))),
+                                child: const Text(
+                                  "867868766986",
+                                  style: TextStyle(
+                                      color: AppColors.primaryColor,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500),
+                                )),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        });
+  }
+
+  Future<void> callOnMobileNumber() async {
+    final call = Uri.parse("tel:+918210415010");
+    if (await canLaunchUrl(call)) {
+      launchUrl(call, mode: LaunchMode.externalApplication);
+      Get.back();
+    } else {
+      throw 'Could not launch $call';
+    }
   }
 
   Container gridViewWithDivider(void Function(String) callBack) {

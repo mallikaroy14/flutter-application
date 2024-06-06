@@ -1,14 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationPermissionScreen extends StatefulWidget {
+  const LocationPermissionScreen({super.key});
+
   @override
-  State<StatefulWidget> createState() => _locationPermissionScreen();
+  State<StatefulWidget> createState() => _LocationPermissionScreen();
 }
 
-class _locationPermissionScreen extends State<LocationPermissionScreen> {
+class _LocationPermissionScreen extends State<LocationPermissionScreen> {
   final geolocator =
       Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
   late Position _currentPosition ;
@@ -21,7 +22,7 @@ class _locationPermissionScreen extends State<LocationPermissionScreen> {
       });
       getAddressFromLatLng();
     }).catchError((e) {
-      print(e);
+
     });
   }
 
@@ -47,13 +48,13 @@ class _locationPermissionScreen extends State<LocationPermissionScreen> {
       children: [
         Container(
           decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
               Row(
                 children: [
-                  Icon(Icons.location_city),
-                  SizedBox(
+                  const Icon(Icons.location_city),
+                  const SizedBox(
                     width: 8,
                   ),
                   Expanded(
@@ -67,10 +68,7 @@ class _locationPermissionScreen extends State<LocationPermissionScreen> {
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ),
-                      if (_currentPosition != null && currentAddress != null)
-                        Text(currentAddress, style: TextStyle(fontSize: 20.0))
-                      else
-                          Text("Coudn'nt fetch the location"),
+                      Text(currentAddress, style: const TextStyle(fontSize: 20.0)),
                     ],
                   ))
                 ],

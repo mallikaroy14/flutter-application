@@ -87,12 +87,12 @@ class CustomTextFieldWithAsterisk extends StatelessWidget {
             ),
 
             focusedBorder:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-            errorBorder:  OutlineInputBorder(borderSide: BorderSide(color: Colors.red)) ,
+                const OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            errorBorder:  const OutlineInputBorder(borderSide: BorderSide(color: Colors.red)) ,
             enabledBorder:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-            hintStyle: TextStyle(fontSize: 18, color: Colors.black),
-            labelStyle: TextStyle(fontSize: 18, color: Colors.black),
+                const OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            hintStyle: const TextStyle(fontSize: 18, color: Colors.black),
+            labelStyle: const TextStyle(fontSize: 18, color: Colors.black),
             // errorText: "Please enter valid name"
           ),
           keyboardType: keyboardType,

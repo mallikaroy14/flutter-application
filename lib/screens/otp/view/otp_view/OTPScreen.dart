@@ -15,7 +15,7 @@ class OTPScreen extends GetView<OTPController> {
     final defaultThemePin = PinTheme(
       width: 60,
       height: 60,
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w700,
           color: AppColors.blackColor,

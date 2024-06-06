@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../models/data.dart';
@@ -54,7 +53,7 @@ class OtherDetailsWidget extends StatelessWidget {
         children: [
       ListView.builder(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: otherDetails.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
@@ -63,12 +62,12 @@ class OtherDetailsWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(otherDetails[index].text,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: AppColors.grayColor)),
                 Text(otherDetails[index].image,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w400,
                         color: AppColors.blackColor))
@@ -123,7 +122,7 @@ class CardView extends StatelessWidget {
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
-                        if (showIcon) Icon(Icons.edit),
+                        if (showIcon) const Icon(Icons.edit),
                       ],
                     ),
                   ),
@@ -149,16 +148,16 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromRGBO(042, 068, 130, 50),
+            backgroundColor: const Color.fromRGBO(042, 068, 130, 50),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10))),
         onPressed: () {},
         child: Text(buttonCta,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white,
                 fontSize: 17,
                 fontWeight: FontWeight.w500)),

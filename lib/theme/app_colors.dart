@@ -6,7 +6,7 @@ class AppColors {
   static const blackColor = Color(0xff000000);
   static const whiteColor = Color(0xffffffff);
   static const orangeColor = Color(0xffea652b);
-  final color =Colors.deepOrangeAccent;
+  final color = Colors.deepOrangeAccent;
   static const lightedGrayColor = Color(0xfff5f6ff);
   static const borderColor = Color(0xfff0f0f0);
   static const hintColor = Color(0xff6a6a6a);
@@ -16,4 +16,5 @@ class AppColors {
   static const appBarColor = Color(0xFFFEFBF1);
   static const primaryColor = Color(0xFF2A4582);
   static const homeBackgroundColor = Color(0xFFF3F7FE);
+  static const lightBlueColor = Color(0xFFF3F7FF);
 }

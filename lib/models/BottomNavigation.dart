@@ -18,7 +18,7 @@ class _BottomSheetNavigation extends State {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
+    return   BottomNavigationBar(
       unselectedItemColor: Colors.black,
       selectedItemColor: Colors.deepOrangeAccent,
       backgroundColor: Colors.white,

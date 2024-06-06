@@ -12,7 +12,7 @@ final List _photos = [
   Data("Last ", "images/logo.png")
 ];
 
-Widget GridViewLayout(context, void Function(String) gridCallBack) {
+Widget gridViewLayout(context, void Function(String) gridCallBack) {
   return GridView.builder(
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),

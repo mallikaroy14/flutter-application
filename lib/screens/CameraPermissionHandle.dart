@@ -8,10 +8,10 @@ class CameraPermissionHandle extends StatefulWidget {
   const CameraPermissionHandle({super.key});
 
   @override
-  State<StatefulWidget> createState() => _cameraPermissionHandle();
+  State<StatefulWidget> createState() => _CameraPermissionHandle();
 }
 
-class _cameraPermissionHandle extends State<CameraPermissionHandle> {
+class _CameraPermissionHandle extends State<CameraPermissionHandle> {
   Uint8List? image;
   File? selectedImage;
 
@@ -32,7 +32,7 @@ class _cameraPermissionHandle extends State<CameraPermissionHandle> {
                   radius: 100,
                   backgroundImage: MemoryImage(image!),
                 )
-              : CircleAvatar(radius: 100),
+              : const CircleAvatar(radius: 100),
           ElevatedButton(
               onPressed: () {
                 _settingModalBottomSheet(context);
@@ -47,22 +47,20 @@ class _cameraPermissionHandle extends State<CameraPermissionHandle> {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
-          return Container(
-            child: Wrap(
-              children: <Widget>[
-                ListTile(
-                    title: new Text('Gallery'),
-                    onTap: () => {
-                          _pickImageFromGallery(),
-                          Navigator.pop(context),
-                        }),
-                ListTile(
-                  title: new Text('Camera'),
-                  onTap: () =>
-                      {imageUploadFromCamera(), Navigator.pop(context)},
-                ),
-              ],
-            ),
+          return Wrap(
+            children: <Widget>[
+              ListTile(
+                  title: const Text('Gallery'),
+                  onTap: () => {
+                        _pickImageFromGallery(),
+                        Navigator.pop(context),
+                      }),
+              ListTile(
+                title: const Text('Camera'),
+                onTap: () =>
+                    {imageUploadFromCamera(), Navigator.pop(context)},
+              ),
+            ],
           );
         });
   }

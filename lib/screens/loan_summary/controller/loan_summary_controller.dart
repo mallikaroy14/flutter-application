@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoanSummaryController extends SuperController{
@@ -6,6 +7,7 @@ class LoanSummaryController extends SuperController{
   final mobileController = TextEditingController();
   final mobileTextEditing = TextEditingValue();
   final mobileError = "".obs;
+  final ExpansionTileController expandController = ExpansionTileController();
 
   @override
   void onInit() {

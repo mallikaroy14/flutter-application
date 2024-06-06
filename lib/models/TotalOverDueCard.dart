@@ -8,7 +8,7 @@ class TotalOverDueCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -28,7 +28,7 @@ class TotalOverDueCard extends StatelessWidget {
                       topRight: Radius.circular(12.0)),
                 ),
                 padding:
-                    EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                    const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

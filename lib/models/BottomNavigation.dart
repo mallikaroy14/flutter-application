@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -19,6 +20,7 @@ class _BottomSheetNavigation extends State {
   @override
   Widget build(BuildContext context) {
     return   BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       unselectedItemColor: Colors.black,
       selectedItemColor: Colors.deepOrangeAccent,
       backgroundColor: Colors.white,
@@ -37,13 +39,14 @@ class _BottomSheetNavigation extends State {
             label: "Self Service",
             backgroundColor: Colors.white),
       ],
-      type: BottomNavigationBarType.shifting,
       showUnselectedLabels: true,
       elevation: 100,
       currentIndex: _selectedTab,
       onTap: (index) {
         _changeTab(index);
-        print("index: $index");
+        if (kDebugMode) {
+          print("index: $index");
+        }
       },
     );
   }

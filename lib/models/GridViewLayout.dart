@@ -1,9 +1,10 @@
+import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'data.dart';
 
 final List _photos = [
-  Data("hello", "images/logo.png"),
+  Data("Request Disbursement", "images/logo.png"),
   Data("Hello", "images/logo.png"),
   Data("Part ", "images/logo.png"),
   Data("Part", "images/logo.png"),
@@ -25,26 +26,29 @@ Widget gridViewLayout(context, void Function(String) gridCallBack) {
       itemCount: _photos.length,
       itemBuilder: (context, index) {
         return Container(
-          height: 10.0,
           margin: const EdgeInsets.all(5.0),
-          padding: const EdgeInsets.all(5.0),
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
+              border: Border.all(color: AppColors.grayColor),
               borderRadius: BorderRadius.circular(8.0)),
           child: InkWell(
             onTap: () {
               gridCallBack(_photos[index].text);
             },
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image(
                   image: AssetImage(_photos[index].image),
                   width: 30,
                   height: 30,
                 ),
-                Text(
-                  _photos[index].text,
-                  style: Theme.of(context).textTheme.bodySmall,
+                Expanded(
+                  child: Text(
+                    _photos[index].text,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
               ],
             ),

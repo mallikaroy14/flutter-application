@@ -1,3 +1,5 @@
+import 'package:feburary_flutter/screens/dashboard/binding/dashboardBinding.dart';
+import 'package:feburary_flutter/screens/dashboard/view/dashBoardview.dart';
 import 'package:feburary_flutter/screens/home/binding/HomeBinding.dart';
 import 'package:feburary_flutter/screens/loan_summary/binding/loan_summary_binding.dart';
 import 'package:feburary_flutter/screens/loan_summary/view/loan_summary_screen.dart';
@@ -13,6 +15,8 @@ import 'package:feburary_flutter/screens/login/view/LoginScreen.dart';
 import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/otp/view/otp_view/OTPScreen.dart';
 import 'package:feburary_flutter/screens/home/view/home_screen.dart';
+import 'package:feburary_flutter/screens/self_service/binding/self_service_binding.dart';
+import 'package:feburary_flutter/screens/self_service/view/self_service_screen.dart';
 import 'package:feburary_flutter/screens/splash/binding/SplashBiding.dart';
 import 'package:feburary_flutter/screens/splash/view/SplashScreen.dart';
 import 'package:get/get.dart';
@@ -33,8 +37,12 @@ class Routes {
         page: () => OTPScreen(),
         binding: OTPBinding()),
     GetPage(
+        name: RouteName.dashboardScreen,
+        page: () => DashboardScreen(),
+        binding: Dashboardbinding()),
+    GetPage(
         name: RouteName.homeScreen,
-        page: () => const HomeScreen(),
+        page: () => HomeScreen(),
         binding: HomeBinding()),
     GetPage(
         name: RouteName.myProfileScreen,
@@ -55,6 +63,12 @@ class Routes {
     GetPage(
         name: RouteName.loanSummaryScreen,
         page: () => LoanSummaryScreen(),
-        binding: LoanSummaryBinding())
+        binding: LoanSummaryBinding()),
+    GetPage(
+        name: RouteName.selfServiceScreen,
+        page: () => SelfServiceScreen(),
+        binding: SelfServiceBinding())
+
+
   ];
 }

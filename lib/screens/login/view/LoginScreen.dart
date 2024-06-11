@@ -19,29 +19,26 @@ class LoginScreen extends GetView<LoginController> {
       // backgroundColor: AppColors.appBarColor),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
-        height: 60,
-        margin: const EdgeInsets.all(10),
-        child: Container(
-            margin: EdgeInsets.all(5),
-            width: double.infinity,
-            child: ElevatedButton(
-              statesController: controller.statesController,
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
-                  disabledBackgroundColor: AppColors.grayColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10))),
-              onPressed: () {
-                if(controller.isMobileValid.isTrue)
-                Get.toNamed(RouteName.otpScreen);
-              },
-              child: const Text("Send OTP",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500)),
-            )),
-      ),
+          height: 50,
+          margin: EdgeInsets.all(5),
+          width: double.infinity,
+          child: ElevatedButton(
+            statesController: controller.statesController,
+            style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primaryColor,
+                disabledBackgroundColor: AppColors.grayColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+            onPressed: () {
+              if(controller.isMobileValid.isTrue)
+              Get.toNamed(RouteName.otpScreen);
+            },
+            child: const Text("Send OTP",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500)),
+          )),
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           physics: NeverScrollableScrollPhysics(),

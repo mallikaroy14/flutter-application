@@ -31,7 +31,8 @@ class SplashController extends SuperController{
 
   void openLoginScreen() async{
    await Future.delayed(Duration(seconds: 2), () async {
-     Get.offNamed(RouteName.loginScreen);
+
+     Get.offNamed(RouteName.dashboardScreen);
    } );
   }
 

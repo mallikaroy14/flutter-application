@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import '../../../theme/app_colors.dart';
 
 class LoanSummaryScreen extends GetView<LoanSummaryController> {
-  bool _customTileExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -67,66 +66,68 @@ class LoanSummaryScreen extends GetView<LoanSummaryController> {
                                       BorderRadius.all(Radius.circular(5))),
                               child: Column(
                                 children: [
-                                  ExpansionTile(
-                                    // controller: controller.expandController,
-                                    collapsedShape:
-                                        const ContinuousRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(30),
-                                      ),
-                                    ),
-                                    shape: const ContinuousRectangleBorder(
+                                  Obx( () =>
+                                     ExpansionTile(
+                                      // controller: controller.expandController,
+                                      collapsedShape:
+                                          const ContinuousRectangleBorder(
                                         borderRadius: BorderRadius.all(
-                                            Radius.circular(30))),
-                                    expandedCrossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    dense: true,
-                                    childrenPadding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    tilePadding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    iconColor: Colors.black,
-                                    backgroundColor: AppColors.whiteColor,
-                                    collapsedIconColor: Colors.black,
-                                    collapsedBackgroundColor:
-                                        AppColors.lightBlueColor,
-                                    title: const Text(
-                                      "Home Loan: 123456",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.blackColor,
-                                          fontSize: 13),
+                                          Radius.circular(30),
+                                        ),
+                                      ),
+                                      shape: const ContinuousRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(30))),
+                                      expandedCrossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      dense: true,
+                                      childrenPadding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      tilePadding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      iconColor: Colors.black,
+                                      backgroundColor: AppColors.whiteColor,
+                                      collapsedIconColor: Colors.black,
+                                      collapsedBackgroundColor:
+                                          AppColors.lightBlueColor,
+                                      title: const Text(
+                                        "Home Loan: 123456",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.blackColor,
+                                            fontSize: 13),
+                                      ),
+                                      subtitle: const Text(
+                                        "Sanctioned amount : yr7823t",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.normal,
+                                            color: AppColors.grayColor,
+                                            fontSize: 12),
+                                      ),
+                                      onExpansionChanged: (bool expand) {
+                                        controller.customTileExpanded.value = expand;
+                                      },
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          IconButton(
+                                              onPressed: () {
+                                                if (controller.expandController.isExpanded) {
+                                                  controller.expandController.collapse();
+                                                } else {
+                                                  controller.expandController.expand();
+                                                }
+                                              },
+                                              icon: Icon(controller.customTileExpanded.isTrue
+                                                  ? Icons.expand_more
+                                                  : Icons.expand_less)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.menu)),
+                                        ],
+                                      ),
+                                      children: [expandedWidget()],
                                     ),
-                                    subtitle: const Text(
-                                      "Sanctioned amount : yr7823t",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.normal,
-                                          color: AppColors.grayColor,
-                                          fontSize: 12),
-                                    ),
-                                    onExpansionChanged: (bool expand) {
-                                      _customTileExpanded = expand;
-                                    },
-                                    trailing: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {
-                                              if (controller.expandController.isExpanded) {
-                                                controller.expandController.collapse();
-                                              } else {
-                                                controller.expandController.expand();
-                                              }
-                                            },
-                                            icon: Icon(_customTileExpanded
-                                                ? Icons.expand_less
-                                                : Icons.expand_more)),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(Icons.menu)),
-                                      ],
-                                    ),
-                                    children: [expandedWidget()],
                                   ),
                                 ],
                               ),

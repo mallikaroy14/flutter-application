@@ -9,9 +9,11 @@ class LoanSummaryController extends SuperController{
   final mobileError = "".obs;
   final ExpansionTileController expandController = ExpansionTileController();
 
+  final customTileExpanded = false.obs;
+
+
   @override
   void onInit() {
-
     super.onInit();
   }
   @override

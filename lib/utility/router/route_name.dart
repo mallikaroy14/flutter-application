@@ -8,4 +8,6 @@ class RouteName {
   static const String payEmiScreen = "/payEmiScreen";
   static const String referAFriend = "/referAFriend";
   static const String loanSummaryScreen = "/loanSummaryScreen";
+  static const String dashboardScreen = "/dashboardScreen";
+  static const String selfServiceScreen ="/selfServiceScreen";
 }

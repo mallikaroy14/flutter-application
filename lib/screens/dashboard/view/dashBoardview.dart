@@ -1,10 +1,10 @@
 import 'package:feburary_flutter/screens/dashboard/controller/dashboardController.dart';
 import 'package:feburary_flutter/screens/home/view/home_screen.dart';
+import 'package:feburary_flutter/screens/requests/controller/requests_controller.dart';
+import 'package:feburary_flutter/screens/requests/view/requests_screen.dart';
 import 'package:feburary_flutter/screens/self_service/controller/self_service_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 import '../../../theme/app_colors.dart';
@@ -15,6 +15,7 @@ class DashboardScreen extends GetView<DashboardController> {
   Widget build(BuildContext context) {
 
     Get.put(SelfServiceController());
+    Get.put(RequestsController());
 
     return Scaffold(
         backgroundColor: AppColors.primaryColor,
@@ -23,7 +24,7 @@ class DashboardScreen extends GetView<DashboardController> {
             index: controller.tabIndex.value,
             children: [
               HomeScreen(),
-              Text("Requests"),
+              RequestsScreen(),
               SelfServiceScreen(),
             ],
           ),

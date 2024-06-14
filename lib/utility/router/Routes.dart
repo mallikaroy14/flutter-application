@@ -15,6 +15,7 @@ import 'package:feburary_flutter/screens/login/view/LoginScreen.dart';
 import 'package:feburary_flutter/screens/my_profile/view/MyProfileScreen.dart';
 import 'package:feburary_flutter/screens/otp/view/otp_view/OTPScreen.dart';
 import 'package:feburary_flutter/screens/home/view/home_screen.dart';
+import 'package:feburary_flutter/screens/requests/view/requests_screen.dart';
 import 'package:feburary_flutter/screens/self_service/binding/self_service_binding.dart';
 import 'package:feburary_flutter/screens/self_service/view/self_service_screen.dart';
 import 'package:feburary_flutter/screens/splash/binding/SplashBiding.dart';
@@ -67,8 +68,10 @@ class Routes {
     GetPage(
         name: RouteName.selfServiceScreen,
         page: () => SelfServiceScreen(),
-        binding: SelfServiceBinding())
-
-
+        binding: SelfServiceBinding()),
+    GetPage(
+        name: RouteName.requestsScreen,
+        page: () => RequestsScreen(),
+        binding: ReferAFriendBinding())
   ];
 }

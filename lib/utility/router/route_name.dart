@@ -10,4 +10,5 @@ class RouteName {
   static const String loanSummaryScreen = "/loanSummaryScreen";
   static const String dashboardScreen = "/dashboardScreen";
   static const String selfServiceScreen ="/selfServiceScreen";
+  static const String requestsScreen ="/requestsScreen";
 }

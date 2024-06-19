@@ -1,14 +1,15 @@
 import 'package:feburary_flutter/screens/refer_a_friend/controller/refer_a_friend_controller.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
+import '../../../customUtility/custom_time_line.dart';
 import '../../../theme/app_colors.dart';
+import '../../expandableWidget.dart';
 
 class RequestsScreen extends GetView<ReferAFriendController> {
-  List<Step> step = [Step(title: Text(""), content: Text("Query Sent"), isActive: true)];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,83 +37,79 @@ class RequestsScreen extends GetView<ReferAFriendController> {
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15))),
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                   color: AppColors.whiteColor,
                   child: LayoutBuilder(builder: (context, constraint) {
-                    return SingleChildScrollView(
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                            minWidth: constraint.maxWidth,
-                            minHeight: constraint.maxHeight),
-                        child: IntrinsicHeight(
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Card.outlined(
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5))),
-                                    child: Column(
-                                      children: [
-                                        ExpansionTile(
-                                          // controller: controller.expandController,
-                                          collapsedShape:
-                                              const ContinuousRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(30),
-                                            ),
-                                          ),
-                                          backgroundColor:
-                                              AppColors.lightBlueColor,
-                                          shape:
-                                              const ContinuousRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(30))),
-                                          expandedCrossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          dense: true,
-                                          tilePadding:
-                                              const EdgeInsets.symmetric(
-                                                  horizontal: 15),
-                                          iconColor: Colors.black,
-                                          collapsedIconColor: Colors.black,
-                                          collapsedBackgroundColor:
-                                              AppColors.lightBlueColor,
-                                          title: cardHeaderWidget(),
-                                          onExpansionChanged: (bool expand) {
-                                            // controller.customTileExpanded.value = expand;
-                                          },
-                                          trailing: SizedBox(),
-                                          children: [expandedWidget()],
-                                        ),
-                                      ],
+                    return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Card.outlined(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              // if you need this
+                              side: BorderSide(
+                                color:
+                                AppColors.grayColor.withOpacity(0.2),
+                                width: 1,
+                              ),
+                            ),
+                            elevation: 3,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5))),
+                              child: Column(
+                                children: [
+                                  ExpansionTile(
+                                    // controller: controller.expandController,
+                                    collapsedShape:
+                                        const ContinuousRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(30),
+                                      ),
                                     ),
+                                    backgroundColor: AppColors.lightBlueColor,
+                                    shape: const ContinuousRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(30))),
+                                    expandedCrossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    dense: true,
+                                    tilePadding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    iconColor: Colors.black,
+                                    collapsedIconColor: Colors.black,
+                                    collapsedBackgroundColor:
+                                        AppColors.lightBlueColor,
+                                    title: cardHeaderWidget(),
+                                    onExpansionChanged: (bool expand) {
+                                      // controller.customTileExpanded.value = expand;
+                                    },
+                                    trailing: SizedBox(),
+                                    children: [expandedWidget()],
                                   ),
-                                ),
-                                Spacer(),
-                                Container(
-                                  margin: const EdgeInsets.all(5),
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: AppColors.primaryColor,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10))),
-                                    onPressed: () {},
-                                    child: const Text("Create New Request",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.w500)),
-                                  ),
-                                )
-                              ]),
-                        ),
-                      ),
-                    );
+                                ],
+                              ),
+                            ),
+                          ),
+                          Spacer(),
+                          Container(
+                            margin: const EdgeInsets.all(5),
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                              onPressed: () {},
+                              child: const Text("Create New Request",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500)),
+                            ),
+                          )
+                        ]);
                   }),
                 ),
               ),
@@ -213,15 +210,57 @@ class RequestsScreen extends GetView<ReferAFriendController> {
     );
   }
 
-  Container expandedWidget() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      color: AppColors.whiteColor,
-      child:
-      // Stepper(steps: step, type: StepperType.vertical,)
+  LayoutBuilder expandedWidget() {
+    return LayoutBuilder(builder: (context, constraint) {
+      double _height = constraint.maxHeight;
 
+      return IntrinsicHeight(
+        child: Expanded(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            color: AppColors.whiteColor,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                verticalLineWithIcon(_height),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      querySent(),
+                      SizedBox(height: 10),
+                      Container(
+                          height: 40,
+                          margin: EdgeInsets.all(5),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primaryColor,
+                                disabledBackgroundColor: AppColors.grayColor,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                            onPressed: () {},
+                            child: const Text("Submit",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.normal)),
+                          )),
+                      SizedBox(height: 10),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    });
+  }
 
-      Column(
+  Padding querySent() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15, left: 10, right: 5),
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -265,25 +304,116 @@ class RequestsScreen extends GetView<ReferAFriendController> {
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: AppColors.grayColor)),
           )),
-          SizedBox(height: 10),
-          Container(
-              height: 40,
-              margin: EdgeInsets.all(5),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
-                    disabledBackgroundColor: AppColors.grayColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
-                onPressed: () {},
-                child: const Text("Submit",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal)),
-              )),
         ],
       ),
     );
   }
+}
+
+class _DashedLinePainter extends CustomPainter {
+  final Color color;
+  final double thickness;
+  final double dashWidth;
+  final double dashGap;
+
+  _DashedLinePainter({
+    required this.color,
+    required this.thickness,
+    required this.dashWidth,
+    required this.dashGap,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = color
+      ..strokeWidth = thickness
+      ..strokeCap = StrokeCap.square;
+
+    double startY = 0;
+    while (startY < size.height) {
+      canvas.drawLine(
+        Offset(size.width / 2, startY),
+        Offset(size.width / 2, startY + dashWidth),
+        paint,
+      );
+      startY += dashWidth + dashGap;
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+Column verticalLineWithIcon(_height) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      SizedBox(
+          height: 15, child: VerticalDivider(color: AppColors.orangeColor)),
+      Icon(
+        Icons.notifications, // Replace with your desired icon
+        size: 20.0,
+        color: AppColors.orangeColor,
+      ), // Space between icon and line
+
+      // Vertical line with dashed effect
+      Container(
+        height: 180,
+        child: CustomPaint(
+          painter: _DashedLinePainter(
+            color: AppColors.orangeColor,
+            thickness: 1,
+            dashWidth: 2,
+            dashGap: 2,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+class DashedLinePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.black
+      ..strokeWidth = 1.0
+      ..style = PaintingStyle.stroke;
+
+    final double dashWidth = 5.0;
+    final double dashSpace = 5.0;
+    double startY = 0;
+
+    while (startY < size.height) {
+      canvas.drawLine(Offset(0, startY), Offset(0, startY + dashWidth), paint);
+      startY += dashWidth + dashSpace;
+    }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
+  }
+
+// class DashedLineVerticalPainter extends CustomPainter {
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     double dashHeight = 10,
+//         dashSpace = 3,
+//         startY = 0;
+//     final paint = Paint()
+//       ..color = AppColors.orangeColor
+//       ..strokeWidth = size.width;
+//     while (startY < size.height) {
+//       canvas.drawLine(Offset(0, startY), Offset(0, startY + dashHeight), paint);
+//       startY += dashHeight + dashSpace;
+//     }
+//   }
+//
+//   @override
+//   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

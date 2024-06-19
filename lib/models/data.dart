@@ -25,11 +25,17 @@ class PersonalDetails {
   String mobile;
   String email;
 
-  PersonalDetails(
-    this.name,
-    this.gender,
-    this.dob,
-    this.mobile,
-    this.email
-  );
+  PersonalDetails(this.name, this.gender, this.dob, this.mobile, this.email);
+}
+
+class ServiceRequestData {
+  ServiceRequestData(this.lanNo, this.serviceType, this.amount,
+      this.requestedDate, this.status, this.subTitle);
+
+  String lanNo;
+  String serviceType;
+  String amount;
+  String requestedDate;
+  String status;
+  String subTitle;
 }

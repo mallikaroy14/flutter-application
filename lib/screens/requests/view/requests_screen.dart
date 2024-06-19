@@ -1,17 +1,32 @@
+import 'package:feburary_flutter/models/data.dart';
 import 'package:feburary_flutter/screens/refer_a_friend/controller/refer_a_friend_controller.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
-import '../../../customUtility/custom_time_line.dart';
 import '../../../theme/app_colors.dart';
-import '../../expandableWidget.dart';
 
 class RequestsScreen extends GetView<ReferAFriendController> {
+  const RequestsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final List listOfServiceRequest = [
+      ServiceRequestData(
+          "22778800",
+          "Statement Of Account'",
+          "590",
+          "12 Aug 2023,2:40 PM",
+          "Query Sent",
+          "Ticket ID 123456- assigned to service agent"),
+      ServiceRequestData(
+          "22343201",
+          "'Statement Of Account'",
+          "580",
+          "13 Sep 2024,2:20 PM",
+          "Closed",
+          "Your request has been closed successfully by ASHWIN on 12 Aug 2023,2:40 PM")
+    ];
+
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
       appBar: appBarWidget(context),
@@ -19,7 +34,7 @@ class RequestsScreen extends GetView<ReferAFriendController> {
         color: AppColors.appBarColor,
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Expanded(
@@ -33,66 +48,19 @@ class RequestsScreen extends GetView<ReferAFriendController> {
                           offset: const Offset(0, 1))
                     ],
                     color: AppColors.whiteColor,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15))),
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                   color: AppColors.whiteColor,
                   child: LayoutBuilder(builder: (context, constraint) {
                     return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Card.outlined(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              // if you need this
-                              side: BorderSide(
-                                color:
-                                AppColors.grayColor.withOpacity(0.2),
-                                width: 1,
-                              ),
-                            ),
-                            elevation: 3,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5))),
-                              child: Column(
-                                children: [
-                                  ExpansionTile(
-                                    // controller: controller.expandController,
-                                    collapsedShape:
-                                        const ContinuousRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(30),
-                                      ),
-                                    ),
-                                    backgroundColor: AppColors.lightBlueColor,
-                                    shape: const ContinuousRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(30))),
-                                    expandedCrossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    dense: true,
-                                    tilePadding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    iconColor: Colors.black,
-                                    collapsedIconColor: Colors.black,
-                                    collapsedBackgroundColor:
-                                        AppColors.lightBlueColor,
-                                    title: cardHeaderWidget(),
-                                    onExpansionChanged: (bool expand) {
-                                      // controller.customTileExpanded.value = expand;
-                                    },
-                                    trailing: SizedBox(),
-                                    children: [expandedWidget()],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Spacer(),
+                          buildListView(listOfServiceRequest),
+                          const Spacer(),
                           Container(
                             margin: const EdgeInsets.all(5),
                             width: double.infinity,
@@ -120,76 +88,292 @@ class RequestsScreen extends GetView<ReferAFriendController> {
     );
   }
 
-  Row cardHeaderWidget() {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "LAN ID",
-              style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  color: AppColors.grayColor,
-                  fontSize: 12),
+  ListView buildListView(List<dynamic> listOfServiceRequest) {
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: listOfServiceRequest.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: Card.outlined(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                // if you need this
+                side: BorderSide(
+                  color: AppColors.grayColor.withOpacity(0.2),
+                  width: 1,
+                ),
+              ),
+              elevation: 3,
+              child: Container(
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                child: Column(
+                  children: [
+                    ExpansionTile(
+                      // controller: controller.expandController,
+                      collapsedShape: const ContinuousRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30),
+                        ),
+                      ),
+                      backgroundColor: AppColors.lightBlueColor,
+                      shape: const ContinuousRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                      dense: true,
+                      tilePadding: const EdgeInsets.symmetric(horizontal: 15),
+                      iconColor: Colors.black,
+                      collapsedIconColor: Colors.black,
+                      collapsedBackgroundColor: AppColors.lightBlueColor,
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "LAN ID",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: AppColors.grayColor,
+                                    fontSize: 12),
+                              ),
+                              Text(listOfServiceRequest[index].lanNo),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Amount Paid",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.normal,
+                                          color: AppColors.grayColor,
+                                          fontSize: 12)),
+                                  Text(listOfServiceRequest[index].amount),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Service Request Type",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      color: AppColors.grayColor,
+                                      fontSize: 12),
+                                ),
+                                Text(
+                                  "Statement of Account",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      color: AppColors.blackColor,
+                                      fontSize: 12),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Requested Date and Time",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.normal,
+                                          color: AppColors.grayColor,
+                                          fontSize: 12),
+                                    ),
+                                    Text(
+                                      listOfServiceRequest[index].requestedDate,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.normal,
+                                          color: AppColors.blackColor,
+                                          fontSize: 12),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      onExpansionChanged: (bool expand) {
+                        // controller.customTileExpanded.value = expand;
+                      },
+                      trailing: const SizedBox(),
+                      children: [expandableWidget(listOfServiceRequest, index)],
+                    ),
+                  ],
+                ),
+              ),
             ),
-            Text("2345678"),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Amount Paid",
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        color: AppColors.grayColor,
-                        fontSize: 12)),
-                Text("590"),
-              ],
-            ),
-          ],
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          );
+        });
+  }
+
+  LayoutBuilder expandableWidget(
+      List<dynamic> listOfServiceRequest, int index) {
+    return LayoutBuilder(builder: (context, constraint) {
+      double _height = constraint.maxHeight;
+
+      if (listOfServiceRequest[index].status == "Closed") {
+        return expandableWidgetForQuerySent(listOfServiceRequest, index);
+      } else {
+        return expandedWidgetForClosedStatus(listOfServiceRequest, index);
+      }
+    });
+  }
+
+  IntrinsicHeight expandableWidgetForQuerySent(
+      List<dynamic> listOfServiceRequest, int index) {
+    return IntrinsicHeight(
+      child: Expanded(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          color: AppColors.whiteColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                "Service Request Type",
-                style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: AppColors.grayColor,
-                    fontSize: 12),
-              ),
-              Text(
-                "Statement of Account",
-                style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: AppColors.blackColor,
-                    fontSize: 12),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Requested Date and Time",
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        color: AppColors.grayColor,
-                        fontSize: 12),
-                  ),
-                  Text(
-                    "12 Aug 2023,02:42PM ",
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        color: AppColors.blackColor,
-                        fontSize: 12),
-                  )
-                ],
-              ),
+              verticalLineWithIcon(70.0),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 15, left: 10, right: 5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            listOfServiceRequest[index].status,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.orangeColor),
+                          ),
+                          Text(
+                            listOfServiceRequest[index].subTitle,
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.grayColor),
+                          ),
+                          Text(
+                            "ABC.pdf",
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.primaryColor),
+                          ),
+                          SizedBox(height: 5),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                  ],
+                ),
+              )
             ],
           ),
         ),
-      ],
+      ),
+    );
+  }
+
+  IntrinsicHeight expandedWidgetForClosedStatus(
+      List<dynamic> listOfServiceRequest, int index) {
+    return IntrinsicHeight(
+      child: Expanded(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          color: AppColors.whiteColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              verticalLineWithIcon(180.0),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 15, left: 10, right: 5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            listOfServiceRequest[index].status,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.orangeColor),
+                          ),
+                          Text(
+                            listOfServiceRequest[index].subTitle,
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.grayColor),
+                          ),
+                          Text(
+                            "ABC.pdf",
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.primaryColor),
+                          ),
+                          SizedBox(height: 5),
+                          const Text(
+                            "Remark",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.grayColor),
+                          ),
+                          TextFormField(
+                              decoration: const InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 7.0, horizontal: 10.0),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: AppColors.grayColor)),
+                            border: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: AppColors.grayColor)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: AppColors.grayColor)),
+                          )),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                        height: 40,
+                        margin: EdgeInsets.all(5),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primaryColor,
+                              disabledBackgroundColor: AppColors.grayColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                          onPressed: () {},
+                          child: const Text("Submit",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.normal)),
+                        )),
+                    SizedBox(height: 10),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -207,105 +391,6 @@ class RequestsScreen extends GetView<ReferAFriendController> {
           },
           icon: const Icon(Icons.chevron_left)),
       actions: [IconButton(onPressed: () {}, icon: Icon(Icons.phone))],
-    );
-  }
-
-  LayoutBuilder expandedWidget() {
-    return LayoutBuilder(builder: (context, constraint) {
-      double _height = constraint.maxHeight;
-
-      return IntrinsicHeight(
-        child: Expanded(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            color: AppColors.whiteColor,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                verticalLineWithIcon(_height),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      querySent(),
-                      SizedBox(height: 10),
-                      Container(
-                          height: 40,
-                          margin: EdgeInsets.all(5),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.primaryColor,
-                                disabledBackgroundColor: AppColors.grayColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            onPressed: () {},
-                            child: const Text("Submit",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.normal)),
-                          )),
-                      SizedBox(height: 10),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      );
-    });
-  }
-
-  Padding querySent() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15, left: 10, right: 5),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Query Sent",
-            style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: AppColors.orangeColor),
-          ),
-          Text(
-            "Ticket ID 123456- assigned to service agent",
-            style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.normal,
-                color: AppColors.grayColor),
-          ),
-          Text(
-            "ABC.pdf",
-            style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.normal,
-                color: AppColors.primaryColor),
-          ),
-          SizedBox(height: 5),
-          const Text(
-            "Remark",
-            style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.normal,
-                color: AppColors.grayColor),
-          ),
-          TextFormField(
-              decoration: const InputDecoration(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 7.0, horizontal: 10.0),
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: AppColors.grayColor)),
-            border: OutlineInputBorder(
-                borderSide: BorderSide(color: AppColors.grayColor)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: AppColors.grayColor)),
-          )),
-        ],
-      ),
     );
   }
 }
@@ -362,7 +447,7 @@ Column verticalLineWithIcon(_height) {
 
       // Vertical line with dashed effect
       Container(
-        height: 180,
+        height: _height,
         child: CustomPaint(
           painter: _DashedLinePainter(
             color: AppColors.orangeColor,

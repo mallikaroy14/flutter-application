@@ -5,6 +5,9 @@ import 'package:feburary_flutter/screens/loan_summary/binding/loan_summary_bindi
 import 'package:feburary_flutter/screens/loan_summary/view/loan_summary_screen.dart';
 import 'package:feburary_flutter/screens/login/binding/login_binding.dart';
 import 'package:feburary_flutter/screens/my_profile/binding/my_profile_binding.dart';
+import 'package:feburary_flutter/screens/new_request/binding/create_new_requestBinding.dart';
+import 'package:feburary_flutter/screens/new_request/controller/create_new_request_controller.dart';
+import 'package:feburary_flutter/screens/new_request/view/create_new_request.dart';
 import 'package:feburary_flutter/screens/otp/binding/otp_binding.dart';
 import 'package:feburary_flutter/screens/pay_EMI/binding/pay_emi_binding.dart';
 import 'package:feburary_flutter/screens/pay_EMI/controller/pay_emi_controller.dart';
@@ -72,6 +75,10 @@ class Routes {
     GetPage(
         name: RouteName.requestsScreen,
         page: () => RequestsScreen(),
-        binding: ReferAFriendBinding())
+        binding: ReferAFriendBinding()),
+    GetPage(
+        name: RouteName.newServiceRequest,
+        page: () => CreateNewRequest(),
+        binding: CreateNewRequestBinding())
   ];
 }

@@ -1,5 +1,6 @@
 import 'package:feburary_flutter/models/data.dart';
 import 'package:feburary_flutter/screens/refer_a_friend/controller/refer_a_friend_controller.dart';
+import 'package:feburary_flutter/utility/router/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,7 +38,7 @@ class RequestsScreen extends GetView<ReferAFriendController> {
             const SizedBox(
               height: 15,
             ),
-            Expanded(
+              Expanded(
               child: Container(
                 decoration: BoxDecoration(
                     boxShadow: [
@@ -69,7 +70,9 @@ class RequestsScreen extends GetView<ReferAFriendController> {
                                   backgroundColor: AppColors.primaryColor,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.toNamed(RouteName.newServiceRequest);
+                              },
                               child: const Text("Create New Request",
                                   style: TextStyle(
                                       color: Colors.white,

@@ -11,4 +11,5 @@ class RouteName {
   static const String dashboardScreen = "/dashboardScreen";
   static const String selfServiceScreen ="/selfServiceScreen";
   static const String requestsScreen ="/requestsScreen";
+  static const String newServiceRequest ="/newServiceRequest";
 }

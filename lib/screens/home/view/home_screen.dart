@@ -97,6 +97,11 @@ class HomeScreen extends GetView<HomeController> {
                               count: 10,
                               callback: callBackFromDisbursement),
                           const SizedBox(height: 10),
+                          DisbursedCustomCard(
+                              description: "Rejected",
+                              count: 5,
+                              callback: callBackFromDisbursement),
+                          const SizedBox(height: 10),
                           const Text("Quick Actions",
                               style: TextStyle(
                                   color: Colors.black,
@@ -692,7 +697,9 @@ class HomeScreen extends GetView<HomeController> {
 
   void callBackFromDisbursement(String text) {
     if (kDebugMode) {
-      print("Call from card $text");
+      if(text.contains("Rejected")){
+        Get.toNamed(RouteName.rejectedLoanSummary);
+      }
     }
   }
 }

@@ -12,4 +12,6 @@ class RouteName {
   static const String selfServiceScreen ="/selfServiceScreen";
   static const String requestsScreen ="/requestsScreen";
   static const String newServiceRequest ="/newServiceRequest";
+  static const String rejectedLoanSummary ="/rejectedLoanSummary";
+
 }

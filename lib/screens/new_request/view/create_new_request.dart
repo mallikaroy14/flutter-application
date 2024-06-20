@@ -15,7 +15,7 @@ class CreateNewRequest extends GetView<CreateNewRequestController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
-      appBar: appBarWidget(context),
+      appBar: appBarWidget(context, "Create New Request"),
       body: Container(
         color: AppColors.appBarColor,
         child: Column(
@@ -425,7 +425,9 @@ class CreateNewRequest extends GetView<CreateNewRequestController> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10))),
         onPressed: () {
-          customSnackBar("Request submitted successfully and ticket ID is 123423.", Icons.check_circle);
+          customSnackBar(
+              "Request submitted successfully and ticket ID is 123423.",
+              Icons.check_circle);
         },
         child: const Text("Submit",
             style: TextStyle(
@@ -435,31 +437,12 @@ class CreateNewRequest extends GetView<CreateNewRequestController> {
       ),
     );
   }
-
-
-
-  AppBar appBarWidget(BuildContext context) {
-    return AppBar(
-      backgroundColor: AppColors.appBarColor,
-      titleSpacing: 0,
-      title: const Text(
-        "Create New Request",
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-      ),
-      leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.chevron_left)),
-      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.phone))],
-    );
-  }
 }
 
 void customSnackBar(message, icon) {
   Get.rawSnackbar(
       message: message,
-      margin: EdgeInsets.symmetric(horizontal: 20.h,vertical: 20),
+      margin: EdgeInsets.symmetric(horizontal: 20.h, vertical: 20),
       overlayColor: AppColors.blackColor.withAlpha(170),
       icon: Padding(
         padding: const EdgeInsets.only(left: 5),
@@ -469,4 +452,20 @@ void customSnackBar(message, icon) {
       overlayBlur: 0.1,
       borderRadius: 8,
       duration: 5.seconds);
+}
+
+AppBar appBarWidget(BuildContext context, title) {
+  return AppBar(
+    backgroundColor: AppColors.appBarColor,
+    titleSpacing: 0,
+    title: Text( title,
+      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+    ),
+    leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: const Icon(Icons.chevron_left)),
+    actions: [IconButton(onPressed: () {}, icon: Icon(Icons.phone))],
+  );
 }

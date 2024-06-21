@@ -7,8 +7,8 @@ class Timeline extends StatelessWidget {
     this.indicators,
     this.isLeftAligned = true,
     this.itemGap = 12.0,
-    this.gutterSpacing = 4.0,
-    this.padding = const EdgeInsets.all(8),
+    this.gutterSpacing = 0.0,
+    this.padding = const EdgeInsets.symmetric(horizontal: 8),
     this.controller,
     this.lineColor = Colors.grey,
     this.physics,
@@ -16,11 +16,11 @@ class Timeline extends StatelessWidget {
     this.primary = false,
     this.reverse = false,
     this.indicatorSize = 30.0,
-    this.lineGap = 4.0,
+    this.lineGap = 0.0,
     this.indicatorColor = Colors.blue,
     this.indicatorStyle = PaintingStyle.fill,
-    this.strokeCap = StrokeCap.butt,
-    this.strokeWidth = 2.0,
+    this.strokeCap = StrokeCap.square,
+    this.strokeWidth = 1.3,
     this.style = PaintingStyle.stroke,
   })  : itemCount = children.length,
         assert(itemGap >= 0),
@@ -152,7 +152,7 @@ class _TimelinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final indicatorRadius = indicatorSize / 2;
-    final halfItemGap = itemGap / 2;
+    final halfItemGap = itemGap ;
     final indicatorMargin = indicatorRadius + lineGap;
 
     final top = size.topLeft(Offset(indicatorRadius, 0.0 - halfItemGap));

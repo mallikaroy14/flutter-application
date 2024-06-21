@@ -39,3 +39,14 @@ class ServiceRequestData {
   String status;
   String subTitle;
 }
+
+class RejectedLoanSummary{
+
+  RejectedLoanSummary(this.appliedAmount, this.borrowersName, this.source, this.rmName, this.contactNo);
+  String appliedAmount;
+  String borrowersName;
+  String source;
+  String rmName;
+  String contactNo;
+
+}

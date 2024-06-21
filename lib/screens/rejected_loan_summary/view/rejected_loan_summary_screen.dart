@@ -37,7 +37,8 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
               child: SingleChildScrollView(
                 child: Expanded(
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                     color: AppColors.whiteColor,
                     child: Column(
                       children: [
@@ -47,7 +48,8 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
                             physics: ScrollPhysics(),
                             itemBuilder: (context, index) {
                               return Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5),
                                 child: SizedBox(
                                   width: double.infinity,
                                   child: Card.outlined(
@@ -60,47 +62,58 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
                                             decoration: const BoxDecoration(
                                                 color: AppColors.cardHeader,
                                                 borderRadius: BorderRadius.only(
-                                                    topLeft: Radius.circular(15.0),
-                                                    topRight: Radius.circular(15.0))),
+                                                    topLeft:
+                                                        Radius.circular(15.0),
+                                                    topRight:
+                                                        Radius.circular(15.0))),
                                             child: Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 20, bottom: 0, right: 20, top: 10),
+                                                  left: 20, bottom: 5, top: 5),
                                               child: SizedBox(
                                                 child: Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.center,
                                                   children: [
                                                     const Column(
                                                       crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(
                                                           "Home Loan: 1234567",
                                                           style: TextStyle(
-                                                              color: Colors.black,
+                                                              color:
+                                                                  Colors.black,
                                                               fontSize: 14,
-                                                              fontWeight: FontWeight.bold),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
                                                         ),
                                                         Text(
                                                           "Status : Rejected",
                                                           style: TextStyle(
-                                                              color: Colors.grey,
+                                                              color:
+                                                                  Colors.grey,
                                                               fontSize: 12,
-                                                              fontWeight: FontWeight.normal),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal),
                                                         ),
                                                       ],
                                                     ),
                                                     IconButton(
                                                         onPressed: () {},
-                                                        icon: Icon(Icons.chevron_right))
+                                                        icon: Icon(Icons
+                                                            .chevron_right))
                                                   ],
                                                 ),
                                               ),
                                             ),
                                           ),
-                                         Obx(()=> expandedWidget())
+                                          Obx(() => expandedWidget())
                                         ],
                                       ),
                                     ),
@@ -274,10 +287,10 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
               ],
             ),
           ),
-          const Divider(),
+          const Divider(color: AppColors.lightGreyColor),
           InkWell(
-            onTap: (){
-              controller.isExpanded.value = ! controller.isExpanded.value;
+            onTap: () {
+              controller.isExpanded.value = !controller.isExpanded.value;
             },
             child: Row(
               children: [
@@ -289,18 +302,19 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
                 IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {
-                    controller.isExpanded.value = ! controller.isExpanded.value;
-                    },
-                  icon:  Icon(
-                  controller.isExpanded.value ? Icons.keyboard_arrow_down_sharp : Icons.expand_less,
+                    controller.isExpanded.value = !controller.isExpanded.value;
+                  },
+                  icon: Icon(
+                    controller.isExpanded.value
+                        ? Icons.keyboard_arrow_down_sharp
+                        : Icons.expand_less,
                     color: AppColors.primaryColor,
                   ),
                 )
               ],
             ),
           ),
-          if(controller.isExpanded.value)
-            expandableWidgetSeeAllUpdates()
+          if (controller.isExpanded.value) expandableWidgetSeeAllUpdates()
         ],
       ),
     );
@@ -308,38 +322,40 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
 
   Column expandableWidgetSeeAllUpdates() {
     return Column(
-          children: [
-            Timeline(
-                padding: EdgeInsets.zero,
-                lineGap: 0,
-                lineColor: AppColors.orangeDarkColor,
-                indicators: List<Widget>.generate(
-                    3,
-                    (index) => const Icon(
-                          Icons.check_circle,
-                          color: AppColors.orangeDarkColor,
-                          size: 20,
-                        )),
-                children: List<Widget>.generate(
-                    3,
-                    (index) => Container(
-                          child: const Text.rich(TextSpan(
-                              text: 'In-progress',
-                              style: TextStyle(fontWeight: FontWeight.normal, fontSize: 13),
-                              children: [
-                                WidgetSpan(
-                                    child: SizedBox(
-                                  width: 5,
-                                )),
-                                WidgetSpan(
-                                    child: Text(
-                                  '12 aug 2024',
-                                  style: TextStyle(color: AppColors.grayColor, fontSize: 13),
-                                ))
-                              ])),
-                        ))),
-            const SizedBox(height: 10),
-          ],
-        );
+      children: [
+        Timeline(
+            padding: EdgeInsets.zero,
+            lineGap: 0,
+            lineColor: AppColors.orangeDarkColor,
+            indicators: List<Widget>.generate(
+                3,
+                (index) => const Icon(
+                      Icons.check_circle,
+                      color: AppColors.orangeDarkColor,
+                      size: 20,
+                    )),
+            children: List<Widget>.generate(
+                3,
+                (index) => Container(
+                      child: const Text.rich(TextSpan(
+                          text: 'In-progress',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 13),
+                          children: [
+                            WidgetSpan(
+                                child: SizedBox(
+                              width: 5,
+                            )),
+                            WidgetSpan(
+                                child: Text(
+                              '12 aug 2024',
+                              style: TextStyle(
+                                  color: AppColors.grayColor, fontSize: 13),
+                            ))
+                          ])),
+                    ))),
+        const SizedBox(height: 10),
+      ],
+    );
   }
 }

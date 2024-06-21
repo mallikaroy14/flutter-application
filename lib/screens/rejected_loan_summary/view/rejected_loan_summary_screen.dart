@@ -143,7 +143,7 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
   }
 
   Padding expandedWidget(rejectedDetails, index, context) {
-    final _screen =  MediaQuery.of(context).size;
+    final _screen = MediaQuery.of(context).size;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -206,7 +206,7 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
               ],
             ),
           ),
-           Padding(
+          Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -261,7 +261,7 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
               ],
             ),
           ),
-           Padding(
+          Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -321,15 +321,26 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
             onTap: () {
               controller.isExpanded.value = !controller.isExpanded.value;
             },
-            child: Row(
-              children: [
-                const Text("See All Updates",
+            child:
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.only(bottom: 5.0),
+                child: Text("See All Updates",
                     style: TextStyle(
                         fontSize: 13,
                         color: AppColors.primaryColor,
                         fontWeight: FontWeight.normal)),
-                IconButton(
+              ),
+              Container(
+                padding: const EdgeInsets.all(0.0),
+                width: 35,
+                height: 40,
+                child: IconButton(
                   padding: EdgeInsets.zero,
+                  iconSize: 20,
                   onPressed: () {
                     controller.isExpanded.value = !controller.isExpanded.value;
                   },
@@ -339,9 +350,10 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
                         : Icons.expand_less,
                     color: AppColors.primaryColor,
                   ),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
+          ),
           ),
           if (controller.isExpanded.value) expandableWidgetSeeAllUpdates()
         ],

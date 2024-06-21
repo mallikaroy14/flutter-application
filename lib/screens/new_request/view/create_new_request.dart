@@ -456,6 +456,7 @@ void customSnackBar(message, icon) {
 
 AppBar appBarWidget(BuildContext context, title) {
   return AppBar(
+    scrolledUnderElevation: 0,
     backgroundColor: AppColors.appBarColor,
     titleSpacing: 0,
     title: Text( title,

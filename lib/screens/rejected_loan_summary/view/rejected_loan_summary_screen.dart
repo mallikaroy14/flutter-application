@@ -3,6 +3,7 @@ import 'package:feburary_flutter/screens/new_request/view/create_new_request.dar
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../models/data.dart';
 import '../../../theme/app_colors.dart';
 import '../controller/rejected_loan_summary_controller.dart';
 
@@ -11,6 +12,13 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
 
   @override
   Widget build(BuildContext context) {
+    final List rejectedDetails = [
+      RejectedLoanSummary("25,00,000", "Sagar", "Customer Application",
+          "Ankit Joshi", "8764563765"),
+      RejectedLoanSummary("26,00,000", "Mallika", "Customer Application",
+          "Ankit Joshi", "8976788954"),
+    ];
+
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
       appBar: appBarWidget(context, "Rejected Loan Summary"),
@@ -43,7 +51,7 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
                     child: Column(
                       children: [
                         ListView.builder(
-                            itemCount: 2,
+                            itemCount: rejectedDetails.length,
                             shrinkWrap: true,
                             physics: ScrollPhysics(),
                             itemBuilder: (context, index) {
@@ -113,7 +121,8 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
                                               ),
                                             ),
                                           ),
-                                          Obx(() => expandedWidget())
+                                          Obx(() => expandedWidget(
+                                              rejectedDetails, index, context))
                                         ],
                                       ),
                                     ),
@@ -133,156 +142,176 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
     );
   }
 
-  Padding expandedWidget() {
+  Padding expandedWidget(rejectedDetails, index, context) {
+    final _screen =  MediaQuery.of(context).size;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Loan Type",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.grayColor,
-                          fontSize: 13),
-                    ),
-                    Text(
-                      "Sactioned ammount ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.blackColor,
-                          fontSize: 12),
-                    )
-                  ],
+                Container(
+                  width: _screen.width * 0.43,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Applied Amount",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.grayColor,
+                            fontSize: 13),
+                      ),
+                      Text(
+                        rejectedDetails[index].appliedAmount,
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.blackColor,
+                            fontSize: 12),
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Current ROI",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.grayColor,
-                          fontSize: 13),
-                    ),
-                    Text(
-                      "Sactioned ammount",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.blackColor,
-                          fontSize: 12),
-                    )
-                  ],
+                Container(
+                  width: _screen.width * 0.40,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Borrowers Name",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.grayColor,
+                            fontSize: 13),
+                      ),
+                      Text(
+                        rejectedDetails[index].borrowersName,
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.blackColor,
+                            fontSize: 12),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
           ),
-          const Padding(
+           Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Home Loan: ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.grayColor,
-                          fontSize: 13),
-                    ),
-                    Text(
-                      "Sanctioned amount ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.blackColor,
-                          fontSize: 12),
-                    )
-                  ],
+                Container(
+                  width: _screen.width * 0.40,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Source",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.grayColor,
+                            fontSize: 13),
+                      ),
+                      Text(
+                        rejectedDetails[index].source,
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.blackColor,
+                            fontSize: 12),
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Home Loan: ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.grayColor,
-                          fontSize: 13),
-                    ),
-                    Text(
-                      "Sanctioned amount",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.blackColor,
-                          fontSize: 12),
-                    )
-                  ],
+                Container(
+                  width: _screen.width * 0.40,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "RM name",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.grayColor,
+                            fontSize: 13),
+                      ),
+                      Text(
+                        rejectedDetails[index].rmName,
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.blackColor,
+                            fontSize: 12),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
           ),
-          const Padding(
+           Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Home Loan: ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.grayColor,
-                          fontSize: 13),
-                    ),
-                    Text(
-                      "Sactioned ammount ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.blackColor,
-                          fontSize: 12),
-                    )
-                  ],
+                Container(
+                  width: _screen.width * 0.40,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Contact no.",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.grayColor,
+                            fontSize: 13),
+                      ),
+                      Text(
+                        rejectedDetails[index].contactNo,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.blackColor,
+                            fontSize: 12),
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Home Loan: ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.grayColor,
-                          fontSize: 13),
-                    ),
-                    Text(
-                      "Sactioned ammount",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.blackColor,
-                          fontSize: 12),
-                    )
-                  ],
+                Container(
+                  width: _screen.width * 0.40,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Home Loan: ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.grayColor,
+                            fontSize: 12),
+                      ),
+                      Text(
+                        "Sactioned ammount",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: AppColors.blackColor,
+                            fontSize: 14),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

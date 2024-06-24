@@ -14,9 +14,9 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
   Widget build(BuildContext context) {
     final List rejectedDetails = [
       RejectedLoanSummary("25,00,000", "Sagar", "Customer Application",
-          "Ankit Joshi", "8764563765"),
+          "Ankit Joshi", "8764563765", "12 aug 2024"),
       RejectedLoanSummary("26,00,000", "Mallika", "Customer Application",
-          "Ankit Joshi", "8976788954"),
+          "Ankit Joshi", "8976788954", "13 aug 2024"),
     ];
 
     return Scaffold(
@@ -290,7 +290,7 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: _screen.width * 0.40,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -355,13 +355,13 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
             ],
           ),
           ),
-          if (controller.isExpanded.value) expandableWidgetSeeAllUpdates()
+          if (controller.isExpanded.value) expandableWidgetSeeAllUpdates(rejectedDetails, index)
         ],
       ),
     );
   }
 
-  Column expandableWidgetSeeAllUpdates() {
+  Column expandableWidgetSeeAllUpdates(rejectedDetails, index) {
     return Column(
       children: [
         Timeline(

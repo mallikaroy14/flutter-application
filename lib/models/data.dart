@@ -42,11 +42,12 @@ class ServiceRequestData {
 
 class RejectedLoanSummary{
 
-  RejectedLoanSummary(this.appliedAmount, this.borrowersName, this.source, this.rmName, this.contactNo);
+  RejectedLoanSummary(this.appliedAmount, this.borrowersName, this.source, this.rmName, this.contactNo, this.date);
   String appliedAmount;
   String borrowersName;
   String source;
   String rmName;
   String contactNo;
+  String date;
 
 }

@@ -107,236 +107,259 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
 
   Container expandedWidget(rejectedDetails, index, context) {
     final _screen = MediaQuery.of(context).size;
+    final isExpanded = false.obs;
 
     return Container(
       color: AppColors.whiteColor,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    color: AppColors.whiteColor,
-                    width: _screen.width * 0.43,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Applied Amount",
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.grayColor,
-                              fontSize: 13),
-                        ),
-                        Text(
-                          rejectedDetails[index].appliedAmount,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.blackColor,
-                              fontSize: 12),
-                        )
-                      ],
+      child: Column(children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      color: AppColors.whiteColor,
+                      width: _screen.width * 0.43,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Applied Amount",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.grayColor,
+                                fontSize: 13),
+                          ),
+                          Text(
+                            rejectedDetails[index].appliedAmount,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.blackColor,
+                                fontSize: 12),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    width: _screen.width * 0.40,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Borrowers Name",
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.grayColor,
-                              fontSize: 13),
-                        ),
-                        Text(
-                          rejectedDetails[index].borrowersName,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.blackColor,
-                              fontSize: 12),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                    Container(
+                      width: _screen.width * 0.40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Borrowers Name",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.grayColor,
+                                fontSize: 13),
+                          ),
+                          Text(
+                            rejectedDetails[index].borrowersName,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.blackColor,
+                                fontSize: 12),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: _screen.width * 0.40,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Source",
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.grayColor,
-                              fontSize: 13),
-                        ),
-                        Text(
-                          rejectedDetails[index].source,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.blackColor,
-                              fontSize: 12),
-                        )
-                      ],
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: _screen.width * 0.40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Source",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.grayColor,
+                                fontSize: 13),
+                          ),
+                          Text(
+                            rejectedDetails[index].source,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.blackColor,
+                                fontSize: 12),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    width: _screen.width * 0.40,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "RM name",
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.grayColor,
-                              fontSize: 13),
-                        ),
-                        Text(
-                          rejectedDetails[index].rmName,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.blackColor,
-                              fontSize: 12),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                    Container(
+                      width: _screen.width * 0.40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "RM name",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.grayColor,
+                                fontSize: 13),
+                          ),
+                          Text(
+                            rejectedDetails[index].rmName,
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.blackColor,
+                                fontSize: 12),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: _screen.width * 0.40,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Contact no.",
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.grayColor,
-                              fontSize: 13),
-                        ),
-                        Text(
-                          rejectedDetails[index].contactNo,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.blackColor,
-                              fontSize: 12),
-                        )
-                      ],
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: _screen.width * 0.40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Contact no.",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.grayColor,
+                                fontSize: 13),
+                          ),
+                          Text(
+                            rejectedDetails[index].contactNo,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.blackColor,
+                                fontSize: 12),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: _screen.width * 0.40,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Home Loan: ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.grayColor,
-                              fontSize: 12),
-                        ),
-                        Text(
-                          "Sactioned ammount",
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.blackColor,
-                              fontSize: 14),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                    SizedBox(
+                      width: _screen.width * 0.40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Home Loan: ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.grayColor,
+                                fontSize: 12),
+                          ),
+                          Text(
+                            "Sactioned ammount",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.blackColor,
+                                fontSize: 14),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            const Divider(color: AppColors.lightGreyColor),
-            ExpansionTile(
+              const Divider(color: AppColors.lightGreyColor),
+            ],
+          ),
+        ),
+        Obx(() => ExpansionTile(
                 dense: true,
                 iconColor: AppColors.primaryColor,
                 backgroundColor: AppColors.whiteColor,
                 collapsedBackgroundColor: AppColors.whiteColor,
                 shape: Border(),
-                title: Text("See All Updates",
-                    style: TextStyle(
-                        fontSize: 13,
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.normal)),
+                title: Row(
+                  children: [
+                    Text(
+                      "See All Updates",
+                      style: TextStyle(
+                          fontSize: 13,
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    SizedBox(width: 5),
+                    Icon(
+                      isExpanded.value
+                          ? Icons.keyboard_arrow_up_sharp
+                          : Icons.keyboard_arrow_down_sharp,
+                      color: AppColors.primaryColor,
+                    ),
+                  ],
+                ),
+                onExpansionChanged: (bool) {
+                  isExpanded.value = bool;
+                },
+                trailing: SizedBox(),
                 children: [
-                  Column(
-                    children: [
-                      Timeline(
-                          padding: EdgeInsets.zero,
-                          lineGap: 0,
-                          lineColor: AppColors.orangeDarkColor,
-                          indicators: List<Widget>.generate(
-                              3,
-                              (index) => const Icon(
-                                    Icons.check_circle,
-                                    color: AppColors.orangeDarkColor,
-                                    size: 20,
-                                  )),
-                          children: List<Widget>.generate(
-                              3,
-                              (index) => Container(
-                                    child: const Text.rich(TextSpan(
-                                        text: 'In-progress',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.normal,
-                                            fontSize: 13),
-                                        children: [
-                                          WidgetSpan(
-                                              child: SizedBox(
-                                            width: 5,
-                                          )),
-                                          WidgetSpan(
-                                              child: Text(
-                                            '12 aug 2024',
-                                            style: TextStyle(
-                                                color: AppColors.grayColor,
-                                                fontSize: 13),
-                                          ))
-                                        ])),
-                                  ))),
-                      const SizedBox(height: 10),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      children: [
+                        Timeline(
+                            padding: EdgeInsets.zero,
+                            lineGap: 0,
+                            lineColor: AppColors.orangeDarkColor,
+                            indicators: List<Widget>.generate(
+                                3,
+                                (index) => const Icon(
+                                      Icons.check_circle,
+                                      color: AppColors.orangeDarkColor,
+                                      size: 20,
+                                    )),
+                            children: List<Widget>.generate(
+                                3,
+                                (index) => Container(
+                                      child: const Text.rich(TextSpan(
+                                          text: 'In-progress',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 13),
+                                          children: [
+                                            WidgetSpan(
+                                                child: SizedBox(
+                                              width: 5,
+                                            )),
+                                            WidgetSpan(
+                                                child: Text(
+                                              '12 aug 2024',
+                                              style: TextStyle(
+                                                  color: AppColors.grayColor,
+                                                  fontSize: 13),
+                                            ))
+                                          ])),
+                                    ))),
+                        const SizedBox(height: 10),
+                      ],
+                    ),
                   )
-                ])
-          ],
-        ),
-      ),
+                ]))
+      ]),
     );
   }
 }

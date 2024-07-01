@@ -6,6 +6,7 @@ class RejectedLoanSummaryController extends SuperController {
   final ExpansionTileController expandController = ExpansionTileController();
   final customTileExpanded = false.obs;
   final isExpanded = false.obs;
+  final _isExpanded = false.obs;
 
   @override
   void onDetached() {}

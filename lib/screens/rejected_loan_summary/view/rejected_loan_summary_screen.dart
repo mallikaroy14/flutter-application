@@ -87,8 +87,8 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
                                         fontWeight: FontWeight.normal),
                                   ),
                                   children: [
-                                    Obx(() => expandedWidget(
-                                        rejectedDetails, index, context))
+                                    expandedWidget(
+                                        rejectedDetails, index, context)
                                   ],
                                 ),
                               );
@@ -283,123 +283,60 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
               ),
             ),
             const Divider(color: AppColors.lightGreyColor),
-            InkWell(
-              onTap: () {
-                controller.isExpanded.value = !controller.isExpanded.value;
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 5.0),
-                    child: Text("See All Updates",
-                        style: TextStyle(
-                            fontSize: 13,
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(0.0),
-                    width: 35,
-                    height: 40,
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      iconSize: 20,
-                      onPressed: () {
-                        controller.isExpanded.value =
-                            !controller.isExpanded.value;
-                      },
-                      icon: Icon(
-                        controller.isExpanded.value
-                            ? Icons.keyboard_arrow_down_sharp
-                            : Icons.expand_less,
+            ExpansionTile(
+                dense: true,
+                iconColor: AppColors.primaryColor,
+                backgroundColor: AppColors.whiteColor,
+                collapsedBackgroundColor: AppColors.whiteColor,
+                shape: Border(),
+                title: Text("See All Updates",
+                    style: TextStyle(
+                        fontSize: 13,
                         color: AppColors.primaryColor,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            if (controller.isExpanded.value)
-              Column(
+                        fontWeight: FontWeight.normal)),
                 children: [
-                  Timeline(
-                      padding: EdgeInsets.zero,
-                      lineGap: 0,
-                      lineColor: AppColors.orangeDarkColor,
-                      indicators: List<Widget>.generate(
-                          3,
+                  Column(
+                    children: [
+                      Timeline(
+                          padding: EdgeInsets.zero,
+                          lineGap: 0,
+                          lineColor: AppColors.orangeDarkColor,
+                          indicators: List<Widget>.generate(
+                              3,
                               (index) => const Icon(
-                            Icons.check_circle,
-                            color: AppColors.orangeDarkColor,
-                            size: 20,
-                          )),
-                      children: List<Widget>.generate(
-                          3,
+                                    Icons.check_circle,
+                                    color: AppColors.orangeDarkColor,
+                                    size: 20,
+                                  )),
+                          children: List<Widget>.generate(
+                              3,
                               (index) => Container(
-                            child: const Text.rich(TextSpan(
-                                text: 'In-progress',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.normal, fontSize: 13),
-                                children: [
-                                  WidgetSpan(
-                                      child: SizedBox(
-                                        width: 5,
-                                      )),
-                                  WidgetSpan(
-                                      child: Text(
-                                        '12 aug 2024',
+                                    child: const Text.rich(TextSpan(
+                                        text: 'In-progress',
                                         style: TextStyle(
-                                            color: AppColors.grayColor, fontSize: 13),
-                                      ))
-                                ])),
-                          ))),
-                  const SizedBox(height: 10),
-                ],
-              )
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 13),
+                                        children: [
+                                          WidgetSpan(
+                                              child: SizedBox(
+                                            width: 5,
+                                          )),
+                                          WidgetSpan(
+                                              child: Text(
+                                            '12 aug 2024',
+                                            style: TextStyle(
+                                                color: AppColors.grayColor,
+                                                fontSize: 13),
+                                          ))
+                                        ])),
+                                  ))),
+                      const SizedBox(height: 10),
+                    ],
+                  )
+                ])
           ],
         ),
       ),
     );
   }
-
-  // Column expandableWidgetSeeAllUpdates(rejectedDetails, index) {
-  //   return Column(
-  //     children: [
-  //       Timeline(
-  //           padding: EdgeInsets.zero,
-  //           lineGap: 0,
-  //           lineColor: AppColors.orangeDarkColor,
-  //           indicators: List<Widget>.generate(
-  //               3,
-  //               (index) => const Icon(
-  //                     Icons.check_circle,
-  //                     color: AppColors.orangeDarkColor,
-  //                     size: 20,
-  //                   )),
-  //           children: List<Widget>.generate(
-  //               3,
-  //               (index) => Container(
-  //                     child: const Text.rich(TextSpan(
-  //                         text: 'In-progress',
-  //                         style: TextStyle(
-  //                             fontWeight: FontWeight.normal, fontSize: 13),
-  //                         children: [
-  //                           WidgetSpan(
-  //                               child: SizedBox(
-  //                             width: 5,
-  //                           )),
-  //                           WidgetSpan(
-  //                               child: Text(
-  //                             '12 aug 2024',
-  //                             style: TextStyle(
-  //                                 color: AppColors.grayColor, fontSize: 13),
-  //                           ))
-  //                         ])),
-  //                   ))),
-  //       const SizedBox(height: 10),
-  //     ],
-  //   );
-  // }
 }

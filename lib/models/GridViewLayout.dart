@@ -5,12 +5,11 @@ import 'data.dart';
 
 final List _photos = [
   Data("Request Disbursement", "images/logo.png"),
-  Data("Hello", "images/logo.png"),
-  Data("Part ", "images/logo.png"),
-  Data("Part", "images/logo.png"),
-  Data("disbursement", "images/logo.png"),
-  Data("Last2 ", "images/logo.png"),
-  Data("Last ", "images/logo.png")
+  Data("Apply Loan", "images/logo.png"),
+  Data("Pay EMI ", "images/logo.png"),
+  Data("Pendencies (5)", "images/logo.png"),
+  Data("Important Documents", "images/logo.png"),
+  Data("Apply topup ", "images/logo.png")
 ];
 
 Widget gridViewLayout(context, void Function(String) gridCallBack) {

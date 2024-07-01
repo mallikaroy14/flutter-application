@@ -1,4 +1,5 @@
 import 'package:feburary_flutter/screens/dashboard/controller/dashboardController.dart';
+import 'package:feburary_flutter/screens/home/controller/HomeController.dart';
 import 'package:feburary_flutter/screens/home/view/home_screen.dart';
 import 'package:feburary_flutter/screens/requests/controller/requests_controller.dart';
 import 'package:feburary_flutter/screens/requests/view/requests_screen.dart';
@@ -16,6 +17,7 @@ class DashboardScreen extends GetView<DashboardController> {
 
     Get.put(SelfServiceController());
     Get.put(RequestsController());
+    Get.put(HomeController());
 
     return Scaffold(
         backgroundColor: AppColors.primaryColor,

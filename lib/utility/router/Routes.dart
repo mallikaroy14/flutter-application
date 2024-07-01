@@ -6,12 +6,14 @@ import 'package:feburary_flutter/screens/loan_summary/view/loan_summary_screen.d
 import 'package:feburary_flutter/screens/login/binding/login_binding.dart';
 import 'package:feburary_flutter/screens/my_profile/binding/my_profile_binding.dart';
 import 'package:feburary_flutter/screens/new_request/binding/create_new_requestBinding.dart';
-import 'package:feburary_flutter/screens/new_request/controller/create_new_request_controller.dart';
 import 'package:feburary_flutter/screens/new_request/view/create_new_request.dart';
 import 'package:feburary_flutter/screens/otp/binding/otp_binding.dart';
 import 'package:feburary_flutter/screens/pay_EMI/binding/pay_emi_binding.dart';
-import 'package:feburary_flutter/screens/pay_EMI/controller/pay_emi_controller.dart';
 import 'package:feburary_flutter/screens/pay_EMI/view/Pay_EMIScreen.dart';
+import 'package:feburary_flutter/screens/pendencie_detail/binding/pendencies_details_binding.dart';
+import 'package:feburary_flutter/screens/pendencie_detail/view/pendencies_details_screen.dart';
+import 'package:feburary_flutter/screens/pendencies/binding/pendencies_binding.dart';
+import 'package:feburary_flutter/screens/pendencies/view/pendencies_screen.dart';
 import 'package:feburary_flutter/screens/refer_a_friend/binding/refer_a_friend_binding.dart';
 import 'package:feburary_flutter/screens/refer_a_friend/view/refer_a_friend_screen.dart';
 import 'package:feburary_flutter/screens/login/view/LoginScreen.dart';
@@ -26,6 +28,7 @@ import 'package:feburary_flutter/screens/self_service/view/self_service_screen.d
 import 'package:feburary_flutter/screens/splash/binding/SplashBiding.dart';
 import 'package:feburary_flutter/screens/splash/view/SplashScreen.dart';
 import 'package:get/get.dart';
+import '../../models/data.dart';
 import 'route_name.dart';
 
 class Routes {
@@ -86,5 +89,14 @@ class Routes {
         name: RouteName.rejectedLoanSummary,
         page: () => RejectedLoanSummaryScreen(),
         binding: RejectedLoanSummaryBinding()),
+    GetPage(
+        name: RouteName.pendenciesScreen,
+        page: () => PendenciesScreen(),
+        binding: PendenciesBinding()),
+    GetPage(
+        name: RouteName.pendenciesDetails,
+        arguments: PendenciesCardData,
+        page: () => PendenciesDetailsScreen(),
+        binding: PendenciesDetailsBinding()),
   ];
 }

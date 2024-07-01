@@ -110,6 +110,8 @@ class HomeScreen extends GetView<HomeController> {
                           gridViewLayout(context, (callBackText) {
                             if (callBackText == "Request Disbursement") {
                               bottomSheetRequestDisbursement();
+                            }else if(callBackText.isCaseInsensitiveContains("Pendencies")){
+                              Get.toNamed(RouteName.pendenciesScreen);
                             }
                           }),
                         ],

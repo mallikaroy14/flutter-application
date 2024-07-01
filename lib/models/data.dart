@@ -40,14 +40,25 @@ class ServiceRequestData {
   String subTitle;
 }
 
-class RejectedLoanSummary{
+class RejectedLoanSummary {
+  RejectedLoanSummary(this.appliedAmount, this.borrowersName, this.source,
+      this.rmName, this.contactNo, this.date);
 
-  RejectedLoanSummary(this.appliedAmount, this.borrowersName, this.source, this.rmName, this.contactNo, this.date);
   String appliedAmount;
   String borrowersName;
   String source;
   String rmName;
   String contactNo;
   String date;
+}
 
+class PendenciesCardData {
+  PendenciesCardData(this.applicationID, this.documentName, this.category,
+      this.subCategory, this.remark);
+
+  String? applicationID;
+  String? documentName;
+  String? category;
+  String? subCategory;
+  String? remark;
 }

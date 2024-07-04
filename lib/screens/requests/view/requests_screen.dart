@@ -216,18 +216,18 @@ class RequestsScreen extends GetView<ReferAFriendController> {
   LayoutBuilder expandableWidget(
       List<dynamic> listOfServiceRequest, int index) {
     return LayoutBuilder(builder: (context, constraint) {
-      double _height = constraint.maxHeight;
+      double height = Get.height;
 
       if (listOfServiceRequest[index].status == "Closed") {
-        return expandableWidgetForQuerySent(listOfServiceRequest, index);
+        return expandableWidgetForQuerySent(listOfServiceRequest, index, height);
       } else {
-        return expandedWidgetForClosedStatus(listOfServiceRequest, index);
+        return expandedWidgetForClosedStatus(listOfServiceRequest, index, height);
       }
     });
   }
 
   IntrinsicHeight expandableWidgetForQuerySent(
-      List<dynamic> listOfServiceRequest, int index) {
+      List<dynamic> listOfServiceRequest, int index, height) {
     return IntrinsicHeight(
       child: Expanded(
         child: Container(
@@ -285,7 +285,7 @@ class RequestsScreen extends GetView<ReferAFriendController> {
   }
 
   IntrinsicHeight expandedWidgetForClosedStatus(
-      List<dynamic> listOfServiceRequest, int index) {
+      List<dynamic> listOfServiceRequest, int index, height) {
     return IntrinsicHeight(
       child: Expanded(
         child: Container(

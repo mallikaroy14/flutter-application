@@ -1,11 +1,14 @@
+import 'package:camera/camera.dart';
 import 'package:feburary_flutter/screens/home/controller/HomeController.dart';
 import 'package:feburary_flutter/screens/pay_EMI/view/Pay_EMIScreen.dart';
 import 'package:feburary_flutter/theme/app_colors.dart';
 import 'package:feburary_flutter/utility/router/route_name.dart';
+import 'package:feburary_flutter/whatsapp/camera/controller/camera_screen_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 
 import '../../../DisbursedCustomCard.dart';
 import '../../../models/GridViewLayout.dart';
@@ -50,7 +53,11 @@ class HomeScreen extends GetView<HomeController> {
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               child: const Icon(Icons.language, color: Colors.white),
-              onTap: () {},
+              onTap: () {
+
+
+                Get.offNamed(RouteName.chatHomeScreen);
+              },
             ),
           ),
           Padding(
@@ -58,7 +65,9 @@ class HomeScreen extends GetView<HomeController> {
             child: InkWell(
               child: const Icon(Icons.notifications_none_sharp,
                   color: Colors.white),
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(RouteName.todoScreen);
+              },
             ),
           ),
         ],

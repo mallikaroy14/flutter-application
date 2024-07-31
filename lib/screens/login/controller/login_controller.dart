@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +8,7 @@ class LoginController extends SuperController {
   final mobileTextEditing = TextEditingValue();
   final mobileError = "".obs;
   final isMobileValid = false.obs;
-  final statesController = MaterialStatesController();
+  final statesController = WidgetStatesController();
 
   @override
   void onInit() {

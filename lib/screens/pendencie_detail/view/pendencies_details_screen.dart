@@ -15,7 +15,7 @@ class PendenciesDetailsScreen extends GetView<PendenciesDetailsController> {
 
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
-      appBar: appBarWidget(context, "Application :${pendensiesData.applicationID} "),
+      appBar: appBarWidget( "Application :${pendensiesData.applicationID} "),
       body: Column(
         children: [
           const SizedBox(

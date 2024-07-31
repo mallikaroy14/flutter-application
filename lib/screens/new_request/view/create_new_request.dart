@@ -15,7 +15,7 @@ class CreateNewRequest extends GetView<CreateNewRequestController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
-      appBar: appBarWidget(context, "Create New Request"),
+      appBar: appBarWidget("Create New Request"),
       body: Container(
         color: AppColors.appBarColor,
         child: Column(
@@ -454,17 +454,18 @@ void customSnackBar(message, icon) {
       duration: 5.seconds);
 }
 
-AppBar appBarWidget(BuildContext context, title) {
+AppBar appBarWidget(title) {
   return AppBar(
     scrolledUnderElevation: 0,
     backgroundColor: AppColors.appBarColor,
     titleSpacing: 0,
-    title: Text( title,
+    title: Text(
+      title,
       style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
     ),
     leading: IconButton(
         onPressed: () {
-          Navigator.pop(context);
+          Get.back();
         },
         icon: const Icon(Icons.chevron_left)),
     actions: [IconButton(onPressed: () {}, icon: Icon(Icons.phone))],

@@ -22,7 +22,7 @@ class RejectedLoanSummaryScreen extends GetView<RejectedLoanSummaryController> {
 
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
-      appBar: appBarWidget(context, "Rejected Loan Summary"),
+      appBar: appBarWidget("Rejected Loan Summary"),
       body: Column(
         children: [
           SizedBox(

@@ -26,4 +26,6 @@ class AppColors {
   static const darkPrimary = Color(0xFF152b52);
   static const greenColor = Color(0xFF50A952);
 
+  static const whatsPrimary = Color(0xFF285D55);
+
 }

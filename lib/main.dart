@@ -10,8 +10,10 @@ import 'localization/locale_constant.dart';
 import 'localization/localizations_delegte.dart';
 import 'models/BottomNavigation.dart';
 import 'models/TotalOverDueCard.dart';
+import 'package:feburary_flutter/whatsapp/camera/controller/camera_screen_controller.dart';
 
 void main() {
+
   runApp(MyApp1());
 }
 

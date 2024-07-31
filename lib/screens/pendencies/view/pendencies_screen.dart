@@ -21,7 +21,7 @@ class PendenciesScreen extends GetView<PendenciesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appBarColor,
-      appBar: appBarWidget(context, "Pendencies"),
+      appBar: appBarWidget( "Pendencies"),
       body: Column(
         children: [
           SizedBox(

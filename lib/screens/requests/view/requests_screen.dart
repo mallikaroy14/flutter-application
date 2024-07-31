@@ -38,8 +38,7 @@ class RequestsScreen extends GetView<ReferAFriendController> {
             const SizedBox(
               height: 15,
             ),
-              Expanded(
-              child: Container(
+              Container(
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -57,171 +56,183 @@ class RequestsScreen extends GetView<ReferAFriendController> {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                   color: AppColors.whiteColor,
                   child: LayoutBuilder(builder: (context, constraint) {
-                    return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          buildListView(listOfServiceRequest),
-                          const Spacer(),
-                          Container(
-                            margin: const EdgeInsets.all(5),
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              onPressed: () {
-                                Get.toNamed(RouteName.newServiceRequest);
-                              },
-                              child: const Text("Create New Request",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w500)),
-                            ),
-                          )
-                        ]);
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                            minWidth: constraint.maxWidth,
+                            minHeight: constraint.maxHeight),
+                        child: IntrinsicHeight(
+                          child: Expanded(
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  buildListView(listOfServiceRequest),
+                                  const Spacer(),
+                                  Container(
+                                    margin: const EdgeInsets.all(5),
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: AppColors.primaryColor,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10))),
+                                      onPressed: () {
+                                        Get.toNamed(RouteName.newServiceRequest);
+                                      },
+                                      child: const Text("Create New Request",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w500)),
+                                    ),
+                                  )
+                                ]),
+                          ),
+                        ),
+                      ),
+                    );
                   }),
                 ),
               ),
-            ),
           ],
         ),
       ),
     );
   }
 
-  ListView buildListView(List<dynamic> listOfServiceRequest) {
+  ListView  buildListView(List<dynamic> listOfServiceRequest) {
     return ListView.builder(
         shrinkWrap: true,
-        itemCount: listOfServiceRequest.length,
+        itemCount:2,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
-            child: Card.outlined(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-                // if you need this
-                side: BorderSide(
-                  color: AppColors.grayColor.withOpacity(0.2),
-                  width: 1,
-                ),
-              ),
-              elevation: 3,
-              child: Container(
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                child: Column(
-                  children: [
-                    ExpansionTile(
-                      // controller: controller.expandController,
-                      collapsedShape: const ContinuousRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(30),
-                        ),
-                      ),
-                      backgroundColor: AppColors.lightBlueColor,
-                      shape: const ContinuousRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                      dense: true,
-                      tilePadding: const EdgeInsets.symmetric(horizontal: 15),
-                      iconColor: Colors.black,
-                      collapsedIconColor: Colors.black,
-                      collapsedBackgroundColor: AppColors.lightBlueColor,
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                "LAN ID",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    color: AppColors.grayColor,
-                                    fontSize: 12),
-                              ),
-                              Text(listOfServiceRequest[index].lanNo),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Amount Paid",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.normal,
-                                          color: AppColors.grayColor,
-                                          fontSize: 12)),
-                                  Text(listOfServiceRequest[index].amount),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Service Request Type",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: AppColors.grayColor,
-                                      fontSize: 12),
-                                ),
-                                Text(
-                                  "Statement of Account",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: AppColors.blackColor,
-                                      fontSize: 12),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Requested Date and Time",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.normal,
-                                          color: AppColors.grayColor,
-                                          fontSize: 12),
-                                    ),
-                                    Text(
-                                      listOfServiceRequest[index].requestedDate,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.normal,
-                                          color: AppColors.blackColor,
-                                          fontSize: 12),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      onExpansionChanged: (bool expand) {
-                        // controller.customTileExpanded.value = expand;
-                      },
-                      trailing: const SizedBox(),
-                      children: [expandableWidget(listOfServiceRequest, index)],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
+          return Text("text");
+          //   Padding(
+          //   padding: const EdgeInsets.only(bottom: 10.0),
+          //   child: Card.outlined(
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(10),
+          //       // if you need this
+          //       side: BorderSide(
+          //         color: AppColors.grayColor.withOpacity(0.2),
+          //         width: 1,
+          //       ),
+          //     ),
+          //     elevation: 3,
+          //     child: Container(
+          //       decoration: const BoxDecoration(
+          //           borderRadius: BorderRadius.all(Radius.circular(5))),
+          //       child: Column(
+          //         children: [
+          //           ExpansionTile(
+          //             // controller: controller.expandController,
+          //             collapsedShape: const ContinuousRectangleBorder(
+          //               borderRadius: BorderRadius.all(
+          //                 Radius.circular(30),
+          //               ),
+          //             ),
+          //             backgroundColor: AppColors.lightBlueColor,
+          //             shape: const ContinuousRectangleBorder(
+          //                 borderRadius: BorderRadius.all(Radius.circular(30))),
+          //             expandedCrossAxisAlignment: CrossAxisAlignment.start,
+          //             dense: true,
+          //             tilePadding: const EdgeInsets.symmetric(horizontal: 15),
+          //             iconColor: Colors.black,
+          //             collapsedIconColor: Colors.black,
+          //             collapsedBackgroundColor: AppColors.lightBlueColor,
+          //             title: Row(
+          //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //               children: [
+          //                 Column(
+          //                   crossAxisAlignment: CrossAxisAlignment.start,
+          //                   children: [
+          //                     const Text(
+          //                       "LAN ID",
+          //                       style: TextStyle(
+          //                           fontWeight: FontWeight.normal,
+          //                           color: AppColors.grayColor,
+          //                           fontSize: 12),
+          //                     ),
+          //                     Text(listOfServiceRequest[index].lanNo),
+          //                     Column(
+          //                       crossAxisAlignment: CrossAxisAlignment.start,
+          //                       children: [
+          //                         const Text("Amount Paid",
+          //                             style: TextStyle(
+          //                                 fontWeight: FontWeight.normal,
+          //                                 color: AppColors.grayColor,
+          //                                 fontSize: 12)),
+          //                         Text(listOfServiceRequest[index].amount),
+          //                       ],
+          //                     ),
+          //                   ],
+          //                 ),
+          //                 Padding(
+          //                   padding: EdgeInsets.only(top: 10),
+          //                   child: Column(
+          //                     crossAxisAlignment: CrossAxisAlignment.start,
+          //                     children: [
+          //                       const Text(
+          //                         "Service Request Type",
+          //                         style: TextStyle(
+          //                             fontWeight: FontWeight.normal,
+          //                             color: AppColors.grayColor,
+          //                             fontSize: 12),
+          //                       ),
+          //                       const Text(
+          //                         "Statement of Account",
+          //                         style: TextStyle(
+          //                             fontWeight: FontWeight.normal,
+          //                             color: AppColors.blackColor,
+          //                             fontSize: 12),
+          //                       ),
+          //                       Column(
+          //                         crossAxisAlignment: CrossAxisAlignment.start,
+          //                         children: [
+          //                           const Text(
+          //                             "Requested Date and Time",
+          //                             style: TextStyle(
+          //                                 fontWeight: FontWeight.normal,
+          //                                 color: AppColors.grayColor,
+          //                                 fontSize: 12),
+          //                           ),
+          //                           Text(
+          //                             listOfServiceRequest[index].requestedDate,
+          //                             style: const TextStyle(
+          //                                 fontWeight: FontWeight.normal,
+          //                                 color: AppColors.blackColor,
+          //                                 fontSize: 12),
+          //                           )
+          //                         ],
+          //                       ),
+          //                     ],
+          //                   ),
+          //                 ),
+          //               ],
+          //             ),
+          //             onExpansionChanged: (bool expand) {
+          //               // controller.customTileExpanded.value = expand;
+          //             },
+          //             trailing: const SizedBox(),
+          //             children: [expandableWidget(listOfServiceRequest, index)],
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // );
         });
   }
 
   LayoutBuilder expandableWidget(
       List<dynamic> listOfServiceRequest, int index) {
     return LayoutBuilder(builder: (context, constraint) {
-      double height = Get.height;
+      // double height = Get.height;
+      
 
       if (listOfServiceRequest[index].status == "Closed") {
-        return expandableWidgetForQuerySent(listOfServiceRequest, index, height);
+        return expandableWidgetForQuerySent(listOfServiceRequest, index, 70);
       } else {
-        return expandedWidgetForClosedStatus(listOfServiceRequest, index, height);
+        return expandedWidgetForClosedStatus(listOfServiceRequest, index, 180);
       }
     });
   }

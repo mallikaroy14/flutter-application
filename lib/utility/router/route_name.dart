@@ -15,5 +15,10 @@ class RouteName {
   static const String rejectedLoanSummary ="/rejectedLoanSummary";
   static const String pendenciesScreen ="/pendenciesScreen";
   static const String pendenciesDetails ="/pendenciesDetails";
+  static const String todoScreen ="/todoScreen";
+
+  static const String chatHomeScreen = "/chatHomeScreen";
+  static const String chatScreen = "/chatScreen";
+  static const String selectContactScreen = "/selectContactScreen";
 
 }

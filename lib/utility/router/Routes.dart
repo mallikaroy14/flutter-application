@@ -27,6 +27,15 @@ import 'package:feburary_flutter/screens/self_service/binding/self_service_bindi
 import 'package:feburary_flutter/screens/self_service/view/self_service_screen.dart';
 import 'package:feburary_flutter/screens/splash/binding/SplashBiding.dart';
 import 'package:feburary_flutter/screens/splash/view/SplashScreen.dart';
+import 'package:feburary_flutter/screens/todo/binding/todoBinding.dart';
+import 'package:feburary_flutter/screens/todo/view/todoScreen.dart';
+import 'package:feburary_flutter/whatsapp/chat_page/binding/chat_binding.dart';
+import 'package:feburary_flutter/whatsapp/chat_page/view/chat_screen.dart';
+import 'package:feburary_flutter/whatsapp/home/binding/chat_home_binding.dart';
+import 'package:feburary_flutter/whatsapp/home/controller/chat_home_controller.dart';
+import 'package:feburary_flutter/whatsapp/home/view/chat_home_screen.dart';
+import 'package:feburary_flutter/whatsapp/select_contact/binding/select_contact_binding.dart';
+import 'package:feburary_flutter/whatsapp/select_contact/view/select_contact_screen.dart';
 import 'package:get/get.dart';
 import '../../models/data.dart';
 import 'route_name.dart';
@@ -98,5 +107,21 @@ class Routes {
         arguments: PendenciesCardData,
         page: () => PendenciesDetailsScreen(),
         binding: PendenciesDetailsBinding()),
+    GetPage(
+        name: RouteName.todoScreen,
+        page: () => TodoScreen(),
+        binding: TodoBinding()),
+    GetPage(
+        name: RouteName.chatHomeScreen,
+        page: () => ChatHomeScreen(),
+        binding: ChatHomeBinding()),
+    GetPage(
+        name: RouteName.chatScreen,
+        page: () => ChatScreen(),
+        binding: ChatBinding()),
+    GetPage(
+        name: RouteName.selectContactScreen,
+        page: () => SelectContactScreen(),
+        binding: SelectContactBinding()),
   ];
 }

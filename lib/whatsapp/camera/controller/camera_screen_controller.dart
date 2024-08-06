@@ -22,6 +22,7 @@ class CameraScreenController extends GetxController {
   double transform = 0;
   bool iscamerafront = true;
   late Future<void> cameraValue;
+  var isVideo = false.obs;
 
   @override
   void onInit() {
@@ -30,6 +31,10 @@ class CameraScreenController extends GetxController {
 
     initializeCamera();
     super.onInit();
+  }
+
+  Future<void> videoPhotoToggle() async{
+    isVideo.value = !isVideo.value;
   }
 
   Future<void> initializeCamera() async {

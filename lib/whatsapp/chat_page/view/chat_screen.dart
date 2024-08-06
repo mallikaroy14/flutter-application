@@ -15,46 +15,62 @@ class ChatScreen extends GetResponsiveView<ChatController> {
             Get.toNamed(RouteName.selectContactScreen);
           },
           child: Icon(Icons.chat)),
-      body: Container(
-        child: Column(
-          children: [
-            Obx(
-              () => ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  physics: ScrollPhysics(),
-                  itemCount: controller.chatList.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                        leading: const CircleAvatar(
-                          child: Icon(Icons.person),
-                          backgroundColor: Colors.blueGrey,
-                        ),
-                        title: Text(controller.chatList[index].name),
-                        subtitle: Row(
-                          children: [
-                            controller.isRead.isTrue
-                                ? const Icon(Icons.done_all,
-                                    color: AppColors.tealBlueColor, size: 18)
-                                : const Icon(Icons.done_all,
-                                    color: AppColors.grayColor, size: 18),
-                            Text(controller.chatList[index].currentMessage),
-                          ],
-                        ),
-                        trailing: Column(
-                          children: [
-                            Text(
-                              controller.chatList[index].time,
-                              style: const TextStyle(fontSize: 15),
-                            ),
-                            controller.isSilent.isTrue
-                                ? const Icon(Icons.volume_mute)
-                                : const Icon(Icons.volume_down),
-                          ],
-                        ));
-                  }),
-            )
-          ],
+      body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
+        child: Container(
+          child: Column(
+            children: [
+              Obx(
+                    () =>
+                    ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: controller.chatList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                              leading: const CircleAvatar(
+                                child: Icon(Icons.person),
+                                backgroundColor: Colors.blueGrey,
+                              ),
+                              title: Text(controller.chatList[index].name),
+                              subtitle: Row(
+                                children: [
+                                  controller.isRead.isTrue
+                                      ? const Icon(Icons.done_all,
+                                      color: AppColors.tealBlueColor, size: 18)
+                                      : const Icon(Icons.done_all,
+                                      color: AppColors.grayColor, size: 18),
+                                  Text(controller.chatList[index]
+                                      .currentMessage),
+                                ],
+                              ),
+                              trailing: Column(
+                                children: [
+                                  Text(
+                                    controller.chatList[index].time,
+                                    style: const TextStyle(fontSize: 15),
+                                  ),
+                                  controller.isSilent.isTrue
+                                      ? const Icon(Icons.volume_mute)
+                                      : const Icon(Icons.volume_down),
+                                ],
+                              ));
+                        }),
+              ),
+              Divider(),
+              RichText(
+                  text: const TextSpan(children: [
+                    WidgetSpan(child: Icon(
+                      Icons.lock, size: 13, color: AppColors.darkGreyColor)),
+                    TextSpan(
+                        text: " Your personal messages are end-to-end encrypted",
+                        style: TextStyle(
+                            fontSize: 13, color: AppColors.darkGreyColor))
+                  ],)),
+              SizedBox(height: 80),
+            ],
+          ),
         ),
       ),
     );

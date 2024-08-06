@@ -33,7 +33,7 @@ TextFormField customTextField(String fieldName, TextInputType keyboardKey,
           borderSide: const BorderSide(color: AppColors.redColor)),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(7.r)),
-          borderSide: const BorderSide(color: AppColors.greyColor)),
+          borderSide: const BorderSide(color: AppColors.grayColor)),
       errorText: errorMessage.isEmpty ? null : errorMessage,
       labelStyle: errorMessage.isEmpty
           ? AppTextStyle.textError17Red
@@ -41,13 +41,13 @@ TextFormField customTextField(String fieldName, TextInputType keyboardKey,
       errorBorder: isValueNotEmpty
           ? OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(7.r)),
-              borderSide: const BorderSide(color: AppColors.greyColor))
+              borderSide: const BorderSide(color: AppColors.grayColor))
           : OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(7.r)),
               borderSide: const BorderSide(color: AppColors.redColor)),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(7.r)),
-          borderSide: const BorderSide(color: AppColors.greyColor)),
+          borderSide: const BorderSide(color: AppColors.grayColor)),
       hintStyle: AppTextStyle.textRegular18Black,
     ),
     keyboardType: keyboardKey,
@@ -97,7 +97,7 @@ TextFormField dateOfBirthTextField(
           borderSide: const BorderSide(color: AppColors.redColor)),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(7.r)),
-          borderSide: const BorderSide(color: AppColors.greyColor)),
+          borderSide: const BorderSide(color: AppColors.grayColor)),
       errorText: errorMessage.isEmpty ? null : errorMessage,
       labelStyle: errorMessage.isEmpty
           ? AppTextStyle.textError17Red
@@ -105,7 +105,7 @@ TextFormField dateOfBirthTextField(
       errorBorder: isDobValid
           ? OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(7.r)),
-              borderSide: const BorderSide(color: AppColors.greyColor))
+              borderSide: const BorderSide(color: AppColors.grayColor))
           : OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(7.r)),
               borderSide: const BorderSide(color: AppColors.redColor)),

@@ -20,5 +20,6 @@ class RouteName {
   static const String chatHomeScreen = "/chatHomeScreen";
   static const String chatScreen = "/chatScreen";
   static const String selectContactScreen = "/selectContactScreen";
+  static const String camera = "/camera";
 
 }

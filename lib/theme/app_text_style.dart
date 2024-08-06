@@ -43,7 +43,7 @@ class AppTextStyle {
       fontWeight: FontWeight.w500);
 
   static final textRegular16Grey = TextStyle(
-      color: AppColors.greyColor,
+      color: AppColors.grayColor,
       fontSize: 16.sp,
       fontWeight: FontWeight.normal);
 
@@ -86,7 +86,7 @@ class AppTextStyle {
       TextStyle(color: AppColors.redColor, fontSize: 13.sp);
 
   static const textRegularGrey =
-      TextStyle(color: AppColors.greyColor, fontWeight: FontWeight.normal);
+      TextStyle(color: AppColors.grayColor, fontWeight: FontWeight.normal);
 
   static final textRegularDarkGrey =
       TextStyle(color: AppColors.darkGreyColor, fontSize: 13.sp);
@@ -110,7 +110,7 @@ class AppTextStyle {
       color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17.sp);
 
   static final textGrey12 = TextStyle(
-      color: AppColors.greyColor, fontWeight: FontWeight.w500, fontSize: 12.sp);
+      color: AppColors.grayColor, fontWeight: FontWeight.w500, fontSize: 12.sp);
 
   static final textRegularWhite15 = TextStyle(
       color: AppColors.whiteColor,

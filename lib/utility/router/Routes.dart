@@ -29,6 +29,8 @@ import 'package:feburary_flutter/screens/splash/binding/SplashBiding.dart';
 import 'package:feburary_flutter/screens/splash/view/SplashScreen.dart';
 import 'package:feburary_flutter/screens/todo/binding/todoBinding.dart';
 import 'package:feburary_flutter/screens/todo/view/todoScreen.dart';
+import 'package:feburary_flutter/whatsapp/camera/binding/camera_binding.dart';
+import 'package:feburary_flutter/whatsapp/camera/view/camera.dart';
 import 'package:feburary_flutter/whatsapp/chat_page/binding/chat_binding.dart';
 import 'package:feburary_flutter/whatsapp/chat_page/view/chat_screen.dart';
 import 'package:feburary_flutter/whatsapp/home/binding/chat_home_binding.dart';
@@ -123,5 +125,7 @@ class Routes {
         name: RouteName.selectContactScreen,
         page: () => SelectContactScreen(),
         binding: SelectContactBinding()),
+    GetPage(
+        name: RouteName.camera, page: () => Camera(), binding: CameraBinding()),
   ];
 }

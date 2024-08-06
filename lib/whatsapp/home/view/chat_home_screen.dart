@@ -7,6 +7,7 @@ import 'package:feburary_flutter/whatsapp/chat_page/view/chat_screen.dart';
 import 'package:feburary_flutter/whatsapp/home/controller/chat_home_controller.dart';
 import 'package:feburary_flutter/whatsapp/select_contact/controller/select_contact_controller.dart';
 import 'package:feburary_flutter/whatsapp/select_contact/view/select_contact_screen.dart';
+import 'package:feburary_flutter/whatsapp/status/view/status_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -78,14 +79,14 @@ class ChatHomeScreen extends GetResponsiveView<ChatHomeController> {
               Container(
                 color: AppColors.whatsPrimary,
                 child: TabBar(
-                  unselectedLabelColor: AppColors.greyColor,
+                  unselectedLabelColor: AppColors.grayColor,
                   labelColor: AppColors.whiteColor,
                   controller: controller.tabController,
                   tabs: [
                     Tab(
                         icon: Icon(
                       Icons.camera_alt,
-                      color: AppColors.greyColor,
+                      color: AppColors.grayColor,
                     )),
                     Tab(text: "Chats"),
                     Tab(text: "Status"),
@@ -99,7 +100,7 @@ class ChatHomeScreen extends GetResponsiveView<ChatHomeController> {
                     children: [
                       Camera(),
                       ChatScreen(),
-                      Text("Story"),
+                      StatusScreen(),
                       CallScreen()
                     ]),
               )
